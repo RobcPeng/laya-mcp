@@ -1,0 +1,40 @@
+{
+  "set": "security-incident-triage",
+  "split": "test",
+  "rows": 234,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "d43871e8a7fce8cf9cd05c278fd9ef1e100193333ac5a7e0d703d1c8627ddd21",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 7.6,
+  "questions": {
+    "category": {
+      "type": "choice",
+      "n": 234,
+      "accuracy": 0.701,
+      "majority_baseline": 0.222
+    },
+    "true_positive": {
+      "type": "noul",
+      "n": 234,
+      "accuracy": 0.376,
+      "majority_baseline": 0.667
+    },
+    "severity": {
+      "type": "score",
+      "n": 234,
+      "accuracy": 0.235,
+      "majority_baseline": 0.333,
+      "within_one": 0.624
+    },
+    "needs_escalation": {
+      "type": "noul",
+      "n": 234,
+      "accuracy": 0.568,
+      "majority_baseline": 0.556
+    }
+  },
+  "mean_accuracy": 0.47
+}

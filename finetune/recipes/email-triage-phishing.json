@@ -1,0 +1,17 @@
+{
+  "name": "email-triage-phishing",
+  "pack": "email-triage-phishing",
+  "dataset": "accelerators/email-triage-phishing",
+  "description": "File inbound email, flag phishing and junk, decide whether a reply is needed, and score real urgency (phishing's fake urgency scores none).",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Quarantine phishing above the tuned threshold; file the rest by route."
+}

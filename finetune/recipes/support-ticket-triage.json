@@ -1,0 +1,17 @@
+{
+  "name": "support-ticket-triage",
+  "pack": "support-ticket-triage",
+  "dataset": "accelerators/support-ticket-triage",
+  "description": "Route support tickets to a queue, score urgency, flag churn risk, refund requests and tickets that need a human.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Auto-route confident tickets; send needs_human or churn_risk to a person; page on urgency 3."
+}

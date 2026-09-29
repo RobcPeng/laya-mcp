@@ -1,0 +1,33 @@
+{
+  "set": "data-quality-record-check",
+  "split": "test",
+  "rows": 220,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "918e7988996c6b1ef052739d10e3dcd992fc19d0d88361908d38b5dbff72caac",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 9.0,
+  "questions": {
+    "is_valid": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.477,
+      "majority_baseline": 0.545
+    },
+    "issue": {
+      "type": "choice",
+      "n": 220,
+      "accuracy": 0.318,
+      "majority_baseline": 0.455
+    },
+    "pii_in_text": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.677,
+      "majority_baseline": 0.641
+    }
+  },
+  "mean_accuracy": 0.491
+}

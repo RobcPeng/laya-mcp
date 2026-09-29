@@ -1,0 +1,46 @@
+{
+  "set": "support-ticket-triage",
+  "split": "test",
+  "rows": 240,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "8e35fef9591c8c0e2a1563b6426b6e9aa584747066641efa1fa24de595e442ff",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 14.2,
+  "questions": {
+    "queue": {
+      "type": "choice",
+      "n": 240,
+      "accuracy": 0.804,
+      "majority_baseline": 0.2
+    },
+    "urgency": {
+      "type": "score",
+      "n": 240,
+      "accuracy": 0.517,
+      "majority_baseline": 0.5,
+      "within_one": 0.95
+    },
+    "churn_risk": {
+      "type": "noul",
+      "n": 240,
+      "accuracy": 0.771,
+      "majority_baseline": 0.675
+    },
+    "refund_requested": {
+      "type": "noul",
+      "n": 240,
+      "accuracy": 0.854,
+      "majority_baseline": 0.825
+    },
+    "needs_human": {
+      "type": "noul",
+      "n": 240,
+      "accuracy": 0.537,
+      "majority_baseline": 0.621
+    }
+  },
+  "mean_accuracy": 0.697
+}

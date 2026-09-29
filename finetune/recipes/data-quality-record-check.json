@@ -1,0 +1,17 @@
+{
+  "name": "data-quality-record-check",
+  "pack": "data-quality-record-check",
+  "dataset": "accelerators/data-quality-record-check",
+  "description": "Record-level data quality check against schema rules for lakehouse ingest: valid, issue type, and PII in free-text fields.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Quarantine invalid records to a side table with the issue label; mask or route records with pii_in_text."
+}

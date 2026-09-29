@@ -1,0 +1,27 @@
+{
+  "set": "he-safety-escalation",
+  "split": "test",
+  "rows": 235,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "508c4f22382d72df2420c244788ee05411fc760445e0d4157cf248a0262e6cd8",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 5.7,
+  "questions": {
+    "escalate_now": {
+      "type": "noul",
+      "n": 235,
+      "accuracy": 0.494,
+      "majority_baseline": 0.502
+    },
+    "category": {
+      "type": "choice",
+      "n": 235,
+      "accuracy": 0.443,
+      "majority_baseline": 0.328
+    }
+  },
+  "mean_accuracy": 0.468
+}

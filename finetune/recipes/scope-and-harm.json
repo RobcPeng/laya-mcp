@@ -1,0 +1,24 @@
+{
+  "name": "scope-and-harm",
+  "pack": "scope-and-harm",
+  "dataset": "scope-and-harm",
+  "description": "Is a request in the assistant's scope (choice) and how harmful would complying be (score). Scope text is part of the state, so one checkpoint serves several assistants.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.6
+    }
+  },
+  "serving": "Route off_topic to a short redirect, abuse / harm>=2 to a refusal.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  },
+  "eval": {
+    "aggregate": false
+  }
+}

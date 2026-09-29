@@ -1,0 +1,17 @@
+{
+  "name": "invoice-ap-exceptions",
+  "pack": "invoice-ap-exceptions",
+  "dataset": "accelerators/invoice-ap-exceptions",
+  "description": "AP three-way-match exceptions: exception type, manual approval, and fraud risk from invoice vs PO, receipt, vendor master, and payment history.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.6
+    }
+  },
+  "serving": "Run a deterministic match first; use the model for bank changes, altered-number duplicates and vague vendors; fraud_risk 2 blocks payment pending callback."
+}

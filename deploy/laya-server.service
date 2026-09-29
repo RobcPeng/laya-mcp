@@ -1,0 +1,25 @@
+# Example systemd unit for the shared Laya decision server.
+# Adjust User, WorkingDirectory and the venv path, then:
+#   sudo cp deploy/laya-server.service /etc/systemd/system/ && sudo systemctl enable --now laya-server
+[Unit]
+Description=Laya decision server (laya.serve, /v1/systemone)
+After=network.target
+
+[Service]
+Type=simple
+User=laya
+WorkingDirectory=/opt/laya
+Environment=USE_TF=0
+Environment=LAYA_HOST=127.0.0.1
+Environment=LAYA_PORT=7491
+Environment=LAYA_DEVICE=cuda
+Environment=LAYA_MODELS=english,multilingual
+Environment=LAYA_MAX_CONCURRENT=16
+# Environment=LAYA_API_KEY=change-me          # require a bearer token (set LAYA_API_KEY on clients too)
+ExecStart=/opt/laya/.venv/bin/python -m laya.serve
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

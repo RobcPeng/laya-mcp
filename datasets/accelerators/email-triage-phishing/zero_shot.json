@@ -1,0 +1,46 @@
+{
+  "set": "email-triage-phishing",
+  "split": "test",
+  "rows": 268,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "8052ef49a8361c04b35c4ea2a9a32b460eb4138cc2a3b5523eb1b85d5a92f73d",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 11.5,
+  "questions": {
+    "route": {
+      "type": "choice",
+      "n": 268,
+      "accuracy": 0.47,
+      "majority_baseline": 0.313
+    },
+    "phishing": {
+      "type": "noul",
+      "n": 268,
+      "accuracy": 0.634,
+      "majority_baseline": 0.791
+    },
+    "spam": {
+      "type": "noul",
+      "n": 268,
+      "accuracy": 0.802,
+      "majority_baseline": 0.896
+    },
+    "needs_reply": {
+      "type": "noul",
+      "n": 268,
+      "accuracy": 0.519,
+      "majority_baseline": 0.687
+    },
+    "urgency": {
+      "type": "score",
+      "n": 268,
+      "accuracy": 0.243,
+      "majority_baseline": 0.582,
+      "within_one": 0.507
+    }
+  },
+  "mean_accuracy": 0.534
+}

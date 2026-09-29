@@ -1,0 +1,17 @@
+{
+  "name": "he-research-admin",
+  "pack": "he-research-admin",
+  "dataset": "accelerators/he-research-admin",
+  "description": "Sponsored research office email triage: topic and upcoming deadline.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route by topic to the pre-award, post-award, or compliance team; deadline=true flags the email in the shared inbox."
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "laya": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "laya_mcp.server"],
+      "env": { "LAYA_URL": "http://127.0.0.1:7491" }
+    }
+  }
+}

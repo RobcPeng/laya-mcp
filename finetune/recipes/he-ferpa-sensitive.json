@@ -1,0 +1,17 @@
+{
+  "name": "he-ferpa-sensitive",
+  "pack": "he-ferpa-sensitive",
+  "dataset": "accelerators/he-ferpa-sensitive",
+  "description": "DLP for FERPA-protected education records versus directory information, with record type.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Block or redact protected_record text before it goes to an external LLM, a public channel, or an unapproved recipient."
+}

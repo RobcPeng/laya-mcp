@@ -1,0 +1,40 @@
+{
+  "set": "he-course-evaluation-comments",
+  "split": "test",
+  "rows": 244,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "373381a49051840bd91607d5b8b52dc3b109f6886a891847c3a65d5c56a7ca67",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 11.4,
+  "questions": {
+    "theme": {
+      "type": "choice",
+      "n": 244,
+      "accuracy": 0.484,
+      "majority_baseline": 0.209
+    },
+    "sentiment": {
+      "type": "score",
+      "n": 244,
+      "accuracy": 0.385,
+      "majority_baseline": 0.295,
+      "within_one": 0.742
+    },
+    "actionable": {
+      "type": "noul",
+      "n": 244,
+      "accuracy": 0.422,
+      "majority_baseline": 0.594
+    },
+    "inappropriate": {
+      "type": "noul",
+      "n": 244,
+      "accuracy": 0.893,
+      "majority_baseline": 0.787
+    }
+  },
+  "mean_accuracy": 0.546
+}

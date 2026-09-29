@@ -1,0 +1,40 @@
+{
+  "set": "public-sector-311-intake",
+  "split": "test",
+  "rows": 234,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "7648cf6530b29791a9ff35deb1e7928ee5c9efd5157d53d4f10d6cb073faaf74",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 7.1,
+  "questions": {
+    "service": {
+      "type": "choice",
+      "n": 234,
+      "accuracy": 0.731,
+      "majority_baseline": 0.154
+    },
+    "emergency": {
+      "type": "noul",
+      "n": 234,
+      "accuracy": 0.774,
+      "majority_baseline": 0.769
+    },
+    "location_present": {
+      "type": "noul",
+      "n": 234,
+      "accuracy": 0.538,
+      "majority_baseline": 0.731
+    },
+    "priority": {
+      "type": "score",
+      "n": 234,
+      "accuracy": 0.466,
+      "majority_baseline": 0.308,
+      "within_one": 0.88
+    }
+  },
+  "mean_accuracy": 0.627
+}

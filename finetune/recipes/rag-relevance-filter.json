@@ -1,0 +1,17 @@
+{
+  "name": "rag-relevance-filter",
+  "pack": "rag-relevance-filter",
+  "dataset": "accelerators/rag-relevance-filter",
+  "description": "RAG reranker/filter: is a retrieved passage on the query's subject, does it answer the query, and how useful is it.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Drop passages with relevant below threshold; rank by the expected relevance score; answer only when some passage has answers=true."
+}

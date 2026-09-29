@@ -1,0 +1,17 @@
+{
+  "name": "he-safety-escalation",
+  "pack": "he-safety-escalation",
+  "dataset": "accelerators/he-safety-escalation",
+  "description": "High-recall routing of messages that need a trained person now (self-harm, threats, sexual misconduct, medical emergencies) versus ordinary stress.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route escalate_now above a recall-tuned threshold to on-call staff and crisis resources immediately. Never send an automated response to the student."
+}

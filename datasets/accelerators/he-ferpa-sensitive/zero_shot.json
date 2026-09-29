@@ -1,0 +1,27 @@
+{
+  "set": "he-ferpa-sensitive",
+  "split": "test",
+  "rows": 270,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "ad0b77793bd426d31824d5f322fdbcd1c5531d826afdecc41321519a667b1d0b",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 4.8,
+  "questions": {
+    "protected_record": {
+      "type": "noul",
+      "n": 270,
+      "accuracy": 0.4,
+      "majority_baseline": 0.741
+    },
+    "record_type": {
+      "type": "choice",
+      "n": 270,
+      "accuracy": 0.448,
+      "majority_baseline": 0.148
+    }
+  },
+  "mean_accuracy": 0.424
+}

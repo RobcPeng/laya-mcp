@@ -1,0 +1,17 @@
+{
+  "name": "he-course-evaluation-comments",
+  "pack": "he-course-evaluation-comments",
+  "dataset": "accelerators/he-course-evaluation-comments",
+  "description": "Course evaluation comment coding: theme, sentiment, actionable feedback, and inappropriate remarks.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Aggregate theme and sentiment per course; hide inappropriate comments from instructor reports pending review."
+}

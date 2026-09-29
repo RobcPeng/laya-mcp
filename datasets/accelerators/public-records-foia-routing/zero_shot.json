@@ -1,0 +1,40 @@
+{
+  "set": "public-records-foia-routing",
+  "split": "test",
+  "rows": 208,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "feff7220d58228f845d3da6589ecff3764941993afb3d8a8241be8b6010d8202",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 6.9,
+  "questions": {
+    "department": {
+      "type": "choice",
+      "n": 208,
+      "accuracy": 0.769,
+      "majority_baseline": 0.183
+    },
+    "request_type": {
+      "type": "choice",
+      "n": 208,
+      "accuracy": 0.832,
+      "majority_baseline": 0.601
+    },
+    "contains_pii": {
+      "type": "noul",
+      "n": 208,
+      "accuracy": 0.639,
+      "majority_baseline": 0.567
+    },
+    "complexity": {
+      "type": "score",
+      "n": 208,
+      "accuracy": 0.284,
+      "majority_baseline": 0.519,
+      "within_one": 0.861
+    }
+  },
+  "mean_accuracy": 0.631
+}

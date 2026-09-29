@@ -1,0 +1,24 @@
+{
+  "name": "agent-trace-judge",
+  "pack": "agent-trace-judge",
+  "dataset": "agent-trace-judge",
+  "description": "Grade a finished agent turn from its goal, tool calls and answer: goal met, grounded in tool output, quality. Starts from the typed-decisions checkpoint, which was fine-tuned on agent-trace observability.",
+  "base": "typed-decisions",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.6
+    }
+  },
+  "serving": "Offline eval / monitoring of agent turns; log scores alongside traces.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  },
+  "eval": {
+    "aggregate": false
+  }
+}

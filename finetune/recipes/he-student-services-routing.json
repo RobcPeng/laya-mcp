@@ -1,0 +1,17 @@
+{
+  "name": "he-student-services-routing",
+  "pack": "he-student-services-routing",
+  "dataset": "accelerators/he-student-services-routing",
+  "description": "Route student messages to the campus office that handles them, score urgency, and flag messages that need a staff member.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Confident FAQ-type messages get an automated answer with a link; needs_human or urgency >= 2 goes to the office queue; urgency 3 goes to a person immediately."
+}

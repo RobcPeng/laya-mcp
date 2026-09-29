@@ -1,0 +1,17 @@
+{
+  "name": "he-early-alert",
+  "pack": "he-early-alert",
+  "dataset": "accelerators/he-early-alert",
+  "description": "Decision support for advisors: academic, attendance, financial, and wellbeing signals in early-alert notes, plus how much outreach the student needs.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Advisor-facing prioritization only. Never auto-act on a student: no automated holds, messages, grades, aid, or conduct actions."
+}

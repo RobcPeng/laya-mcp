@@ -1,0 +1,17 @@
+{
+  "name": "security-incident-triage",
+  "pack": "security-incident-triage",
+  "dataset": "accelerators/security-incident-triage",
+  "description": "SOC alert triage: category, likely true positive, severity, and escalation to incident response.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.65
+    }
+  },
+  "serving": "Auto-close confident false positives with a note; escalate needs_escalation; everything else to the analyst queue ordered by severity."
+}

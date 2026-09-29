@@ -1,0 +1,17 @@
+{
+  "name": "public-records-foia-routing",
+  "pack": "public-records-foia-routing",
+  "dataset": "accelerators/public-records-foia-routing",
+  "description": "Open-records (FOIA) intake: department that holds the records, records request vs complaint vs service request, PII in the request, and workload.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route records requests to the custodian department; send complaints and service requests to their own queues; flag PII for redaction."
+}

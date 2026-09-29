@@ -1,0 +1,27 @@
+{
+  "set": "he-research-admin",
+  "split": "test",
+  "rows": 208,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "ca07cad246c8200616f4c609fa3dff949a5d3f1b0410695064353b5efbea0847",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 8.0,
+  "questions": {
+    "topic": {
+      "type": "choice",
+      "n": 208,
+      "accuracy": 0.764,
+      "majority_baseline": 0.125
+    },
+    "deadline": {
+      "type": "noul",
+      "n": 208,
+      "accuracy": 0.654,
+      "majority_baseline": 0.534
+    }
+  },
+  "mean_accuracy": 0.709
+}

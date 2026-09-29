@@ -1,0 +1,34 @@
+{
+  "set": "he-it-helpdesk",
+  "split": "test",
+  "rows": 240,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "b8da7c23dda8cb3e24da878d10bd594ccd2f741f29039006284b9f1f3f8b107d",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 11.5,
+  "questions": {
+    "category": {
+      "type": "choice",
+      "n": 240,
+      "accuracy": 0.804,
+      "majority_baseline": 0.2
+    },
+    "outage": {
+      "type": "noul",
+      "n": 240,
+      "accuracy": 0.921,
+      "majority_baseline": 0.7
+    },
+    "priority": {
+      "type": "score",
+      "n": 240,
+      "accuracy": 0.521,
+      "majority_baseline": 0.3,
+      "within_one": 0.912
+    }
+  },
+  "mean_accuracy": 0.749
+}

@@ -1,0 +1,17 @@
+{
+  "name": "content-moderation",
+  "pack": "content-moderation",
+  "dataset": "accelerators/content-moderation",
+  "description": "Moderate user text: toxic, harassment, threat, spam, and a severity for the action.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Remove at severity >= 2; escalate threats; keep the thresholds from evaluate.py for each flag."
+}

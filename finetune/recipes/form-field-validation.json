@@ -1,0 +1,26 @@
+{
+  "name": "form-field-validation",
+  "pack": "form-field-validation",
+  "dataset": "form-field-validation",
+  "description": "Form text-field validation: categorize one entry (pass, empty_or_placeholder, gibberish, wrong_type, wrong_format, incomplete, off_topic, sensitive_data, abusive), flag it for human review, and grade answer quality. Layer 2 of laya_mcp/forms.py.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 4,
+    "micro_batch": 8
+  },
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  },
+  "eval": {
+    "fp_budget": 0.05,
+    "recall_target": 0.95,
+    "aggregate": ["needs_review"]
+  },
+  "gates": {
+    "category.accuracy": {"min": 0.8},
+    "macro_accuracy": {"min": 0.75}
+  },
+  "serving": "Used by laya_mcp.forms.validate_field after the deterministic rules. Serve the tuned checkpoint on its own port (finetune/serve.py) and point forms at it with url=. The base checkpoint needs LAYA_FORM_MIN_CONFIDENCE around 0.4 because it spreads probability over nine categories; after this fine-tune raise LAYA_FORM_MIN_CONFIDENCE to 0.6 (measured; see the dataset README) so low-confidence answers go to review instead of being auto-accepted. needs_review uses the fitted threshold in form-field-validation.thresholds.json."
+}

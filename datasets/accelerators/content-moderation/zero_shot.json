@@ -1,0 +1,46 @@
+{
+  "set": "content-moderation",
+  "split": "test",
+  "rows": 220,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "664510c4e4d9ef00bd4e8342595e43bb3224a3068e261ddab54adffd33a6fbf3",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 4.8,
+  "questions": {
+    "toxic": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.8,
+      "majority_baseline": 0.732
+    },
+    "harassment": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.705,
+      "majority_baseline": 0.714
+    },
+    "threat": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.795,
+      "majority_baseline": 0.855
+    },
+    "spam": {
+      "type": "noul",
+      "n": 220,
+      "accuracy": 0.964,
+      "majority_baseline": 0.845
+    },
+    "severity": {
+      "type": "score",
+      "n": 220,
+      "accuracy": 0.295,
+      "majority_baseline": 0.423,
+      "within_one": 0.605
+    }
+  },
+  "mean_accuracy": 0.712
+}

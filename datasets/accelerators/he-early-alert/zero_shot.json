@@ -1,0 +1,46 @@
+{
+  "set": "he-early-alert",
+  "split": "test",
+  "rows": 250,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "5a0ef80e7a834af1754aa7f6d3e47d9288927e9c1c31ea78079e419c541dc022",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 11.1,
+  "questions": {
+    "academic_risk": {
+      "type": "noul",
+      "n": 250,
+      "accuracy": 0.736,
+      "majority_baseline": 0.676
+    },
+    "attendance": {
+      "type": "noul",
+      "n": 250,
+      "accuracy": 0.852,
+      "majority_baseline": 0.684
+    },
+    "financial_stress": {
+      "type": "noul",
+      "n": 250,
+      "accuracy": 0.82,
+      "majority_baseline": 0.68
+    },
+    "wellbeing_concern": {
+      "type": "noul",
+      "n": 250,
+      "accuracy": 0.744,
+      "majority_baseline": 0.628
+    },
+    "risk": {
+      "type": "score",
+      "n": 250,
+      "accuracy": 0.276,
+      "majority_baseline": 0.356,
+      "within_one": 0.628
+    }
+  },
+  "mean_accuracy": 0.686
+}

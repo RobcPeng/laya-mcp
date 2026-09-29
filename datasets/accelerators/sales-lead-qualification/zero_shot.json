@@ -1,0 +1,52 @@
+{
+  "set": "sales-lead-qualification",
+  "split": "test",
+  "rows": 135,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "18088a56fc39d70377f001901dcd94f850a3bcf748274514745c401affd067ce",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 9.1,
+  "questions": {
+    "budget": {
+      "type": "noul",
+      "n": 135,
+      "accuracy": 0.77,
+      "majority_baseline": 0.674
+    },
+    "authority": {
+      "type": "noul",
+      "n": 135,
+      "accuracy": 0.615,
+      "majority_baseline": 0.607
+    },
+    "need": {
+      "type": "noul",
+      "n": 135,
+      "accuracy": 0.57,
+      "majority_baseline": 0.519
+    },
+    "timing": {
+      "type": "noul",
+      "n": 135,
+      "accuracy": 0.696,
+      "majority_baseline": 0.652
+    },
+    "stage": {
+      "type": "choice",
+      "n": 135,
+      "accuracy": 0.444,
+      "majority_baseline": 0.333
+    },
+    "fit": {
+      "type": "score",
+      "n": 135,
+      "accuracy": 0.296,
+      "majority_baseline": 0.333,
+      "within_one": 0.681
+    }
+  },
+  "mean_accuracy": 0.565
+}

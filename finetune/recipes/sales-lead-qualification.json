@@ -1,0 +1,17 @@
+{
+  "name": "sales-lead-qualification",
+  "pack": "sales-lead-qualification",
+  "dataset": "accelerators/sales-lead-qualification",
+  "description": "BANT-style lead qualification: budget, authority, need, timing, stage, and fit for a given product.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Fit 3 goes to an AE now, fit 2 gets a discovery call, lower fits go to nurture."
+}

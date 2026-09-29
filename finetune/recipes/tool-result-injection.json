@@ -1,0 +1,25 @@
+{
+  "name": "tool-result-injection",
+  "pack": "tool-result-injection",
+  "dataset": "tool-result-injection",
+  "description": "Screen tool/MCP RESULTS (web pages, emails, files) for indirect prompt injection before they reach the model.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "eval": {
+    "fp_budget": 0.05,
+    "recall_target": 0.95
+  },
+  "gates": {
+    "any_fn_rate_at_serving": {
+      "max": 0.15
+    }
+  },
+  "serving": "quarantine above threshold -> replace the result with a note that it was withheld.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  }
+}

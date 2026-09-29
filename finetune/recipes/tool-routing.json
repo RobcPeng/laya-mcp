@@ -1,0 +1,25 @@
+{
+  "name": "tool-routing",
+  "pack": "tool-routing",
+  "dataset": "tool-routing",
+  "description": "Which tool/MCP function a request needs (choice over a <=20 tool catalog), whether any tool is needed, and whether acting needs user confirmation.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "pack_params": {},
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Pre-select a small tool subset for the LLM, or skip the LLM entirely for confident single-tool requests. For catalogs over 20 tools, shortlist by embedding similarity first.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  },
+  "eval": {
+    "aggregate": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "tool-call-safety",
+  "pack": "tool-call-safety",
+  "dataset": "tool-call-safety",
+  "description": "Gate a PROPOSED tool/MCP call before executing it: does it match the request, does it have side effects, does it exfiltrate data, and how risky is it.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 4
+  },
+  "eval": {
+    "fp_budget": 0.05,
+    "recall_target": 0.98,
+    "aggregate": false
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Before executing a call: risk>=2 or exfiltration -> require confirmation or refuse; matches_request low -> ask the model to justify.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  }
+}

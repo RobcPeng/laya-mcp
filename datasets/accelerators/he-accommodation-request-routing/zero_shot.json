@@ -1,0 +1,33 @@
+{
+  "set": "he-accommodation-request-routing",
+  "split": "test",
+  "rows": 239,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "eb27b049589bc8c0247a09c9498c8d4da73a3fe8d929c17b6714d312488b8e5c",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 7.9,
+  "questions": {
+    "type": {
+      "type": "choice",
+      "n": 239,
+      "accuracy": 0.649,
+      "majority_baseline": 0.167
+    },
+    "documentation_mentioned": {
+      "type": "noul",
+      "n": 239,
+      "accuracy": 0.715,
+      "majority_baseline": 0.527
+    },
+    "time_sensitive": {
+      "type": "noul",
+      "n": 239,
+      "accuracy": 0.661,
+      "majority_baseline": 0.582
+    }
+  },
+  "mean_accuracy": 0.675
+}

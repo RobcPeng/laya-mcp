@@ -1,0 +1,34 @@
+{
+  "set": "invoice-ap-exceptions",
+  "split": "test",
+  "rows": 240,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "0f249724ecf9be28b6c56fa4a30e94c97a2989cb1727128c79c887710bdd06a0",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 9.8,
+  "questions": {
+    "exception": {
+      "type": "choice",
+      "n": 240,
+      "accuracy": 0.192,
+      "majority_baseline": 0.467
+    },
+    "needs_approval": {
+      "type": "noul",
+      "n": 240,
+      "accuracy": 0.529,
+      "majority_baseline": 0.533
+    },
+    "fraud_risk": {
+      "type": "score",
+      "n": 240,
+      "accuracy": 0.292,
+      "majority_baseline": 0.667,
+      "within_one": 0.621
+    }
+  },
+  "mean_accuracy": 0.337
+}

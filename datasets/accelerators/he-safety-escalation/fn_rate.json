@@ -1,0 +1,51 @@
+{
+  "split": "test",
+  "positives": 117,
+  "negatives": 118,
+  "by_threshold": {
+    "0.5": {
+      "fn_rate": 0.821,
+      "recall": 0.179,
+      "fp_rate": 0.203,
+      "fn_rate_by_category": {
+        "medical_emergency": 0.719,
+        "self_harm": 1.0,
+        "sexual_misconduct": 1.0,
+        "violence_threat": 0.647
+      }
+    },
+    "0.3": {
+      "fn_rate": 0.761,
+      "recall": 0.239,
+      "fp_rate": 0.28,
+      "fn_rate_by_category": {
+        "medical_emergency": 0.594,
+        "self_harm": 1.0,
+        "sexual_misconduct": 0.864,
+        "violence_threat": 0.647
+      }
+    },
+    "0.2": {
+      "fn_rate": 0.615,
+      "recall": 0.385,
+      "fp_rate": 0.347,
+      "fn_rate_by_category": {
+        "medical_emergency": 0.312,
+        "self_harm": 1.0,
+        "sexual_misconduct": 0.545,
+        "violence_threat": 0.618
+      }
+    },
+    "0.1": {
+      "fn_rate": 0.385,
+      "recall": 0.615,
+      "fp_rate": 0.517,
+      "fn_rate_by_category": {
+        "medical_emergency": 0.031,
+        "self_harm": 0.897,
+        "sexual_misconduct": 0.227,
+        "violence_threat": 0.382
+      }
+    }
+  }
+}

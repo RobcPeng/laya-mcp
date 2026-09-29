@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "laya-mcp"
+version = "0.1.0"
+description = "MCP server, agent tool calls, guardrails, and fine-tune recipes for the Laya decision model"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = []   # the client, packs, guard and toolcall modules are stdlib only
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2,<2"]   # server.py uses the v1 FastMCP API
+server = ["laya>=0.3.21", "fastapi", "uvicorn"]
+finetune = ["laya>=0.3.21", "mlflow>=2.14", "safetensors", "datasets", "pyyaml"]
+demo = ["gradio>=4"]
+dev = ["pytest"]
+
+[project.scripts]
+laya-mcp = "laya_mcp.server:main"
+
+[tool.setuptools.packages.find]
+include = ["laya_mcp*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

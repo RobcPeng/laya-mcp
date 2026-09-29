@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Model weights and training outputs (publish checkpoints to the HF Hub, not git)
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+checkpoints/
+outputs/
+runs/
+finetune/output/
+finetune/checkpoints/
+
+# MLflow local stores
+mlruns/
+mlartifacts/
+mlflow.db
+
+# Private data: keep real traffic out of the public repo
+datasets/private/
+*.private.jsonl
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Fitted thresholds belong to a specific local checkpoint (and hold local paths): keep them out
+finetune/recipes/*.thresholds.json

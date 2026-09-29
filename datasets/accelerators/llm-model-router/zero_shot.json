@@ -1,0 +1,40 @@
+{
+  "set": "llm-model-router",
+  "split": "test",
+  "rows": 242,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "77f6051cc96f842d80fe265e870d54f892d0c888d88e303824ac31db68d00ace",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 7.7,
+  "questions": {
+    "difficulty": {
+      "type": "score",
+      "n": 242,
+      "accuracy": 0.331,
+      "majority_baseline": 0.347,
+      "within_one": 0.913
+    },
+    "domain": {
+      "type": "choice",
+      "n": 242,
+      "accuracy": 0.835,
+      "majority_baseline": 0.24
+    },
+    "needs_tools": {
+      "type": "noul",
+      "n": 242,
+      "accuracy": 0.793,
+      "majority_baseline": 0.76
+    },
+    "is_sensitive": {
+      "type": "noul",
+      "n": 242,
+      "accuracy": 0.855,
+      "majority_baseline": 0.752
+    }
+  },
+  "mean_accuracy": 0.704
+}

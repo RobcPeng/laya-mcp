@@ -1,0 +1,17 @@
+{
+  "name": "llm-model-router",
+  "pack": "llm-model-router",
+  "dataset": "accelerators/llm-model-router",
+  "description": "Route prompts between a cheap and a strong model by difficulty and domain, and keep sensitive prompts on a private model.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "difficulty >= 2 or needs_tools -> strong model or agent; is_sensitive -> private deployment only."
+}

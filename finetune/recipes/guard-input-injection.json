@@ -1,0 +1,28 @@
+{
+  "name": "guard-input-injection",
+  "pack": "guard-input-injection",
+  "dataset": "guard-input-injection",
+  "description": "Ingress: jailbreaks, prompt injection and system-prompt extraction, with benign look-alikes (\"ignore the typo\", instructions for a bookshelf).",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "eval": {
+    "fp_budget": 0.05,
+    "recall_target": 0.95
+  },
+  "gates": {
+    "any_fn_rate_at_serving": {
+      "max": 0.15
+    },
+    "any_fp_rate_at_serving": {
+      "max": 0.1
+    }
+  },
+  "serving": "Run on user messages before the LLM sees them; route high scores to a refusal or a stricter prompt.",
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  }
+}

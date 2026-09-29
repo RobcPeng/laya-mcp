@@ -1,0 +1,33 @@
+{
+  "set": "he-financial-aid-triage",
+  "split": "test",
+  "rows": 270,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "8a9a678bf65a78108c58fe020741b1d49ff5f3060cf5303c92f6cb5346aa5e19",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 6.9,
+  "questions": {
+    "topic": {
+      "type": "choice",
+      "n": 270,
+      "accuracy": 0.83,
+      "majority_baseline": 0.111
+    },
+    "deadline_sensitive": {
+      "type": "noul",
+      "n": 270,
+      "accuracy": 0.641,
+      "majority_baseline": 0.526
+    },
+    "sensitive_info": {
+      "type": "noul",
+      "n": 270,
+      "accuracy": 0.681,
+      "majority_baseline": 0.622
+    }
+  },
+  "mean_accuracy": 0.717
+}

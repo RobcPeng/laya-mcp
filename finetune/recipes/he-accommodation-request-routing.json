@@ -1,0 +1,17 @@
+{
+  "name": "he-accommodation-request-routing",
+  "pack": "he-accommodation-request-routing",
+  "dataset": "accelerators/he-accommodation-request-routing",
+  "description": "Disability accommodation request routing: type, documentation mentioned, and time sensitivity.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route by type to the right coordinator; time_sensitive requests go to the top of the queue. Staff make every accommodation decision."
+}

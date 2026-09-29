@@ -1,0 +1,34 @@
+{
+  "set": "rag-relevance-filter",
+  "split": "test",
+  "rows": 198,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "562420b6891351ecb7a5c1b7bf57ad6c2394ad9c8c9a11867b4efdbcd4c0749f",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 4.1,
+  "questions": {
+    "relevant": {
+      "type": "noul",
+      "n": 198,
+      "accuracy": 0.591,
+      "majority_baseline": 0.727
+    },
+    "answers": {
+      "type": "noul",
+      "n": 198,
+      "accuracy": 0.828,
+      "majority_baseline": 0.727
+    },
+    "relevance": {
+      "type": "score",
+      "n": 198,
+      "accuracy": 0.52,
+      "majority_baseline": 0.273,
+      "within_one": 0.874
+    }
+  },
+  "mean_accuracy": 0.646
+}

@@ -1,0 +1,17 @@
+{
+  "name": "public-sector-311-intake",
+  "pack": "public-sector-311-intake",
+  "dataset": "accelerators/public-sector-311-intake",
+  "description": "City 311 intake: route to a service, catch 911 emergencies misrouted to 311, check for a usable location, and set priority.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Any emergency score above a low threshold goes to a person immediately with a 911 prompt; missing location triggers a follow-up question."
+}

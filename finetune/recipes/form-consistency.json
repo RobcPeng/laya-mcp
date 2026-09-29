@@ -1,0 +1,26 @@
+{
+  "name": "form-consistency",
+  "pack": "form-consistency",
+  "dataset": "form-consistency",
+  "description": "Form-level checks across all entries: do answers contradict each other (dates out of order, age vs birth date, city/state/ZIP mismatch, totals vs itemized), and is the submission genuine rather than a test, joke, or spam. Layer 3 of laya_mcp/forms.py.",
+  "base": "english",
+  "strategy": "full",
+  "hyperparams": {
+    "epochs": 4,
+    "micro_batch": 8
+  },
+  "head_hyperparams": {
+    "lr_head": 0.0005,
+    "epochs": 6
+  },
+  "eval": {
+    "fp_budget": 0.05,
+    "recall_target": 0.95,
+    "aggregate": ["contradiction"]
+  },
+  "gates": {
+    "macro_accuracy": {"min": 0.8},
+    "genuine.accuracy": {"min": 0.85}
+  },
+  "serving": "Used by laya_mcp.forms.validate_form. A contradiction_p at or above LAYA_FORM_CONTRADICTION_P (default 0.6) sends the form to review. LAYA_FORM_GENUINE_MIN_P is off (0) for the base checkpoint, which scored a clean form at 0.12; with this tuned checkpoint set it to 0.3 (measured: every test fake rejected, no genuine form rejected) so test, joke and spam submissions are rejected. Note `genuine` is positive-polarity (true = good), so it is not part of the flag aggregate."
+}

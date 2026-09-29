@@ -1,0 +1,17 @@
+{
+  "name": "he-it-helpdesk",
+  "pack": "he-it-helpdesk",
+  "dataset": "accelerators/he-it-helpdesk",
+  "description": "Campus IT help desk triage: category, many-user outage, and priority.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route by category; outage=true opens or links to a major incident; priority 3 pages on-call."
+}

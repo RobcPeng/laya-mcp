@@ -1,0 +1,17 @@
+{
+  "name": "he-admissions-inquiry",
+  "pack": "he-admissions-inquiry",
+  "dataset": "accelerators/he-admissions-inquiry",
+  "description": "Admissions inquiry classification: funnel stage, topic, and hot-lead flag for CRM routing.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Write stage/topic to the CRM; hot leads go to a counselor within a day."
+}

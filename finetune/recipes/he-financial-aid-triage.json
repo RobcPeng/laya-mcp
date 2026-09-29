@@ -1,0 +1,17 @@
+{
+  "name": "he-financial-aid-triage",
+  "pack": "he-financial-aid-triage",
+  "dataset": "accelerators/he-financial-aid-triage",
+  "description": "Financial aid message triage: topic, near deadlines, and sensitive financial or identity details.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Route by topic to aid counselors; deadline_sensitive jumps the queue; sensitive_info routes the message to a secure channel and keeps it out of LLM prompts and logs."
+}

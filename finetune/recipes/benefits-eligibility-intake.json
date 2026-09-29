@@ -1,0 +1,17 @@
+{
+  "name": "benefits-eligibility-intake",
+  "pack": "benefits-eligibility-intake",
+  "dataset": "accelerators/benefits-eligibility-intake",
+  "description": "Public benefits intake screening: program, urgent hardship, and whether the intake is missing household size, income, or county.",
+  "base": "english",
+  "strategy": "head",
+  "hyperparams": {
+    "epochs": 3
+  },
+  "gates": {
+    "macro_accuracy": {
+      "min": 0.7
+    }
+  },
+  "serving": "Urgent hardship goes to a same-day caseworker queue; missing_info triggers a follow-up form. Screening only, never an eligibility decision."
+}

@@ -1,0 +1,33 @@
+{
+  "set": "benefits-eligibility-intake",
+  "split": "test",
+  "rows": 210,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "75ef0e7f743b367ee3acfd311cfd1ed8b9967ce8c52bd4abf5819317435b21af",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 11.1,
+  "questions": {
+    "program": {
+      "type": "choice",
+      "n": 210,
+      "accuracy": 0.781,
+      "majority_baseline": 0.143
+    },
+    "urgent_hardship": {
+      "type": "noul",
+      "n": 210,
+      "accuracy": 0.8,
+      "majority_baseline": 0.6
+    },
+    "missing_info": {
+      "type": "noul",
+      "n": 210,
+      "accuracy": 0.433,
+      "majority_baseline": 0.581
+    }
+  },
+  "mean_accuracy": 0.671
+}

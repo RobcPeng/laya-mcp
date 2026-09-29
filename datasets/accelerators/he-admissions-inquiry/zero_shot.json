@@ -1,0 +1,33 @@
+{
+  "set": "he-admissions-inquiry",
+  "split": "test",
+  "rows": 250,
+  "server": "LAYA_URL (default http://127.0.0.1:7491)",
+  "test_sha256": "ed4289ae6e86329c5107cd41eef2fa59e46633d72d20410ef093244ab9b0202b",
+  "checkpoint": {
+    "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+  },
+  "seconds": 5.9,
+  "questions": {
+    "stage": {
+      "type": "choice",
+      "n": 250,
+      "accuracy": 0.756,
+      "majority_baseline": 0.224
+    },
+    "topic": {
+      "type": "choice",
+      "n": 250,
+      "accuracy": 0.62,
+      "majority_baseline": 0.224
+    },
+    "hot_lead": {
+      "type": "noul",
+      "n": 250,
+      "accuracy": 0.828,
+      "majority_baseline": 0.748
+    }
+  },
+  "mean_accuracy": 0.735
+}

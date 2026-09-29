@@ -1,0 +1,1712 @@
+{
+  "benefits-eligibility-intake": {
+    "splits": {
+      "train": 554,
+      "val": 76,
+      "test": 210
+    },
+    "total": 840,
+    "balance": {
+      "program": {
+        "cash_assistance": 120,
+        "childcare": 120,
+        "energy_assistance": 120,
+        "housing": 120,
+        "medicaid": 120,
+        "snap": 120,
+        "unemployment": 120
+      },
+      "urgent_hardship": {
+        "false": 469,
+        "true": 371
+      },
+      "missing_info": {
+        "false": 379,
+        "true": 461
+      }
+    },
+    "state_fields": [
+      "message"
+    ],
+    "questions": {
+      "program": "choice",
+      "urgent_hardship": "noul",
+      "missing_info": "noul"
+    },
+    "description": "Screen a public benefits inquiry: which program fits, is there an urgent hardship, and is the intake missing information a caseworker needs.",
+    "zero_shot": {
+      "set": "benefits-eligibility-intake",
+      "split": "test",
+      "rows": 210,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "75ef0e7f743b367ee3acfd311cfd1ed8b9967ce8c52bd4abf5819317435b21af",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 11.1,
+      "questions": {
+        "program": {
+          "type": "choice",
+          "n": 210,
+          "accuracy": 0.781,
+          "majority_baseline": 0.143
+        },
+        "urgent_hardship": {
+          "type": "noul",
+          "n": 210,
+          "accuracy": 0.8,
+          "majority_baseline": 0.6
+        },
+        "missing_info": {
+          "type": "noul",
+          "n": 210,
+          "accuracy": 0.433,
+          "majority_baseline": 0.581
+        }
+      },
+      "mean_accuracy": 0.671
+    }
+  },
+  "content-moderation": {
+    "splits": {
+      "train": 528,
+      "val": 72,
+      "test": 220
+    },
+    "total": 820,
+    "balance": {
+      "toxic": {
+        "false": 625,
+        "true": 195
+      },
+      "harassment": {
+        "false": 589,
+        "true": 231
+      },
+      "threat": {
+        "false": 659,
+        "true": 161
+      },
+      "spam": {
+        "false": 653,
+        "true": 167
+      },
+      "severity": {
+        "0": 240,
+        "1": 91,
+        "2": 294,
+        "3": 195
+      }
+    },
+    "state_fields": [
+      "text"
+    ],
+    "questions": {
+      "toxic": "noul",
+      "harassment": "noul",
+      "threat": "noul",
+      "spam": "noul",
+      "severity": "score"
+    },
+    "description": "Moderate user-generated text: toxicity, targeted harassment, threats, spam, and an overall severity for the action to take.",
+    "zero_shot": {
+      "set": "content-moderation",
+      "split": "test",
+      "rows": 220,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "664510c4e4d9ef00bd4e8342595e43bb3224a3068e261ddab54adffd33a6fbf3",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 4.8,
+      "questions": {
+        "toxic": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.8,
+          "majority_baseline": 0.732
+        },
+        "harassment": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.705,
+          "majority_baseline": 0.714
+        },
+        "threat": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.795,
+          "majority_baseline": 0.855
+        },
+        "spam": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.964,
+          "majority_baseline": 0.845
+        },
+        "severity": {
+          "type": "score",
+          "n": 220,
+          "accuracy": 0.295,
+          "majority_baseline": 0.423,
+          "within_one": 0.605
+        }
+      },
+      "mean_accuracy": 0.712
+    }
+  },
+  "data-quality-record-check": {
+    "splits": {
+      "train": 581,
+      "val": 79,
+      "test": 220
+    },
+    "total": 880,
+    "balance": {
+      "is_valid": {
+        "false": 480,
+        "true": 400
+      },
+      "issue": {
+        "bad_format": 96,
+        "inconsistent": 96,
+        "missing_value": 96,
+        "none": 400,
+        "out_of_range": 96,
+        "wrong_type": 96
+      },
+      "pii_in_text": {
+        "false": 565,
+        "true": 315
+      }
+    },
+    "state_fields": [
+      "schema",
+      "record"
+    ],
+    "questions": {
+      "is_valid": "noul",
+      "issue": "choice",
+      "pii_in_text": "noul"
+    },
+    "description": "Check a single record against its schema rules (lakehouse ingest/quarantine): valid or not, which issue, and personal data leaking into free-text fields.",
+    "zero_shot": {
+      "set": "data-quality-record-check",
+      "split": "test",
+      "rows": 220,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "918e7988996c6b1ef052739d10e3dcd992fc19d0d88361908d38b5dbff72caac",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 9.0,
+      "questions": {
+        "is_valid": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.477,
+          "majority_baseline": 0.545
+        },
+        "issue": {
+          "type": "choice",
+          "n": 220,
+          "accuracy": 0.318,
+          "majority_baseline": 0.455
+        },
+        "pii_in_text": {
+          "type": "noul",
+          "n": 220,
+          "accuracy": 0.677,
+          "majority_baseline": 0.641
+        }
+      },
+      "mean_accuracy": 0.491
+    }
+  },
+  "email-triage-phishing": {
+    "splits": {
+      "train": 517,
+      "val": 71,
+      "test": 268
+    },
+    "total": 856,
+    "balance": {
+      "route": {
+        "action": 168,
+        "fyi": 73,
+        "junk": 336,
+        "meeting": 112,
+        "newsletter": 55,
+        "receipt": 112
+      },
+      "phishing": {
+        "false": 688,
+        "true": 168
+      },
+      "spam": {
+        "false": 688,
+        "true": 168
+      },
+      "needs_reply": {
+        "false": 660,
+        "true": 196
+      },
+      "urgency": {
+        "0": 604,
+        "1": 140,
+        "2": 56,
+        "3": 56
+      }
+    },
+    "state_fields": [
+      "sender",
+      "subject",
+      "body"
+    ],
+    "questions": {
+      "route": "choice",
+      "phishing": "noul",
+      "spam": "noul",
+      "needs_reply": "noul",
+      "urgency": "score"
+    },
+    "description": "Sort an inbound email into a folder and flag phishing, junk marketing, whether it needs a reply, and how time-sensitive it really is.",
+    "zero_shot": {
+      "set": "email-triage-phishing",
+      "split": "test",
+      "rows": 268,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "8052ef49a8361c04b35c4ea2a9a32b460eb4138cc2a3b5523eb1b85d5a92f73d",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 11.5,
+      "questions": {
+        "route": {
+          "type": "choice",
+          "n": 268,
+          "accuracy": 0.47,
+          "majority_baseline": 0.313
+        },
+        "phishing": {
+          "type": "noul",
+          "n": 268,
+          "accuracy": 0.634,
+          "majority_baseline": 0.791
+        },
+        "spam": {
+          "type": "noul",
+          "n": 268,
+          "accuracy": 0.802,
+          "majority_baseline": 0.896
+        },
+        "needs_reply": {
+          "type": "noul",
+          "n": 268,
+          "accuracy": 0.519,
+          "majority_baseline": 0.687
+        },
+        "urgency": {
+          "type": "score",
+          "n": 268,
+          "accuracy": 0.243,
+          "majority_baseline": 0.582,
+          "within_one": 0.507
+        }
+      },
+      "mean_accuracy": 0.534
+    }
+  },
+  "he-accommodation-request-routing": {
+    "splits": {
+      "train": 490,
+      "val": 67,
+      "test": 239
+    },
+    "total": 796,
+    "balance": {
+      "type": {
+        "animal": 80,
+        "attendance": 119,
+        "course_materials": 119,
+        "housing": 159,
+        "other": 159,
+        "testing": 160
+      },
+      "documentation_mentioned": {
+        "false": 410,
+        "true": 386
+      },
+      "time_sensitive": {
+        "false": 490,
+        "true": 306
+      }
+    },
+    "state_fields": [
+      "request"
+    ],
+    "questions": {
+      "type": "choice",
+      "documentation_mentioned": "noul",
+      "time_sensitive": "noul"
+    },
+    "description": "Route disability accommodation requests by type, and flag mentioned documentation and time-sensitive requests.",
+    "zero_shot": {
+      "set": "he-accommodation-request-routing",
+      "split": "test",
+      "rows": 239,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "eb27b049589bc8c0247a09c9498c8d4da73a3fe8d929c17b6714d312488b8e5c",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 7.9,
+      "questions": {
+        "type": {
+          "type": "choice",
+          "n": 239,
+          "accuracy": 0.649,
+          "majority_baseline": 0.167
+        },
+        "documentation_mentioned": {
+          "type": "noul",
+          "n": 239,
+          "accuracy": 0.715,
+          "majority_baseline": 0.527
+        },
+        "time_sensitive": {
+          "type": "noul",
+          "n": 239,
+          "accuracy": 0.661,
+          "majority_baseline": 0.582
+        }
+      },
+      "mean_accuracy": 0.675
+    }
+  },
+  "he-admissions-inquiry": {
+    "splits": {
+      "train": 635,
+      "val": 87,
+      "test": 250
+    },
+    "total": 972,
+    "balance": {
+      "stage": {
+        "admitted": 139,
+        "applicant": 252,
+        "deposited": 138,
+        "other": 248,
+        "prospect": 195
+      },
+      "topic": {
+        "application_status": 112,
+        "campus_visit": 137,
+        "cost_aid": 140,
+        "international": 139,
+        "requirements": 139,
+        "test_policy": 165,
+        "transfer_credit": 140
+      },
+      "hot_lead": {
+        "false": 677,
+        "true": 295
+      }
+    },
+    "state_fields": [
+      "message"
+    ],
+    "questions": {
+      "stage": "choice",
+      "topic": "choice",
+      "hot_lead": "noul"
+    },
+    "description": "Classify an admissions inquiry by funnel stage and topic, and flag hot leads.",
+    "zero_shot": {
+      "set": "he-admissions-inquiry",
+      "split": "test",
+      "rows": 250,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "ed4289ae6e86329c5107cd41eef2fa59e46633d72d20410ef093244ab9b0202b",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 5.9,
+      "questions": {
+        "stage": {
+          "type": "choice",
+          "n": 250,
+          "accuracy": 0.756,
+          "majority_baseline": 0.224
+        },
+        "topic": {
+          "type": "choice",
+          "n": 250,
+          "accuracy": 0.62,
+          "majority_baseline": 0.224
+        },
+        "hot_lead": {
+          "type": "noul",
+          "n": 250,
+          "accuracy": 0.828,
+          "majority_baseline": 0.748
+        }
+      },
+      "mean_accuracy": 0.735
+    }
+  },
+  "he-course-evaluation-comments": {
+    "splits": {
+      "train": 545,
+      "val": 74,
+      "test": 244
+    },
+    "total": 863,
+    "balance": {
+      "theme": {
+        "accessibility": 73,
+        "grading": 116,
+        "instruction": 180,
+        "instructor_conduct": 77,
+        "materials": 97,
+        "organization": 96,
+        "other": 101,
+        "workload": 123
+      },
+      "sentiment": {
+        "0": 195,
+        "1": 319,
+        "2": 120,
+        "3": 127,
+        "4": 102
+      },
+      "actionable": {
+        "false": 446,
+        "true": 417
+      },
+      "inappropriate": {
+        "false": 713,
+        "true": 150
+      }
+    },
+    "state_fields": [
+      "comment"
+    ],
+    "questions": {
+      "theme": "choice",
+      "sentiment": "score",
+      "actionable": "noul",
+      "inappropriate": "noul"
+    },
+    "description": "Code open-ended course evaluation comments by theme and sentiment, and flag actionable feedback and inappropriate remarks.",
+    "zero_shot": {
+      "set": "he-course-evaluation-comments",
+      "split": "test",
+      "rows": 244,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "373381a49051840bd91607d5b8b52dc3b109f6886a891847c3a65d5c56a7ca67",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 11.4,
+      "questions": {
+        "theme": {
+          "type": "choice",
+          "n": 244,
+          "accuracy": 0.484,
+          "majority_baseline": 0.209
+        },
+        "sentiment": {
+          "type": "score",
+          "n": 244,
+          "accuracy": 0.385,
+          "majority_baseline": 0.295,
+          "within_one": 0.742
+        },
+        "actionable": {
+          "type": "noul",
+          "n": 244,
+          "accuracy": 0.422,
+          "majority_baseline": 0.594
+        },
+        "inappropriate": {
+          "type": "noul",
+          "n": 244,
+          "accuracy": 0.893,
+          "majority_baseline": 0.787
+        }
+      },
+      "mean_accuracy": 0.546
+    }
+  },
+  "he-early-alert": {
+    "splits": {
+      "train": 550,
+      "val": 75,
+      "test": 250
+    },
+    "total": 875,
+    "balance": {
+      "academic_risk": {
+        "false": 597,
+        "true": 278
+      },
+      "attendance": {
+        "false": 580,
+        "true": 295
+      },
+      "financial_stress": {
+        "false": 601,
+        "true": 274
+      },
+      "wellbeing_concern": {
+        "false": 583,
+        "true": 292
+      },
+      "risk": {
+        "0": 253,
+        "1": 186,
+        "2": 164,
+        "3": 272
+      }
+    },
+    "state_fields": [
+      "note"
+    ],
+    "questions": {
+      "academic_risk": "noul",
+      "attendance": "noul",
+      "financial_stress": "noul",
+      "wellbeing_concern": "noul",
+      "risk": "score"
+    },
+    "description": "Decision support for advisors: read an advisor or faculty early-alert note and flag academic, attendance, financial, and wellbeing signals. Routes to a human; never acts on a student.",
+    "zero_shot": {
+      "set": "he-early-alert",
+      "split": "test",
+      "rows": 250,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "5a0ef80e7a834af1754aa7f6d3e47d9288927e9c1c31ea78079e419c541dc022",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 11.1,
+      "questions": {
+        "academic_risk": {
+          "type": "noul",
+          "n": 250,
+          "accuracy": 0.736,
+          "majority_baseline": 0.676
+        },
+        "attendance": {
+          "type": "noul",
+          "n": 250,
+          "accuracy": 0.852,
+          "majority_baseline": 0.684
+        },
+        "financial_stress": {
+          "type": "noul",
+          "n": 250,
+          "accuracy": 0.82,
+          "majority_baseline": 0.68
+        },
+        "wellbeing_concern": {
+          "type": "noul",
+          "n": 250,
+          "accuracy": 0.744,
+          "majority_baseline": 0.628
+        },
+        "risk": {
+          "type": "score",
+          "n": 250,
+          "accuracy": 0.276,
+          "majority_baseline": 0.356,
+          "within_one": 0.628
+        }
+      },
+      "mean_accuracy": 0.686
+    }
+  },
+  "he-ferpa-sensitive": {
+    "splits": {
+      "train": 447,
+      "val": 61,
+      "test": 270
+    },
+    "total": 778,
+    "balance": {
+      "protected_record": {
+        "false": 258,
+        "true": 520
+      },
+      "record_type": {
+        "directory_only": 120,
+        "discipline": 80,
+        "financial": 80,
+        "grades": 200,
+        "health_disability": 80,
+        "identifiers": 80,
+        "none": 138
+      }
+    },
+    "state_fields": [
+      "text"
+    ],
+    "questions": {
+      "protected_record": "noul",
+      "record_type": "choice"
+    },
+    "description": "DLP for education records: does text contain FERPA-protected information about an identifiable student (versus directory information), and what kind.",
+    "zero_shot": {
+      "set": "he-ferpa-sensitive",
+      "split": "test",
+      "rows": 270,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "ad0b77793bd426d31824d5f322fdbcd1c5531d826afdecc41321519a667b1d0b",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 4.8,
+      "questions": {
+        "protected_record": {
+          "type": "noul",
+          "n": 270,
+          "accuracy": 0.4,
+          "majority_baseline": 0.741
+        },
+        "record_type": {
+          "type": "choice",
+          "n": 270,
+          "accuracy": 0.448,
+          "majority_baseline": 0.148
+        }
+      },
+      "mean_accuracy": 0.424
+    }
+  },
+  "he-financial-aid-triage": {
+    "splits": {
+      "train": 474,
+      "val": 65,
+      "test": 270
+    },
+    "total": 809,
+    "balance": {
+      "topic": {
+        "award_letter": 90,
+        "dependency_override": 90,
+        "disbursement": 89,
+        "loans": 90,
+        "other": 90,
+        "sap_appeal": 90,
+        "scholarships": 90,
+        "verification": 90,
+        "work_study": 90
+      },
+      "deadline_sensitive": {
+        "false": 444,
+        "true": 365
+      },
+      "sensitive_info": {
+        "false": 490,
+        "true": 319
+      }
+    },
+    "state_fields": [
+      "message"
+    ],
+    "questions": {
+      "topic": "choice",
+      "deadline_sensitive": "noul",
+      "sensitive_info": "noul"
+    },
+    "description": "Triage financial aid messages by topic, flag near deadlines, and flag messages that carry sensitive financial or identity details.",
+    "zero_shot": {
+      "set": "he-financial-aid-triage",
+      "split": "test",
+      "rows": 270,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "8a9a678bf65a78108c58fe020741b1d49ff5f3060cf5303c92f6cb5346aa5e19",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 6.9,
+      "questions": {
+        "topic": {
+          "type": "choice",
+          "n": 270,
+          "accuracy": 0.83,
+          "majority_baseline": 0.111
+        },
+        "deadline_sensitive": {
+          "type": "noul",
+          "n": 270,
+          "accuracy": 0.641,
+          "majority_baseline": 0.526
+        },
+        "sensitive_info": {
+          "type": "noul",
+          "n": 270,
+          "accuracy": 0.681,
+          "majority_baseline": 0.622
+        }
+      },
+      "mean_accuracy": 0.717
+    }
+  },
+  "he-it-helpdesk": {
+    "splits": {
+      "train": 547,
+      "val": 75,
+      "test": 240
+    },
+    "total": 862,
+    "balance": {
+      "category": {
+        "classroom_tech": 96,
+        "email": 96,
+        "lms": 144,
+        "other": 96,
+        "research_computing": 95,
+        "software": 96,
+        "sso_mfa": 120,
+        "wifi": 119
+      },
+      "outage": {
+        "false": 623,
+        "true": 239
+      },
+      "priority": {
+        "0": 239,
+        "1": 216,
+        "2": 216,
+        "3": 191
+      }
+    },
+    "state_fields": [
+      "ticket"
+    ],
+    "questions": {
+      "category": "choice",
+      "outage": "noul",
+      "priority": "score"
+    },
+    "description": "Campus IT help desk triage: category, whether many users are affected, and priority.",
+    "zero_shot": {
+      "set": "he-it-helpdesk",
+      "split": "test",
+      "rows": 240,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "b8da7c23dda8cb3e24da878d10bd594ccd2f741f29039006284b9f1f3f8b107d",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 11.5,
+      "questions": {
+        "category": {
+          "type": "choice",
+          "n": 240,
+          "accuracy": 0.804,
+          "majority_baseline": 0.2
+        },
+        "outage": {
+          "type": "noul",
+          "n": 240,
+          "accuracy": 0.921,
+          "majority_baseline": 0.7
+        },
+        "priority": {
+          "type": "score",
+          "n": 240,
+          "accuracy": 0.521,
+          "majority_baseline": 0.3,
+          "within_one": 0.912
+        }
+      },
+      "mean_accuracy": 0.749
+    }
+  },
+  "he-research-admin": {
+    "splits": {
+      "train": 480,
+      "val": 66,
+      "test": 208
+    },
+    "total": 754,
+    "balance": {
+      "topic": {
+        "award_setup": 78,
+        "budget": 104,
+        "closeout": 104,
+        "compliance": 104,
+        "effort": 78,
+        "other": 78,
+        "proposal": 130,
+        "subaward": 78
+      },
+      "deadline": {
+        "false": 381,
+        "true": 373
+      }
+    },
+    "state_fields": [
+      "email"
+    ],
+    "questions": {
+      "topic": "choice",
+      "deadline": "noul"
+    },
+    "description": "Sponsored research office email triage: topic and upcoming deadlines.",
+    "zero_shot": {
+      "set": "he-research-admin",
+      "split": "test",
+      "rows": 208,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "ca07cad246c8200616f4c609fa3dff949a5d3f1b0410695064353b5efbea0847",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 8.0,
+      "questions": {
+        "topic": {
+          "type": "choice",
+          "n": 208,
+          "accuracy": 0.764,
+          "majority_baseline": 0.125
+        },
+        "deadline": {
+          "type": "noul",
+          "n": 208,
+          "accuracy": 0.654,
+          "majority_baseline": 0.534
+        }
+      },
+      "mean_accuracy": 0.709
+    }
+  },
+  "he-safety-escalation": {
+    "splits": {
+      "train": 434,
+      "val": 59,
+      "test": 235
+    },
+    "total": 728,
+    "balance": {
+      "escalate_now": {
+        "false": 309,
+        "true": 419
+      },
+      "category": {
+        "medical_emergency": 94,
+        "routine": 138,
+        "self_harm": 115,
+        "sexual_misconduct": 80,
+        "stress_venting": 171,
+        "violence_threat": 130
+      }
+    },
+    "state_fields": [
+      "message"
+    ],
+    "questions": {
+      "escalate_now": "noul",
+      "category": "choice"
+    },
+    "description": "High-recall routing of student messages that need a trained person now (possible self-harm, threats of violence, sexual misconduct disclosures, medical emergencies) versus ordinary stress. Routing only: people and crisis resources respond.",
+    "zero_shot": {
+      "set": "he-safety-escalation",
+      "split": "test",
+      "rows": 235,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "508c4f22382d72df2420c244788ee05411fc760445e0d4157cf248a0262e6cd8",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 5.7,
+      "questions": {
+        "escalate_now": {
+          "type": "noul",
+          "n": 235,
+          "accuracy": 0.494,
+          "majority_baseline": 0.502
+        },
+        "category": {
+          "type": "choice",
+          "n": 235,
+          "accuracy": 0.443,
+          "majority_baseline": 0.328
+        }
+      },
+      "mean_accuracy": 0.468
+    }
+  },
+  "he-student-services-routing": {
+    "splits": {
+      "train": 504,
+      "val": 69,
+      "test": 218
+    },
+    "total": 791,
+    "balance": {
+      "office": {
+        "accessibility": 51,
+        "admissions": 51,
+        "advising": 67,
+        "counseling": 80,
+        "financial_aid": 67,
+        "housing": 101,
+        "it_help": 68,
+        "library": 68,
+        "other": 51,
+        "registrar": 119,
+        "student_accounts": 68
+      },
+      "urgency": {
+        "0": 269,
+        "1": 355,
+        "2": 119,
+        "3": 48
+      },
+      "needs_human": {
+        "false": 337,
+        "true": 454
+      }
+    },
+    "state_fields": [
+      "message"
+    ],
+    "questions": {
+      "office": "choice",
+      "urgency": "score",
+      "needs_human": "noul"
+    },
+    "description": "Route a student's message to the campus office that handles it, score urgency, and flag messages that need a staff member rather than an FAQ answer.",
+    "zero_shot": {
+      "set": "he-student-services-routing",
+      "split": "test",
+      "rows": 218,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "6dc14eac2573f4c41b427b47b57d80c27fe87d781805699ff7ca35642fe5c896",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 5.9,
+      "questions": {
+        "office": {
+          "type": "choice",
+          "n": 218,
+          "accuracy": 0.628,
+          "majority_baseline": 0.156
+        },
+        "urgency": {
+          "type": "score",
+          "n": 218,
+          "accuracy": 0.638,
+          "majority_baseline": 0.463,
+          "within_one": 0.954
+        },
+        "needs_human": {
+          "type": "noul",
+          "n": 218,
+          "accuracy": 0.408,
+          "majority_baseline": 0.688
+        }
+      },
+      "mean_accuracy": 0.558
+    }
+  },
+  "invoice-ap-exceptions": {
+    "splits": {
+      "train": 422,
+      "val": 58,
+      "test": 240
+    },
+    "total": 720,
+    "balance": {
+      "exception": {
+        "bank_change": 80,
+        "clean": 240,
+        "duplicate": 80,
+        "math_error": 80,
+        "missing_po": 80,
+        "price_mismatch": 80,
+        "quantity_mismatch": 80
+      },
+      "needs_approval": {
+        "false": 240,
+        "true": 480
+      },
+      "fraud_risk": {
+        "0": 480,
+        "1": 120,
+        "2": 120
+      }
+    },
+    "state_fields": [
+      "invoice",
+      "purchase_order"
+    ],
+    "questions": {
+      "exception": "choice",
+      "needs_approval": "noul",
+      "fraud_risk": "score"
+    },
+    "description": "Accounts payable three-way-match exceptions: compare an invoice with its purchase order and receipt, name the exception, and score fraud risk.",
+    "zero_shot": {
+      "set": "invoice-ap-exceptions",
+      "split": "test",
+      "rows": 240,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "0f249724ecf9be28b6c56fa4a30e94c97a2989cb1727128c79c887710bdd06a0",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 9.8,
+      "questions": {
+        "exception": {
+          "type": "choice",
+          "n": 240,
+          "accuracy": 0.192,
+          "majority_baseline": 0.467
+        },
+        "needs_approval": {
+          "type": "noul",
+          "n": 240,
+          "accuracy": 0.529,
+          "majority_baseline": 0.533
+        },
+        "fraud_risk": {
+          "type": "score",
+          "n": 240,
+          "accuracy": 0.292,
+          "majority_baseline": 0.667,
+          "within_one": 0.621
+        }
+      },
+      "mean_accuracy": 0.337
+    }
+  },
+  "llm-model-router": {
+    "splits": {
+      "train": 504,
+      "val": 69,
+      "test": 242
+    },
+    "total": 815,
+    "balance": {
+      "difficulty": {
+        "0": 193,
+        "1": 316,
+        "2": 181,
+        "3": 125
+      },
+      "domain": {
+        "chitchat": 105,
+        "coding": 173,
+        "data_analysis": 103,
+        "knowledge": 128,
+        "math": 108,
+        "translation": 89,
+        "writing": 109
+      },
+      "needs_tools": {
+        "false": 666,
+        "true": 149
+      },
+      "is_sensitive": {
+        "false": 680,
+        "true": 135
+      }
+    },
+    "state_fields": [
+      "prompt"
+    ],
+    "questions": {
+      "difficulty": "score",
+      "domain": "choice",
+      "needs_tools": "noul",
+      "is_sensitive": "noul"
+    },
+    "description": "Route a prompt to a cheap or strong model: difficulty, domain, whether it needs tools, and whether it carries data that should stay on a private model.",
+    "zero_shot": {
+      "set": "llm-model-router",
+      "split": "test",
+      "rows": 242,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "77f6051cc96f842d80fe265e870d54f892d0c888d88e303824ac31db68d00ace",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 7.7,
+      "questions": {
+        "difficulty": {
+          "type": "score",
+          "n": 242,
+          "accuracy": 0.331,
+          "majority_baseline": 0.347,
+          "within_one": 0.913
+        },
+        "domain": {
+          "type": "choice",
+          "n": 242,
+          "accuracy": 0.835,
+          "majority_baseline": 0.24
+        },
+        "needs_tools": {
+          "type": "noul",
+          "n": 242,
+          "accuracy": 0.793,
+          "majority_baseline": 0.76
+        },
+        "is_sensitive": {
+          "type": "noul",
+          "n": 242,
+          "accuracy": 0.855,
+          "majority_baseline": 0.752
+        }
+      },
+      "mean_accuracy": 0.704
+    }
+  },
+  "public-records-foia-routing": {
+    "splits": {
+      "train": 582,
+      "val": 79,
+      "test": 208
+    },
+    "total": 869,
+    "balance": {
+      "department": {
+        "clerk": 114,
+        "finance": 77,
+        "fire_ems": 88,
+        "health": 92,
+        "human_resources": 96,
+        "parks": 91,
+        "planning_zoning": 111,
+        "police": 109,
+        "public_works": 91
+      },
+      "request_type": {
+        "complaint": 131,
+        "question": 106,
+        "records_request": 536,
+        "service_request": 96
+      },
+      "contains_pii": {
+        "false": 517,
+        "true": 352
+      },
+      "complexity": {
+        "0": 436,
+        "1": 155,
+        "2": 143,
+        "3": 135
+      }
+    },
+    "state_fields": [
+      "request"
+    ],
+    "questions": {
+      "department": "choice",
+      "request_type": "choice",
+      "contains_pii": "noul",
+      "complexity": "score"
+    },
+    "description": "Route a public records (FOIA / open records) request to the department that holds the records, separate records requests from complaints, flag PII, and size the work.",
+    "zero_shot": {
+      "set": "public-records-foia-routing",
+      "split": "test",
+      "rows": 208,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "feff7220d58228f845d3da6589ecff3764941993afb3d8a8241be8b6010d8202",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 6.9,
+      "questions": {
+        "department": {
+          "type": "choice",
+          "n": 208,
+          "accuracy": 0.769,
+          "majority_baseline": 0.183
+        },
+        "request_type": {
+          "type": "choice",
+          "n": 208,
+          "accuracy": 0.832,
+          "majority_baseline": 0.601
+        },
+        "contains_pii": {
+          "type": "noul",
+          "n": 208,
+          "accuracy": 0.639,
+          "majority_baseline": 0.567
+        },
+        "complexity": {
+          "type": "score",
+          "n": 208,
+          "accuracy": 0.284,
+          "majority_baseline": 0.519,
+          "within_one": 0.861
+        }
+      },
+      "mean_accuracy": 0.631
+    }
+  },
+  "public-sector-311-intake": {
+    "splits": {
+      "train": 602,
+      "val": 82,
+      "test": 234
+    },
+    "total": 918,
+    "balance": {
+      "service": {
+        "animal": 108,
+        "graffiti": 72,
+        "noise": 108,
+        "other": 126,
+        "parking": 72,
+        "pothole": 108,
+        "streetlight": 108,
+        "trash": 108,
+        "water": 108
+      },
+      "emergency": {
+        "false": 756,
+        "true": 162
+      },
+      "location_present": {
+        "false": 240,
+        "true": 678
+      },
+      "priority": {
+        "0": 180,
+        "1": 378,
+        "2": 198,
+        "3": 162
+      }
+    },
+    "state_fields": [
+      "channel",
+      "request"
+    ],
+    "questions": {
+      "service": "choice",
+      "emergency": "noul",
+      "location_present": "noul",
+      "priority": "score"
+    },
+    "description": "Route a city 311 service request to the right service, catch emergencies that belong with 911, check for a usable location, and set priority.",
+    "zero_shot": {
+      "set": "public-sector-311-intake",
+      "split": "test",
+      "rows": 234,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "7648cf6530b29791a9ff35deb1e7928ee5c9efd5157d53d4f10d6cb073faaf74",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 7.1,
+      "questions": {
+        "service": {
+          "type": "choice",
+          "n": 234,
+          "accuracy": 0.731,
+          "majority_baseline": 0.154
+        },
+        "emergency": {
+          "type": "noul",
+          "n": 234,
+          "accuracy": 0.774,
+          "majority_baseline": 0.769
+        },
+        "location_present": {
+          "type": "noul",
+          "n": 234,
+          "accuracy": 0.538,
+          "majority_baseline": 0.731
+        },
+        "priority": {
+          "type": "score",
+          "n": 234,
+          "accuracy": 0.466,
+          "majority_baseline": 0.308,
+          "within_one": 0.88
+        }
+      },
+      "mean_accuracy": 0.627
+    }
+  },
+  "rag-relevance-filter": {
+    "splits": {
+      "train": 523,
+      "val": 71,
+      "test": 198
+    },
+    "total": 792,
+    "balance": {
+      "relevant": {
+        "false": 216,
+        "true": 576
+      },
+      "answers": {
+        "false": 576,
+        "true": 216
+      },
+      "relevance": {
+        "0": 216,
+        "1": 216,
+        "2": 144,
+        "3": 216
+      }
+    },
+    "state_fields": [
+      "query",
+      "passage"
+    ],
+    "questions": {
+      "relevant": "noul",
+      "answers": "noul",
+      "relevance": "score"
+    },
+    "description": "Filter or rerank retrieved passages for RAG: is the passage on topic, does it answer the query, and how relevant is it.",
+    "zero_shot": {
+      "set": "rag-relevance-filter",
+      "split": "test",
+      "rows": 198,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "562420b6891351ecb7a5c1b7bf57ad6c2394ad9c8c9a11867b4efdbcd4c0749f",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 4.1,
+      "questions": {
+        "relevant": {
+          "type": "noul",
+          "n": 198,
+          "accuracy": 0.591,
+          "majority_baseline": 0.727
+        },
+        "answers": {
+          "type": "noul",
+          "n": 198,
+          "accuracy": 0.828,
+          "majority_baseline": 0.727
+        },
+        "relevance": {
+          "type": "score",
+          "n": 198,
+          "accuracy": 0.52,
+          "majority_baseline": 0.273,
+          "within_one": 0.874
+        }
+      },
+      "mean_accuracy": 0.646
+    }
+  },
+  "sales-lead-qualification": {
+    "splits": {
+      "train": 594,
+      "val": 81,
+      "test": 135
+    },
+    "total": 810,
+    "balance": {
+      "budget": {
+        "false": 473,
+        "true": 337
+      },
+      "authority": {
+        "false": 407,
+        "true": 403
+      },
+      "need": {
+        "false": 332,
+        "true": 478
+      },
+      "timing": {
+        "false": 480,
+        "true": 330
+      },
+      "stage": {
+        "evaluating": 210,
+        "not_a_fit": 180,
+        "ready_to_buy": 210,
+        "research": 210
+      },
+      "fit": {
+        "0": 180,
+        "1": 216,
+        "2": 302,
+        "3": 112
+      }
+    },
+    "state_fields": [
+      "product",
+      "lead"
+    ],
+    "questions": {
+      "budget": "noul",
+      "authority": "noul",
+      "need": "noul",
+      "timing": "noul",
+      "stage": "choice",
+      "fit": "score"
+    },
+    "description": "BANT-style lead qualification: budget, authority, need, timing, pipeline stage, and overall fit for the product.",
+    "zero_shot": {
+      "set": "sales-lead-qualification",
+      "split": "test",
+      "rows": 135,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "18088a56fc39d70377f001901dcd94f850a3bcf748274514745c401affd067ce",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 9.1,
+      "questions": {
+        "budget": {
+          "type": "noul",
+          "n": 135,
+          "accuracy": 0.77,
+          "majority_baseline": 0.674
+        },
+        "authority": {
+          "type": "noul",
+          "n": 135,
+          "accuracy": 0.615,
+          "majority_baseline": 0.607
+        },
+        "need": {
+          "type": "noul",
+          "n": 135,
+          "accuracy": 0.57,
+          "majority_baseline": 0.519
+        },
+        "timing": {
+          "type": "noul",
+          "n": 135,
+          "accuracy": 0.696,
+          "majority_baseline": 0.652
+        },
+        "stage": {
+          "type": "choice",
+          "n": 135,
+          "accuracy": 0.444,
+          "majority_baseline": 0.333
+        },
+        "fit": {
+          "type": "score",
+          "n": 135,
+          "accuracy": 0.296,
+          "majority_baseline": 0.333,
+          "within_one": 0.681
+        }
+      },
+      "mean_accuracy": 0.565
+    }
+  },
+  "security-incident-triage": {
+    "splits": {
+      "train": 526,
+      "val": 72,
+      "test": 234
+    },
+    "total": 832,
+    "balance": {
+      "category": {
+        "account_compromise": 104,
+        "data_exfiltration": 104,
+        "denial_of_service": 78,
+        "malware": 130,
+        "misconfiguration": 104,
+        "phishing": 104,
+        "policy_violation": 104,
+        "reconnaissance": 104
+      },
+      "true_positive": {
+        "false": 234,
+        "true": 598
+      },
+      "severity": {
+        "0": 260,
+        "1": 156,
+        "2": 130,
+        "3": 234,
+        "4": 52
+      },
+      "needs_escalation": {
+        "false": 546,
+        "true": 286
+      }
+    },
+    "state_fields": [
+      "source",
+      "alert"
+    ],
+    "questions": {
+      "category": "choice",
+      "true_positive": "noul",
+      "severity": "score",
+      "needs_escalation": "noul"
+    },
+    "description": "Triage a security alert: category, likely true positive, severity, and whether to escalate to incident response now.",
+    "zero_shot": {
+      "set": "security-incident-triage",
+      "split": "test",
+      "rows": 234,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "d43871e8a7fce8cf9cd05c278fd9ef1e100193333ac5a7e0d703d1c8627ddd21",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 7.6,
+      "questions": {
+        "category": {
+          "type": "choice",
+          "n": 234,
+          "accuracy": 0.701,
+          "majority_baseline": 0.222
+        },
+        "true_positive": {
+          "type": "noul",
+          "n": 234,
+          "accuracy": 0.376,
+          "majority_baseline": 0.667
+        },
+        "severity": {
+          "type": "score",
+          "n": 234,
+          "accuracy": 0.235,
+          "majority_baseline": 0.333,
+          "within_one": 0.624
+        },
+        "needs_escalation": {
+          "type": "noul",
+          "n": 234,
+          "accuracy": 0.568,
+          "majority_baseline": 0.556
+        }
+      },
+      "mean_accuracy": 0.47
+    }
+  },
+  "support-ticket-triage": {
+    "splits": {
+      "train": 549,
+      "val": 75,
+      "test": 240
+    },
+    "total": 864,
+    "balance": {
+      "queue": {
+        "account_access": 120,
+        "billing": 144,
+        "cancellation": 120,
+        "feature_request": 96,
+        "how_to": 120,
+        "shipping": 120,
+        "technical": 144
+      },
+      "urgency": {
+        "0": 288,
+        "1": 336,
+        "2": 168,
+        "3": 72
+      },
+      "churn_risk": {
+        "false": 612,
+        "true": 252
+      },
+      "refund_requested": {
+        "false": 680,
+        "true": 184
+      },
+      "needs_human": {
+        "false": 379,
+        "true": 485
+      }
+    },
+    "state_fields": [
+      "subject",
+      "body"
+    ],
+    "questions": {
+      "queue": "choice",
+      "urgency": "score",
+      "churn_risk": "noul",
+      "refund_requested": "noul",
+      "needs_human": "noul"
+    },
+    "description": "Route a customer support ticket to a queue, score urgency, and flag churn risk, refund requests, and tickets that need a human.",
+    "zero_shot": {
+      "set": "support-ticket-triage",
+      "split": "test",
+      "rows": 240,
+      "server": "LAYA_URL (default http://127.0.0.1:7491)",
+      "test_sha256": "8e35fef9591c8c0e2a1563b6426b6e9aa584747066641efa1fa24de595e442ff",
+      "checkpoint": {
+        "english": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+        "multilingual": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+      },
+      "seconds": 14.2,
+      "questions": {
+        "queue": {
+          "type": "choice",
+          "n": 240,
+          "accuracy": 0.804,
+          "majority_baseline": 0.2
+        },
+        "urgency": {
+          "type": "score",
+          "n": 240,
+          "accuracy": 0.517,
+          "majority_baseline": 0.5,
+          "within_one": 0.95
+        },
+        "churn_risk": {
+          "type": "noul",
+          "n": 240,
+          "accuracy": 0.771,
+          "majority_baseline": 0.675
+        },
+        "refund_requested": {
+          "type": "noul",
+          "n": 240,
+          "accuracy": 0.854,
+          "majority_baseline": 0.825
+        },
+        "needs_human": {
+          "type": "noul",
+          "n": 240,
+          "accuracy": 0.537,
+          "majority_baseline": 0.621
+        }
+      },
+      "mean_accuracy": 0.697
+    }
+  }
+}
