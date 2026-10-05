@@ -30,6 +30,9 @@ THRESHOLDS = [round(x, 2) for x in np.arange(0.05, 1.0, 0.05)]
 
 def load_agent(checkpoint, device):
     from laya.agent import Agent
+    from . import lora
+    if lora.is_adapter(checkpoint):                   # base + adapter, combined in memory
+        return lora.load_agent(checkpoint, device=device), checkpoint
     ckpt_dir, _ = resolve_base(checkpoint)
     return Agent(ckpt_dir, device=device), ckpt_dir
 

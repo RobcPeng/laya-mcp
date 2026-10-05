@@ -1,0 +1,27 @@
+{
+  "name": "ridgeback-routing",
+  "pack_note": "multi-pack adapter; `pack` names one member for fail-fast, data carries each row's own questions",
+  "pack": "ridgeback-route",
+  "dataset": "ridgeback/routing",
+  "description": "Routing adapter (LoRA, frozen base): tool group then tool, with a short window of recent turns so follow-ups route correctly.",
+  "base": "english",
+  "strategy": "lora",
+  "hyperparams": {
+    "epochs": 6,
+    "lr_encoder": 0.0002,
+    "lr_head": 0.0005,
+    "micro_batch": 8,
+    "early_stop_patience": 1
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "attn.Wqkv",
+      "attn.Wo",
+      "mlp.Wi",
+      "mlp.Wo"
+    ]
+  }
+}

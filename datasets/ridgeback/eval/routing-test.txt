@@ -1,0 +1,25 @@
+
+=== Ridgeback guard eval (test split) ===
+
+[route] n=850 macro_acc=0.907 ece=0.061 p50=96.6ms p95=166.3ms
+    group            choice acc=0.792
+    tool_grocery     choice acc=0.897
+    tool_lists       choice acc=0.895
+    tool_rem         choice acc=1.0
+    tool_cal         choice acc=0.944
+    tool_comms       choice acc=0.941
+    tool_rec         choice acc=0.867
+    tool_food        choice acc=0.952
+    tool_out         choice acc=1.0
+    tool_trip        choice acc=0.83
+    tool_ppl         choice acc=0.698
+    tool_plc         choice acc=0.874
+    tool_files       choice acc=0.929
+    tool_media       choice acc=1.0
+    needs_tool       noul   acc=0.953 auc=0.918 fn/fp@serving=1/32 (thr=0.01)
+    changes          noul   acc=0.941 auc=0.957 fn/fp@serving=40/10 (thr=0.02)
+    routing: group_top1=0.792 tool_top1=0.726
+    per-group tool acc: {'cal': 0.889, 'comms': 0.912, 'files': 0.357, 'food': 0.762, 'grocery': 0.718, 'lists': 0.803, 'media': 0.923, 'out': 1.0, 'plc': 0.829, 'ppl': 0.448, 'rec': 0.4, 'rem': 0.909, 'trip': 0.58}
+    end-to-end: single-turn=0.6459 context-dependent=0.9263 context hard-negatives=0.72
+[adapter routing] macro_acc=0.907 p95<=166.3ms sets=['route']
+[overall] macro_acc=0.907 p50~96.6ms p95<=166.3ms

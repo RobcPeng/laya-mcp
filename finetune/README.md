@@ -213,36 +213,48 @@ beat with `full`.
 
 ## Ridgeback: the household guard (branch `ridgeback-guard`)
 
-A five-stage Laya guard in front of Ridgeback's household assistant (Bobby): input access checks, tool
-routing, tool-call gating, tool-result injection screening, and output leak screening. Sets and packs
-are in `datasets/ridgeback/` and `laya_mcp/ridgeback_packs.py`; build with
-`python datasets/ridgeback/build.py`.
+Three LoRA adapters on one frozen base, each trained, evaluated, served and rolled back on its own:
 
-**LoRA.** These recipes use `strategy: "lora"` (added here, dependency-free — plain torch, no peft). The
-adapter wraps ModernBERT's four projections per layer (`attn.Wqkv`, `attn.Wo`, `mlp.Wi`, `mlp.Wo`),
-trains with the full decision head, and is MERGED into the base weights at export, so the checkpoint is an
-ordinary Laya checkpoint that `laya.serve` / `finetune.serve` / `laya.Agent` load with no LoRA code. The
-adapter is also saved on its own as `adapter.safetensors`. Hyperparameters live in each recipe's `lora`
-block (`rank` 16, `alpha` 32, `dropout` 0.05, the four target modules); the adapter LR is the recipe's
-`hyperparams.lr_encoder`.
+| adapter | recipe | stages | dataset |
+|---|---|---|---|
+| cyber | `ridgeback-cyber` | tool-call gate, tool-result injection | `datasets/ridgeback/cyber` |
+| content | `ridgeback-content` | input (harm, injection, cross-household, impersonation), output (leaks, kid-suitability), tool-result suitability | `datasets/ridgeback/content` |
+| routing | `ridgeback-routing` | tool group then tool, with a window of recent turns | `datasets/ridgeback/routing` |
 
-```bash
-# One adapter per stage (runs through the normal pipeline, per-pack evaluate):
-python -m finetune.pipeline --recipe ridgeback-tool-result --strategy lora --gpu 0
+The safety stages are message-only; routing alone reads recent turns. Sets and packs are in
+`datasets/ridgeback/` and `laya_mcp/ridgeback_packs.py`; build with `python datasets/ridgeback/build.py`.
+The cyber tool-gate labels are exported from the Ridgeback backend's dispatcher rules
+(`scripts/export_laya_truth.py` there) into `datasets/ridgeback/_gen/bobby_truth.json`.
 
-# One multi-task adapter over all five sets (question ids are unique, so one adapter serves every stage).
-# Train directly, then evaluate with the cross-set script (the pipeline's evaluate is per-pack):
-python -m finetune.train --recipe ridgeback-guard --out runs/ridgeback-guard --gpu 0
-python -m finetune.eval_ridgeback --checkpoint runs/ridgeback-guard/<stamp>-lora/checkpoint --split test
-
-# Baseline for comparison, through a running laya.serve (no GPU allocation of your own):
-python -m finetune.eval_ridgeback --url http://127.0.0.1:7491 --split test
-```
-
-Serve the merged checkpoint in a `typed-decisions` slot beside the base model and point the Ridgeback
-wrapper's `BOBBY_LAYA_URL` / `BOBBY_LAYA_MODEL` at it:
+**LoRA adapters, never a fine-tuned checkpoint.** `strategy: "lora"` (dependency-free: plain torch, no
+peft). The 421M-parameter base stays frozen and is never modified, copied, or merged into. Training learns
+low-rank adapters on ModernBERT's four projections per layer (`attn.Wqkv`, `attn.Wo`, `mlp.Wi`, `mlp.Wo`;
+rank 16, alpha 32, dropout 0.05) plus the decision head, and saves exactly those tensors as one adapter
+directory: `adapter_config.json` + `adapter_model.safetensors` — 64.3 MiB each (7.2M LoRA + 26.5M head
+parameters), 8% of the 804 MiB base `model.safetensors`. The served model is base + adapter, combined in
+memory at load time (`lora.load_agent`); `finetune.serve` does it with `LAYA_LORA_ADAPTER=<dir>`, and
+`evaluate.py`, `eval_ridgeback.py` and the MLflow pyfunc load adapters the same way. Every LoRA run ends
+with a serve-path parity check (base + adapter loaded the serving way, one item per forward, vs the model
+just trained) and fails if they disagree. The recipes early-stop on val cross-entropy (patience 1) and
+restore the best epoch.
 
 ```bash
-LAYA_CUSTOM_CHECKPOINT=runs/ridgeback-guard/<stamp>-lora/checkpoint \
-LAYA_PORT=7492 LAYA_MODELS=typed-decisions python -m finetune.serve
+# train each adapter on its own (one GPU; ~10-45 min each on a shared 3090)
+python -m finetune.train --recipe ridgeback-cyber   --strategy lora --out runs/ridgeback-adapters/cyber   --gpu 0
+python -m finetune.train --recipe ridgeback-content --strategy lora --out runs/ridgeback-adapters/content --gpu 0
+python -m finetune.train --recipe ridgeback-routing --strategy lora --out runs/ridgeback-adapters/routing --gpu 0
+
+# serve one adapter per process, each in the typed-decisions slot (stock auto-routing unchanged)
+LAYA_LORA_ADAPTER=runs/ridgeback-adapters/cyber LAYA_CUSTOM_SLOT=typed-decisions \
+  LAYA_MODELS=typed-decisions LAYA_HOST=127.0.0.1 LAYA_PORT=7493 python -m finetune.serve
+
+# fit serving thresholds on VAL (middle of the band meeting the false-positive budget and the recall
+# target), then score the held-out TEST split at those cuts
+python -m finetune.fit_ridgeback_thresholds --url http://127.0.0.1:7493 --model typed-decisions \
+  --adapter cyber --out datasets/ridgeback/eval/cyber.thresholds.json
+python -m finetune.eval_ridgeback --url http://127.0.0.1:7493 --model typed-decisions --adapter cyber \
+  --split test --thresholds datasets/ridgeback/eval/cyber.thresholds.json
 ```
+
+Results, fitted thresholds and the Ridgeback cutover reports (base before, adapters after) are in
+`datasets/ridgeback/eval/`.

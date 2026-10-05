@@ -20,7 +20,12 @@ class LayaModel(mlflow.pyfunc.PythonModel):
     def load_context(self, context):
         os.environ.setdefault("USE_TF", "0")
         from laya.agent import Agent
-        self.agent = Agent(context.artifacts["checkpoint"], device=os.environ.get("LAYA_DEVICE") or None)
+        path = context.artifacts["checkpoint"]
+        if os.path.isfile(os.path.join(path, "adapter_config.json")):    # a LoRA adapter: base + adapter
+            from finetune import lora
+            self.agent = lora.load_agent(path, device=os.environ.get("LAYA_DEVICE") or None)
+        else:
+            self.agent = Agent(path, device=os.environ.get("LAYA_DEVICE") or None)
 
     def predict(self, context, model_input, params=None):
         records = model_input.to_dict("records") if hasattr(model_input, "to_dict") else list(model_input)

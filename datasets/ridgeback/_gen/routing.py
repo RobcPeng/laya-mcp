@@ -8,8 +8,8 @@ One REQUESTS table drives this and the gate set: a template per tool, with the g
 and whether it is irreversible. Phrasings are natural household chat with variation. `chat` and `undo`
 have no tool question (one or zero tools), so a row for them carries only `group`.
 """
-from .world import BASE_SLOTS, asker, context_line, fill, pick, vary
-from laya_mcp.ridgeback_packs import TOOL_GROUP
+from .world import BASE_SLOTS, fill, pick, vary
+from laya_mcp.ridgeback_packs import TOOL_GROUP, format_context
 
 SLOTS = dict(BASE_SLOTS)
 
@@ -152,33 +152,131 @@ UNDO = ["undo that", "take that back", "oops undo", "never mind, undo the last t
         "scratch that", "undo"]
 
 
+# --- multi-turn: the right tool depends on earlier turns ------------------------------------------
+#
+# Each entry: (target tool, [context-turn templates as (speaker_slot, text)], [follow-up requests]).
+# The follow-ups are deliberately anaphoric ("add that", "cancel it", "and the weekend?"), and several
+# appear under more than one target, so only the earlier turns can tell them apart. Speaker "P" is a
+# household member (filled with a name), "B" is Bobby.
+CTX = [
+    ("grocery_add", [("P", "we're out of {item} again"), ("B", "Want me to put {item} on the shopping list?")],
+     ["yes add it", "add that", "yep, put it on", "please do"]),
+    ("grocery_add", [("P", "what goes in the {recipe}?"), ("B", "You'll need {item} and {item}.")],
+     ["add those to the list", "put them on groceries", "add that stuff"]),
+    ("list_add", [("P", "show me the {list}"), ("B", "The {list} has 4 things on it.")],
+     ["add {item} to it", "add that to it too", "put sunscreen on there"]),
+    ("list_add", [("P", "we need to plan the camping trip"), ("B", "Your camping list has a tent and a stove.")],
+     ["add that to the list", "add a lantern", "put bug spray on it"]),
+    ("calendar_upcoming", [("P", "what's on the calendar {day}?"), ("B", "Just the {event}.")],
+     ["and the weekend?", "what about Saturday?", "and next week?"]),
+    ("get_weather", [("P", "what's the weather today?"), ("B", "Sunny, high of 72.")],
+     ["and the weekend?", "what about tomorrow?", "and Saturday?"]),
+    ("reminders_list", [("P", "what reminders do I have today?"), ("B", "One: call the vet.")],
+     ["and tomorrow?", "what about the weekend?"]),
+    ("calendar_update_event", [("P", "when's the {event}?"), ("B", "The {event} is {day}.")],
+     ["move it to Friday", "push it back an hour", "can we make it Saturday instead"]),
+    ("calendar_delete_event", [("P", "when's the {event}?"), ("B", "The {event} is {day}.")],
+     ["cancel it", "take it off", "we're not going anymore, remove it"]),
+    ("reminder_cancel", [("P", "what reminders are set?"), ("B", "A reminder to {event} {day}.")],
+     ["cancel it", "drop that one", "stop that reminder"]),
+    ("where_is", [("P", "where's {adult}?"), ("B", "{adult} is at home.")],
+     ["and {kin}?", "what about {kid}?", "where's everyone else?"]),
+    ("member_distance", [("P", "how far is {adult} from home?"), ("B", "About 3 miles.")],
+     ["and {kin}?", "what about {kid}?"]),
+    ("recall_person", [("P", "what do you know about {kin}?"), ("B", "{kin} likes tea and gardening.")],
+     ["and {adult}?", "what about {kid}?"]),
+    ("email_send", [("P", "draft an email to the coach about Saturday"), ("B", "Here's a draft: we'll be late.")],
+     ["looks good, send it", "yes send that", "ok go ahead and send"]),
+    ("send_sms", [("P", "write a text to {adult} saying we're on our way"), ("B", "Draft: on our way!")],
+     ["send it", "yep send that", "ok text it"]),
+    ("distance_from_home", [("P", "find a park nearby"), ("B", "{place} looks good.")],
+     ["how far is that from home?", "how far is it from the house?"]),
+    ("recipe_add", [("P", "how do you make {recipe}?"), ("B", "Here's a simple version with 5 steps.")],
+     ["save that recipe", "keep that one", "add it to our recipes"]),
+    ("media_add", [("P", "have you heard of {movie}?"), ("B", "Yes, it's well reviewed.")],
+     ["add it to our watch list", "put that on the movies list", "we should watch it, add it"]),
+    ("undo", [("P", "add {item} to the list"), ("B", "Added {item} to the shopping list.")],
+     ["undo that", "oops, take that back", "never mind, undo it"]),
+]
+# Hard negatives: tool-heavy earlier turns, but the new request needs no tool (or a different one,
+# self-contained). Context present, routing still follows the request.
+CTX_NEG = [
+    ("chat", [("P", "add {item} to the list"), ("B", "Added {item} to the shopping list.")],
+     ["thanks!", "perfect, thank you", "you're the best", "cool"]),
+    ("chat", [("P", "what's on the calendar {day}?"), ("B", "Just the {event}.")],
+     ["tell me a joke", "how are you today", "what rhymes with orange"]),
+    ("grocery_add", [("P", "what's on the calendar {day}?"), ("B", "Just the {event}.")],
+     ["add {item} to the shopping list", "we need {item}"]),
+    ("calendar_add", [("P", "we're out of {item}"), ("B", "Added {item} to the shopping list.")],
+     ["add {event} {day}", "put {event} on the calendar {day}"]),
+    ("get_weather", [("P", "where's {adult}?"), ("B", "{adult} is at home.")],
+     ["what's the weather today", "is it going to rain {day}"]),
+]
+WRITES_TOOL = {t for t, (w, _, _) in TOOLS.items() if w} | {"undo", "media_add"}
+
+
+def _turns(rng, templates):
+    out = []
+    for who, text in templates:
+        speaker = "Bobby" if who == "B" else pick(rng, BASE_SLOTS["adult"] + BASE_SLOTS["kid"])
+        out.append((speaker, fill(rng, text, SLOTS)))
+    # sometimes an older, unrelated exchange sits in front of the relevant one
+    if rng.random() < 0.35:
+        older = [(pick(rng, BASE_SLOTS["adult"]), fill(rng, pick(rng, ["good morning", "who's home?",
+                  "remind me to water the plants later", "what's for dinner?"]), SLOTS)),
+                 ("Bobby", pick(rng, ["Morning!", "Everyone's home.", "Done.", "Tacos are planned."]))]
+        out = older + out
+    return out
+
+
+def _gold(tool):
+    if tool == "chat":
+        return {"group": "chat", "needs_tool": False, "changes": False}
+    g = TOOL_GROUP[tool]
+    gold = {"group": g, "needs_tool": True, "changes": tool in WRITES_TOOL}
+    if g not in ("undo", "chat"):
+        gold[f"tool_{g}"] = tool
+    return gold
+
+
 def rows(rng, reps=8):
     out = []
     for tool, (writes, irrev, templates) in TOOLS.items():
         g = TOOL_GROUP[tool]
         for ti, tmpl in enumerate(templates):
             for _ in range(reps):
-                safe = rng.random() < 0.4
                 req = vary(rng, fill(rng, tmpl, SLOTS))
                 gold = {"group": g, f"tool_{g}": tool, "needs_tool": True, "changes": writes}
                 out.append((f"rt/{g}/{tool}/{ti}", f"rt:{g}:{tool}",
-                            {"context": _ctx(rng), "request": req}, gold))
+                            {"context": _bg_ctx(rng), "request": req}, gold))
     for ci, c in enumerate(CHAT):
         for _ in range(reps):
             out.append((f"rt/chat/{ci}", "rt:chat",
-                        {"context": _ctx(rng), "request": vary(rng, fill(rng, c, SLOTS))},
+                        {"context": _bg_ctx(rng), "request": vary(rng, fill(rng, c, SLOTS))},
                         {"group": "chat", "needs_tool": False, "changes": False}))
     for ui, u in enumerate(UNDO):
         for _ in range(reps):
             out.append((f"rt/undo/{ui}", "rt:undo",
-                        {"context": _ctx(rng), "request": vary(rng, u, openers=(rng.random() < 0.5))},
+                        {"context": _bg_ctx(rng), "request": vary(rng, u, openers=(rng.random() < 0.5))},
                         {"group": "undo", "needs_tool": True, "changes": True}))
+    # multi-turn: one family per (pattern, follow-up phrasing), so test holds out whole phrasings
+    for kind, table in (("ctx", CTX), ("ctxneg", CTX_NEG)):
+        for pi, (tool, turns, follow) in enumerate(table):
+            for fi, f in enumerate(follow):
+                for _ in range(reps + 2):
+                    ctx = format_context(_turns(rng, turns))
+                    req = vary(rng, fill(rng, f, SLOTS), openers=(rng.random() < 0.3))
+                    out.append((f"rt/{kind}/{tool}/{pi}/{fi}", f"rt:{kind}:{tool}",
+                                {"context": ctx, "request": req}, _gold(tool)))
     return out
 
 
-def _ctx(rng):
-    if rng.random() < 0.25:
-        sp = pick(rng, BASE_SLOTS["adult"])
-        return context_line(rng, sp, fill(rng, pick(rng, ["add {item}", "what's for dinner?",
-                            "what's on {day}?"]), SLOTS), "Done.")
-    return "(none)"
+def _bg_ctx(rng):
+    """Most single-turn rows have no history; some carry an unrelated recent exchange, so the model
+    learns that context only matters when the request leans on it."""
+    if rng.random() < 0.6:
+        return "(none)"
+    pairs = [("what's for dinner?", "Tacos are planned."), ("who's home?", "Everyone's home."),
+             ("good morning", "Morning!"), ("is it cold out?", "It's 45 and windy.")]
+    said, reply = pick(rng, pairs)
+    return format_context([(pick(rng, BASE_SLOTS["adult"]), said), ("Bobby", reply)])

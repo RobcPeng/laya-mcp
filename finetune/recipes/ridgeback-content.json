@@ -1,0 +1,27 @@
+{
+  "name": "ridgeback-content",
+  "pack_note": "multi-pack adapter; `pack` names one member for fail-fast, data carries each row's own questions",
+  "pack": "ridgeback-input-safety",
+  "dataset": "ridgeback/content",
+  "description": "Content-safety adapter (LoRA, frozen base): input content (harm categories, injection, cross-household, impersonation), output leak + kid-safety, and tool-result suitability. Minors are a deterministic hard rule ahead of Laya, never in this data.",
+  "base": "english",
+  "strategy": "lora",
+  "hyperparams": {
+    "epochs": 6,
+    "lr_encoder": 0.0002,
+    "lr_head": 0.0005,
+    "micro_batch": 8,
+    "early_stop_patience": 1
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "attn.Wqkv",
+      "attn.Wo",
+      "mlp.Wi",
+      "mlp.Wo"
+    ]
+  }
+}

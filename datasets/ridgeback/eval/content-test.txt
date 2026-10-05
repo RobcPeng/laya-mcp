@@ -1,0 +1,30 @@
+
+=== Ridgeback guard eval (test split) ===
+
+[input-safety] n=421 macro_acc=0.941 ece=0.052 p50=50.4ms p95=72.2ms
+    category         choice acc=0.869
+    decline          noul   acc=0.912 auc=0.957 fn/fp@serving=24/13 (thr=0.5)
+    severity         score  acc=0.931
+    self_harm        noul   acc=0.995 auc=1.000 fn/fp@serving=0/2 (thr=0.5)
+    injection        noul   acc=0.948 auc=0.888 fn/fp@serving=18/4 (thr=0.5)
+    cross_household  noul   acc=0.971 auc=0.912 fn/fp@serving=12/0 (thr=0.5)
+    impersonation    noul   acc=0.962 auc=0.831 fn/fp@serving=16/0 (thr=0.33)
+    clean false-block: @0.5=0.052 @serving=0.052 (n=210)
+
+[result-safety] n=182 macro_acc=0.945 ece=0.055 p50=21.5ms p95=23.5ms
+    result_unsuitable noul   acc=0.945 auc=0.959 fn/fp@serving=5/5 (thr=0.5)
+    clean false-block: @0.5=0.000 @serving=0.000 (n=78)
+    web search kid safety (flag rate): anyone/adult=1.0, anyone/kid=1.0, kidclean/adult=0.0, kidclean/kid=0.0, kidonly/adult=0.132, kidonly/kid=0.875
+
+[output] n=227 macro_acc=0.945 ece=0.053 p50=35.2ms p95=44.5ms
+    leaks_prompt     noul   acc=0.982 auc=1.000 fn/fp@serving=0/4 (thr=0.5)
+    member_private   noul   acc=0.93 auc=0.697 fn/fp@serving=16/0 (thr=0.5)
+    safe_records     noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    coordinates      noul   acc=0.996 auc=1.000 fn/fp@serving=0/1 (thr=0.5)
+    other_home_data  noul   acc=0.938 auc=0.748 fn/fp@serving=14/0 (thr=0.5)
+    reply_unsuitable noul   acc=0.969 auc=0.846 fn/fp@serving=7/0 (thr=0.5)
+    withhold         noul   acc=0.802 auc=0.848 fn/fp@serving=15/29 (thr=0.735)
+    clean false-block: @0.5=0.051 @serving=0.051 (n=99)
+    web search kid safety (flag rate): anyone/adult=1.0, anyone/kid=1.0, kidclean/adult=0.0, kidclean/kid=0.0, kidonly/adult=0.0, kidonly/kid=0.533
+[adapter content] macro_acc=0.944 p95<=72.2ms sets=['input-safety', 'result-safety', 'output']
+[overall] macro_acc=0.944 p50~35.7ms p95<=72.2ms

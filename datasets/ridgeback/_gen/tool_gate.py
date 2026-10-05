@@ -1,149 +1,153 @@
-"""ridgeback-tool-gate: a PROPOSED tool call plus the asker's role and safe mode -> run / confirm / refuse.
+"""ridgeback-tool-gate: a proposed tool call plus who is asking -> run / confirm / refuse.
 
-A row is a request, a tool call (tool + args), and the asker. Gold covers the whole battery:
-  verdict          run | confirm | refuse
-  matches_request  does the call do what was asked (safe-when-true)
-  permitted        may this asker make this call, by role + safe mode (safe-when-true)
-  irreversible     email_send / email_event / send_sms
-  identity_arg     the args carry a household/account/person id (dispatcher.strip_identity drops these)
-  other_household  the args name a household other than the asker's
-  child_limit      a safe-mode asker is blocked from this (comms.send), or it is risky for a child
-  risk             0..3
+Labels come from Bobby, never from a guess. `bobby_truth.json` is exported from the backend by
+`scripts/export_laya_truth.py`, which calls the cutover eval's own ground-truth function
+(`chat.guard_eval.generate.truth`, i.e. the dispatcher's rules): which tools are connected, which
+capability each needs, what safe mode and each seeded role may do, which tools are irreversible and which
+may act in another home. A hand-written label drifted once (it said `send_sms` asks first, while the
+dispatcher refuses it because it is not connected); generating from the export means it cannot again,
+and the export's fingerprint names the rules an adapter was trained on.
 
-The families, which are the cases the brief names:
-  ok_read / ok_write          matching call, permitted -> run
-  needs_confirm               irreversible sends, permitted but asked to confirm -> confirm
-  cap_mismatch                a role without the capability (e.g. Viewer writing) -> refuse
-  identity_injected           args carry person_id/household_id -> refuse (would be stripped anyway)
-  other_home                  args name another household -> refuse
-  safe_mode_block             child in safe mode on comms.send -> refuse
-  mismatch                    the call does not match the request -> refuse
+What is NOT copied from the eval: its inputs. The eval calls every tool with one fixed set of argument
+values and two fixed home names. Training uses its own argument values and home names, so the cutover
+measures the adapter on calls it has never seen, on the same rules. The tool-disabled-for-this-home
+case is left out: the asker line cannot carry it, and the deterministic gate in front of Laya decides it.
+
+State is message-only: the asker line (seat, safe mode, the homes this person is a member of) and the
+tool call. Labels:
+  verdict          run (dispatcher allows) | confirm (allowed but irreversible, asks first) | refuse
+  permitted        false when the seat or safe mode forbids the tool (role_limit / safe_mode_limit)
+  irreversible     the tool cannot be taken back (its registry declaration)
+  identity_arg     the arguments carry a household / person / account id (stripped by the dispatcher)
+  other_household  a home_ call into a home this person is not a member of
+  child_limit      refused because safe mode forbids it
+  risk             0 run-read, 1 run-write, 2 confirm or refused by rule, 3 cross-household or safe-mode
 """
-from .world import BASE_SLOTS, asker, fill, pick, uuid, email, phone
-from laya_mcp.ridgeback_packs import CAPABILITY, IRREVERSIBLE, ROLE_CAPS, TOOL_GROUP
+import json
+import os
 
-SLOTS = dict(BASE_SLOTS)
+from .world import ADULTS, KIDS, STREETS, TOWNS, asker, pick, uuid
 
-# A small set of representative calls per behaviour, reusing routing's phrasings loosely.
-READS = ["grocery_list", "calendar_upcoming", "list_show", "recall_person", "get_weather", "where_is",
-         "receipts_list", "recall_trip", "reminders_list", "lists_overview"]
-WRITES = ["grocery_add", "calendar_add", "list_add", "reminder_add", "record_fact", "log_outing",
-          "recipe_add", "remember_person", "receipt_add", "calendar_delete_event"]
-SENDS = ["email_send", "email_event", "send_sms"]
+HERE = os.path.dirname(os.path.abspath(__file__))
+TRUTH = json.load(open(os.path.join(HERE, "bobby_truth.json")))
+FINGERPRINT = TRUTH["fingerprint"]
 
-REQ = {
-    "grocery_list": "what's on the shopping list", "calendar_upcoming": "what's on the calendar this week",
-    "list_show": "show the packing list", "recall_person": "what do you know about Grandma",
-    "get_weather": "what's the weather", "where_is": "where is {adult}", "receipts_list": "show recent receipts",
-    "recall_trip": "show the trip plan", "reminders_list": "what reminders do I have",
-    "lists_overview": "what lists do we have",
-    "grocery_add": "add {item} to the list", "calendar_add": "add {event} {day}", "list_add": "add {item} to the {list}",
-    "reminder_add": "remind me to {event} {day}", "record_fact": "remember the spare key spot",
-    "log_outing": "log our trip to {place}", "recipe_add": "save the {recipe} recipe",
-    "remember_person": "remember {kin} likes tea", "receipt_add": "record a {store} receipt",
-    "calendar_delete_event": "cancel {event}",
-    "email_send": "email {adult} the notes", "email_event": "email the family the {event} invite",
-    "send_sms": "text {adult} we're on our way",
+VERDICT = {"allow": "run", "escalate": "confirm", "block": "refuse"}
+# Homes for the asker line and home_ calls. Deliberately not the eval's names.
+OWN_HOMES = ["the Cabin", "the lake house", "Gran's flat", "the beach place", "Dad's apartment"]
+STRANGER_HOMES = ["the Achterbergs", "the Moreau house", "Castellano home", "the Takedas", "the Sorensens"]
+READ_WORDS = ("list", "show", "upcoming", "get", "recall", "search", "whoami", "household", "roster",
+              "overview", "inventory", "where", "distance", "geocode", "weather", "location", "read",
+              "totals", "relationships", "neighbors", "facts", "pets", "trip")
+
+# Argument values by parameter name: plausible household values, none of them the eval's.
+VALUES = {
+    "item": ["eggs", "rice", "coffee", "dish soap", "tortillas", "apples"],
+    "list": ["Costco", "Camping", "Chores", "Gift ideas"],
+    "title": ["Swim practice", "Book club", "Vet visit", "Piano lesson", "Haircut"],
+    "who": ADULTS[:8] + KIDS[:6], "about": ADULTS[:6] + KIDS[:4], "of": ADULTS[:6],
+    "member": ADULTS[:6], "whose": ["mine", "home"],
+    "notes": ["bring snacks", "park on the street", "call first"], "note": ["two for one", "gift"],
+    "place": ["the aquarium", "Rosie's Diner", "the climbing gym", "Lantern Hill park"],
+    "origin": TOWNS[:5], "destination": TOWNS[5:], "address": [f"12 {s}" for s in STREETS[:4]],
+    "target": ["home", "mine"], "what": ["the dentist", "the milk", "that event"],
+    "merchant": ["Aldi", "Target", "the co-op"], "quantity": ["1", "3", "a dozen"],
+    "starts": ["2026-11-02T09:00:00-05:00", "2026-11-14T18:30:00-05:00"],
+    "ends": ["2026-11-02T10:00:00-05:00", "2026-11-14T20:00:00-05:00"],
+    "starts_on": ["2026-12-20", "2027-03-14"], "ends_on": ["2026-12-27", "2027-03-21"],
+    "when": ["Friday 5pm", "next Tuesday morning"], "day": ["Sunday", "the 3rd"],
+    "location": ["Mill Street", "the school gym"], "event": ["Book club", "Swim practice"],
+    "name": ["Pepper", "Biscuit"], "species": ["cat", "rabbit"], "kind": ["dinner", "museum"],
+    "trip": ["Fernvale camping", "the ski weekend"], "fact": ["the spare key is under the mat"],
+    "relationship": ["aunt", "neighbour"], "relation": ["sister", "grandfather"],
+    "recipe": ["fish tacos", "minestrone"], "words": ["curry", "pancakes"],
+    "query": ["coffee near me", "hardware store"], "purpose": ["nearby", "weather"],
+    "filename": ["receipt.pdf", "schedule.csv"], "time_zone": ["America/Chicago"],
+    "calendar": ["Family"], "audience": ["everyone"], "frequency": ["weekly"],
 }
+GENERIC = ["the usual", "next week", "a few things", "for the weekend"]
 
 
-def _args(rng, tool):
-    a = {"grocery_add": {"item": pick(rng, SLOTS["item"])}, "list_add": {"list": pick(rng, SLOTS["list"]),
-         "item": pick(rng, SLOTS["item"])}, "calendar_add": {"title": pick(rng, SLOTS["event"]),
-         "when": pick(rng, SLOTS["day"])}, "reminder_add": {"what": pick(rng, SLOTS["event"])},
-         "record_fact": {"fact": "the spare key is under the mat"}, "where_is": {"who": pick(rng, SLOTS["adult"])},
-         "email_send": {"to": email(rng), "body": "here are the notes"},
-         "send_sms": {"to": phone(rng), "body": "on our way"},
-         "email_event": {"to": email(rng), "event": pick(rng, SLOTS["event"])},
-         "remember_person": {"who": pick(rng, SLOTS["kin"]), "what": "likes tea"},
-         "recipe_add": {"title": pick(rng, SLOTS["recipe"])}, "receipt_add": {"merchant": pick(rng, SLOTS["store"])},
-         "recall_person": {}, "log_outing": {"place": pick(rng, SLOTS["place"])},
-         "calendar_delete_event": {"title": pick(rng, SLOTS["event"])}}
-    return a.get(tool, {})
-
-
-def _role_has(role, tool):
-    cap = CAPABILITY.get(tool)
-    return cap in ROLE_CAPS.get(role, frozenset())
-
-
-def _risk(writes, irrev, bad):
-    if bad:
-        return 3
-    if irrev:
-        return 2
-    return 1 if writes else 0
-
-
-def _row(rng, fam, tool, args, role, safe, verdict, matches, permitted, ident, other_hh, child):
-    req = fill(rng, REQ.get(tool, "do the thing"), SLOTS)
-    irrev = tool in IRREVERSIBLE
-    writes = tool not in READS
-    gold = {"verdict": verdict, "matches_request": matches, "permitted": permitted, "irreversible": irrev,
-            "identity_arg": ident, "other_household": other_hh, "child_limit": child,
-            "risk": _risk(writes, irrev, verdict == "refuse" and not (verdict == "confirm"))}
-    if verdict == "confirm":
-        gold["risk"] = 2
-    if verdict == "refuse":
-        gold["risk"] = 3 if (other_hh or ident) else 2
-    call = {"tool": tool, "args": args}
-    return (f"gt/{fam}/{tool}", f"gt:{fam}",
-            {"asker": asker(rng, safe, role=role), "request": req, "tool_call": call}, gold)
-
-
-def rows(rng, reps=16):
-    out = []
-    adult_roles = ["Creator", "Manager", "Member"]
-    for _ in range(reps):
-        # ok reads: anyone with the read cap -> run
-        for tool in READS:
-            role = pick(rng, ["Creator", "Manager", "Member", "Guest", "Viewer"])
-            if not _role_has(role, tool):
-                role = "Creator"
-            out.append(_row(rng, "ok_read", tool, _args(rng, tool), role, rng.random() < 0.4,
-                            "run", True, True, False, False, False))
-        # ok writes: a role that holds the cap -> run
-        for tool in WRITES:
-            role = pick(rng, [r for r in adult_roles if _role_has(r, tool)] or ["Creator"])
-            out.append(_row(rng, "ok_write", tool, _args(rng, tool), role, False,
-                            "run", True, True, False, False, False))
-        # needs_confirm: irreversible sends, permitted adult -> confirm
-        for tool in SENDS:
-            out.append(_row(rng, "needs_confirm", tool, _args(rng, tool), pick(rng, adult_roles), False,
-                            "confirm", True, True, False, False, False))
-        # cap_mismatch: a role WITHOUT the write cap -> refuse (not permitted)
-        for tool in WRITES + SENDS:
-            role = pick(rng, [r for r in ["Guest", "Viewer", "Member"] if not _role_has(r, tool)] or ["Viewer"])
-            out.append(_row(rng, "cap_mismatch", tool, _args(rng, tool), role, False,
-                            "refuse", True, False, False, False, False))
-        # identity_injected: args carry an id the dispatcher would strip -> refuse
-        for tool in pick_n(rng, WRITES + READS, 6):
-            args = {**_args(rng, tool), pick(rng, ["person_id", "household_id", "account_id", "on_behalf_of"]): uuid(rng)}
-            out.append(_row(rng, "identity_injected", tool, args, pick(rng, adult_roles), False,
-                            "refuse", True, True, True, False, False))
-        # other_home: args name another household -> refuse
-        for tool in pick_n(rng, WRITES + READS, 6):
-            args = {**_args(rng, tool), "household": pick(rng, SLOTS["other_hh"])}
-            out.append(_row(rng, "other_home", tool, args, pick(rng, adult_roles), False,
-                            "refuse", True, False, True, True, False))
-        # safe_mode_block: a child in safe mode asking for a send -> refuse (child_limit)
-        for tool in SENDS:
-            out.append(_row(rng, "safe_mode_block", tool, _args(rng, tool), pick(rng, ["Member", "Guest"]), True,
-                            "refuse", True, False, False, False, True))
-        # mismatch: the call does not do what was asked -> refuse
-        for _m in range(8):
-            tool = pick(rng, WRITES)
-            other = pick(rng, [t for t in WRITES + SENDS if t != tool])
-            r = (f"gt/mismatch/{tool}", "gt:mismatch",
-                 {"asker": asker(rng, False, role=pick(rng, adult_roles)),
-                  "request": fill(rng, REQ[tool], SLOTS),
-                  "tool_call": {"tool": other, "args": _args(rng, other)}},
-                 {"verdict": "refuse", "matches_request": False, "permitted": True,
-                  "irreversible": other in IRREVERSIBLE, "identity_arg": False, "other_household": False,
-                  "child_limit": False, "risk": 2})
-            out.append(r)
+def _args(rng, tool, variant):
+    params = TRUTH["tools"][tool]["params"]
+    out = {}
+    for i, (key, kind) in enumerate(params.items()):
+        if i >= 3:
+            break
+        if kind == "integer":
+            out[key] = rng.randint(1, 14)
+        elif kind == "boolean":
+            out[key] = bool(rng.random() < 0.5)
+        elif kind in ("array", "object"):
+            continue
+        else:
+            out[key] = pick(rng, VALUES.get(key, GENERIC))
     return out
 
 
-def pick_n(rng, xs, n):
-    return rng.sample(xs, min(n, len(xs)))
+def _writes(tool):
+    return not any(w in tool for w in READ_WORDS)
+
+
+def _gold(tool, decision, why, *, ident=False, other=False):
+    verdict = VERDICT[decision]
+    child = why == "safe_mode_limit"
+    if other or child:
+        risk = 3
+    elif verdict in ("confirm", "refuse"):
+        risk = 2
+    else:
+        risk = 1 if _writes(tool) else 0
+    return {"verdict": verdict, "permitted": why not in ("role_limit", "safe_mode_limit"),
+            "irreversible": bool(TRUTH["tools"][tool]["irreversible"]), "identity_arg": ident,
+            "other_household": other, "child_limit": child, "risk": risk}
+
+
+def _asker(rng, role, safe, homes):
+    line = asker(rng, safe, role=role.title())
+    line += "; member of this home (this home)" + "".join(f" and {h}" for h in homes)
+    return line
+
+
+def rows(rng, variants=3):
+    out = []
+    tools = sorted(TRUTH["tools"])
+    roles = sorted(TRUTH["roles"])
+    keys = TRUTH["identity_keys"]
+    prefix = TRUTH["home_prefix"]
+    for ti, tool in enumerate(tools):
+        for v in range(variants):
+            # every seat x safe mode, the dispatcher's verdict for this tool
+            for role in roles:
+                for safe in (False, True):
+                    decision, why = TRUTH["verdicts"][f"{tool}|{role}|{int(safe)}"]
+                    homes = rng.sample(OWN_HOMES, rng.choice([0, 0, 1]))
+                    out.append((f"gt/seat/{tool}/{v}", f"gt:seat:{tool}",
+                                {"asker": _asker(rng, role, safe, homes),
+                                 "tool_call": {"tool": tool, "args": _args(rng, tool, v)}},
+                                _gold(tool, decision, why)))
+            # an identity key the model supplies anyway: stripped, then the same verdict
+            role = pick(rng, roles)
+            decision, why = TRUTH["verdicts"][f"{tool}|{role}|0"]
+            key = keys[(ti * variants + v) % len(keys)]
+            out.append((f"gt/ident/{tool}/{v}", f"gt:ident:{tool}",
+                        {"asker": _asker(rng, role, False, []),
+                         "tool_call": {"tool": tool, "args": {**_args(rng, tool, v), key: uuid(rng)}}},
+                        _gold(tool, decision, why, ident=True)))
+            # another home through Personal Space: a home this person is in, and one they are not
+            own = pick(rng, OWN_HOMES)
+            stranger = pick(rng, STRANGER_HOMES)
+            line = _asker(rng, "member", False, [own])
+            if TRUTH["tools"][tool]["across_homes"]:
+                decision, why = TRUTH["verdicts"][f"{tool}|member|0"]
+            else:
+                decision, why = "block", "not_allowed_across_homes"
+            out.append((f"gt/home_member/{tool}/{v}", f"gt:home_member:{tool}",
+                        {"asker": line, "tool_call": {"tool": prefix + tool,
+                                                      "args": {**_args(rng, tool, v), "target_home": own}}},
+                        _gold(tool, decision, why)))
+            out.append((f"gt/home_stranger/{tool}/{v}", f"gt:home_stranger:{tool}",
+                        {"asker": line, "tool_call": {"tool": prefix + tool,
+                                                      "args": {**_args(rng, tool, v), "target_home": stranger}}},
+                        _gold(tool, "block", "cross_household", other=True)))
+    return out

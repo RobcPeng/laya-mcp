@@ -24,16 +24,22 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 from laya_mcp import packs, ridgeback_packs  # noqa: E402
 from _gen import input_safety, output, routing, tool_gate, tool_result  # noqa: E402
+from laya_mcp.ridgeback_packs import ADAPTERS, PACK_ADAPTER  # noqa: E402
 
 SEED = 20261005
 
+# one dataset per pack (per stage); the adapter it belongs to is PACK_ADAPTER.
 SETS = {
     "input-safety": ("ridgeback-input-safety", input_safety.rows),
     "route": ("ridgeback-route", routing.rows),
     "tool-gate": ("ridgeback-tool-gate", tool_gate.rows),
-    "tool-result": ("ridgeback-tool-result", tool_result.rows),
+    "tool-result": ("ridgeback-tool-result", tool_result.injection_rows),
+    "result-safety": ("ridgeback-result-safety", tool_result.safety_rows),
     "output": ("ridgeback-output", output.rows),
 }
+# which per-stage sets make up each adapter's training set
+ADAPTER_SETS = {a: [name for name, (pack, _) in SETS.items() if pack in packs_]
+                for a, packs_ in ADAPTERS.items()}
 
 
 def split_rows(rng, rows, test_frac=0.25, val_frac=0.12):
@@ -87,16 +93,15 @@ def build(name, out_dir=HERE):
     return counts
 
 
-def combine(out_dir=HERE):
-    """Concatenate the five sets into datasets/ridgeback/combined/{split}.jsonl for one multi-task
-    adapter. Each row keeps its own `questions` (ids are unique across packs), so a single checkpoint
-    learns every stage. Shuffled with a fixed seed. Use finetune.eval_ridgeback to score it, not the
-    pipeline's per-pack evaluate."""
-    rng = random.Random(f"{SEED}:combined")
+def combine(adapter, set_names, out_dir=HERE):
+    """Concatenate an adapter's per-stage sets into datasets/ridgeback/<adapter>/{split}.jsonl. Each row
+    keeps its own pack `questions` (ids are unique across packs), so one adapter learns all its stages.
+    Shuffled with a fixed seed. Scored by finetune.eval_ridgeback, not the pipeline's per-pack evaluate."""
+    rng = random.Random(f"{SEED}:{adapter}")
     counts = {}
     for split in ("train", "val", "test"):
         rows = []
-        for name in SETS:
+        for name in set_names:
             p = os.path.join(out_dir, name, f"{split}.jsonl")
             if os.path.exists(p):
                 for line in open(p):
@@ -104,11 +109,11 @@ def combine(out_dir=HERE):
                     r["set"] = name
                     rows.append(r)
         rng.shuffle(rows)
-        path = os.path.join(out_dir, "combined", f"{split}.jsonl")
+        path = os.path.join(out_dir, adapter, f"{split}.jsonl")
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w") as f:
             for i, r in enumerate(rows):
-                r["id"] = f"ridgeback-combined-{split}-{i:04d}"
+                r["id"] = f"ridgeback-{adapter}-{split}-{i:04d}"
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
         counts[split] = len(rows)
     return counts
@@ -126,8 +131,9 @@ def main():
         total[name] = c
         print(f"{name}: {c}")
     if set(names) == set(SETS):
-        total["combined"] = combine(a.out)
-        print(f"combined: {total['combined']}")
+        for adapter in ADAPTERS:
+            total[adapter] = combine(adapter, ADAPTER_SETS[adapter], a.out)
+            print(f"{adapter}: {total[adapter]}")
     # also refresh the vendored pack JSON for the backend wrapper
     exp = os.path.join(os.path.dirname(os.path.dirname(HERE)), "laya_mcp", "ridgeback_packs.py")
     print(f"pack fingerprint: {ridgeback_packs.fingerprint()}")

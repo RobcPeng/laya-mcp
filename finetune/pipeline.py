@@ -155,7 +155,11 @@ def run_recipe(name, a):
             mlflow.log_metrics({k: float(v) for k, v in stats.items() if isinstance(v, (int, float))})
             mlflow.log_dict({"temperatures": stats["temperatures"], "order": ["choice", "score", "noul"]},
                             "temperatures.json")
-            mlflow.log_artifact(os.path.join(ckpt, "rl_agent_config.json"))
+            from . import lora as _lora
+            mlflow.log_artifact(os.path.join(ckpt, _lora.CONFIG if strategy == "lora" else "rl_agent_config.json"))
+            for k in ("adapter_bytes", "base_bytes", "adapter_fraction_of_base"):
+                if k in stats:
+                    mlflow.log_metric(k, float(stats[k]))
 
         with mlflow.start_run(run_name="finetuned-eval", nested=True):
             ft_rep = E.evaluate(recipe, ckpt, "test", device, a.extra_negatives)

@@ -1,0 +1,27 @@
+{
+  "name": "ridgeback-cyber",
+  "pack_note": "multi-pack adapter; `pack` names one member for fail-fast, data carries each row's own questions",
+  "pack": "ridgeback-tool-gate",
+  "dataset": "ridgeback/cyber",
+  "description": "Cyber adapter (LoRA, frozen base): tool-call gating and tool-result injection screening. Multi-pack; train with finetune.train, evaluate with finetune.eval_ridgeback.",
+  "base": "english",
+  "strategy": "lora",
+  "hyperparams": {
+    "epochs": 6,
+    "lr_encoder": 0.0002,
+    "lr_head": 0.0005,
+    "micro_batch": 8,
+    "early_stop_patience": 1
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "attn.Wqkv",
+      "attn.Wo",
+      "mlp.Wi",
+      "mlp.Wo"
+    ]
+  }
+}

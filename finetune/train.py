@@ -72,6 +72,50 @@ def forward_logits(model, items, pad_id, device, batch=16):
     return out
 
 
+def _parity(model, adapter_dir, cal_items, val_rows, pad_id, device, temps, n=48):
+    """Serve-path check: base + adapter loaded the way laya.serve loads it must give the same answers as
+    the model that was just trained. Compares argmax and probabilities on up to n val items."""
+    import torch
+    from . import lora
+    items = cal_items[:n]
+    # batch=1: the serving computation is one unpadded item per forward. A padded batch moves bf16
+    # probabilities on long sequences (measured 0.07 on the 15-option routing group question), which is
+    # a property of batching, not of the adapter; comparing like with like isolates the adapter.
+    logits = forward_logits(model, items, pad_id, device, batch=1)
+    agent = lora.load_agent(adapter_dir, device=device)
+    same, worst = 0, 0.0
+    for z, it in zip(logits, items):
+        row = val_rows[it["row"]]
+        qid = it["qid"]
+        res = agent.predict(row["state"], {qid: row["questions"][qid]})["answers"][qid]
+        t = temps[it["qtype"]]
+        p_train = torch.softmax(torch.tensor(z) / t, -1).tolist()
+        q = row["questions"][qid]
+        if q["type"] == "noul":
+            p_serve = [1 - res["noul"], res["noul"]]
+        elif q["type"] == "choice":
+            p_serve = [res["probabilities"].get(k, 0.0) for k in q["criteria"]]
+        else:
+            p_serve = [res["probabilities"].get(str(i), 0.0) for i in range(len(q["criteria"]))]
+        same += int(max(range(len(p_train)), key=p_train.__getitem__)
+                    == max(range(len(p_serve)), key=p_serve.__getitem__))
+        worst = max(worst, max(abs(a - b) for a, b in zip(p_train, p_serve)))
+    del agent
+    out = {"items": len(items), "argmax_agree": same, "max_prob_diff": round(worst, 4)}
+    print(f"[train] serve-path parity (base + adapter vs trained model): {out}", flush=True)
+    if same < len(items) - 1 or worst > 0.08:
+        raise RuntimeError(f"adapter does not reproduce the trained model when served: {out}")
+    return out
+
+
+def _trainable(model, key):
+    """True for state-dict keys whose parameter trains (LoRA A/B, the head), so a best-epoch snapshot
+    stays small. Buffers and frozen base weights are never touched by training, so they need no copy."""
+    params = dict(model.named_parameters())
+    p = params.get(key)
+    return p is not None and p.requires_grad
+
+
 def fit_temperature(pairs):
     """One temperature for a list of (logits, target) pairs, LBFGS on soft cross-entropy (upstream)."""
     import torch
@@ -107,7 +151,7 @@ def fit_temperatures(model, cal_items, pad_id, device, base_temps):
     return temps
 
 
-def train_loop(model, items, pad_id, device, hp, strategy, log_metric=None):
+def train_loop(model, items, pad_id, device, hp, strategy, log_metric=None, on_epoch_end=None):
     """RLCD training. Returns the trained model (in place)."""
     import torch
     from laya.common import proper_reward
@@ -195,8 +239,38 @@ def train_loop(model, items, pad_id, device, hp, strategy, log_metric=None):
         if log_metric:
             for kk, v in ep.items():
                 log_metric(kk, v, epoch + 1)
+        # Early stopping: the callback scores val (never trained on) and returns True to stop.
+        if on_epoch_end is not None:
+            stop = on_epoch_end(epoch + 1)
+            model.train()
+            if strategy == "head":
+                model.encoder.eval()
+            if stop:
+                print(f"  early stop after epoch {epoch + 1}", flush=True)
+                break
     model.eval()
     return model
+
+
+def _val_scores(model, cal_items, rows, pad_id, device):
+    """Val accuracy overall and per `set` (rows may carry one, as the Ridgeback combined set does),
+    plus mean soft cross-entropy, from the raw logits."""
+    import math as _m
+    logits = forward_logits(model, cal_items, pad_id, device)
+    per, ce = {}, []
+    for z, it in zip(logits, cal_items):
+        pred = max(range(len(z)), key=z.__getitem__)
+        ok = float(pred == it["label"])
+        name = rows[it["row"]].get("set", "all")
+        a = per.setdefault(name, [0.0, 0])
+        a[0] += ok
+        a[1] += 1
+        mx = max(z)
+        lse = mx + _m.log(sum(_m.exp(v - mx) for v in z))
+        ce.append(-sum(t * (v - lse) for t, v in zip(it["target"], z)))
+    acc = {k: v[0] / v[1] for k, v in per.items()}
+    total = sum(v[0] for v in per.values()) / max(1, sum(v[1] for v in per.values()))
+    return total, acc, sum(ce) / max(1, len(ce))
 
 
 def export(model, base_dir, cfg, out_dir, temps, recipe_name, strategy, copy_weights_from_base=False):
@@ -269,7 +343,33 @@ def run(recipe, out_dir, strategy=None, base=None, device="cuda:0", overrides=No
         print(f"[train] {recipe['name']}: {len(items)} items ({dropped} dropped), strategy={strategy}, "
               f"base={base}, device={device}", flush=True)
         t0 = time.time()
-        train_loop(model, items, tok.pad_token_id, device, hp, strategy, log_metric)
+        history = []
+        best = {"ce": float("inf"), "state": None, "epoch": 0}
+        patience = int(hp.get("early_stop_patience", 0) or 0)
+
+        def on_epoch_end(ep):
+            total, per_set, ce = _val_scores(model, cal_items, val_rows, tok.pad_token_id, device)
+            history.append({"epoch": ep, "val_acc": round(total, 4), "val_ce": round(ce, 4),
+                            "val_acc_by_set": {k: round(v, 4) for k, v in sorted(per_set.items())}})
+            print(f"  val epoch {ep}: acc={total:.4f} ce={ce:.4f} "
+                  + " ".join(f"{k}={v:.3f}" for k, v in sorted(per_set.items())), flush=True)
+            if log_metric:
+                log_metric("val_acc", total, ep)
+                log_metric("val_ce", ce, ep)
+            if ce < best["ce"] - 1e-4:
+                best.update(ce=ce, epoch=ep, state={k: v.detach().cpu().clone()
+                                                    for k, v in model.state_dict().items()
+                                                    if _trainable(model, k)})
+                return False
+            return patience > 0 and ep - best["epoch"] >= patience
+
+        train_loop(model, items, tok.pad_token_id, device, hp, strategy, log_metric,
+                   on_epoch_end=on_epoch_end if patience > 0 else None)
+        if best["state"] is not None and history and history[-1]["epoch"] != best["epoch"]:
+            model.load_state_dict(best["state"], strict=False)
+            print(f"[train] restored best val epoch {best['epoch']}", flush=True)
+        stats["val_history"] = history
+        stats["best_epoch"] = best["epoch"] or (history[-1]["epoch"] if history else None)
         stats["train_seconds"] = round(time.time() - t0, 1)
         if torch.cuda.is_available():
             stats["peak_vram_gb"] = round(torch.cuda.max_memory_allocated(device) / 2 ** 30, 2)
@@ -277,13 +377,21 @@ def run(recipe, out_dir, strategy=None, base=None, device="cuda:0", overrides=No
     stats["temperatures"] = temps
     print(f"[train] fitted temperatures (choice, score, noul): {[round(t, 3) for t in temps]}", flush=True)
     if strategy == "lora":
-        # Save the adapter on its own, then fold it into the base weights so the exported checkpoint is
-        # a plain Laya checkpoint that laya.Agent / laya.serve load with no LoRA code.
+        # Adapter only: the LoRA tensors and the decision head, in one small directory. The base is never
+        # merged into, copied, or rewritten; it is served as base + adapter (lora.load_agent).
         from . import lora
-        lora.save_adapter(model, out_dir, meta={**(lora_cfg or {}), "base": base, "recipe": recipe["name"]})
-        lora.merge(model)
-    export(model, base_dir, cfg, out_dir, temps, recipe["name"], strategy,
-           copy_weights_from_base=(strategy == "calibrate"))
+        acfg = lora.save_adapter(model, out_dir, temps=temps, base=base, base_revision=revision,
+                                 lora_cfg=lora_cfg, recipe=recipe["name"])
+        base_bytes = os.path.getsize(os.path.realpath(os.path.join(base_dir, "model.safetensors")))
+        stats.update(adapter_bytes=acfg["bytes"], adapter_params=acfg["params"], base_bytes=base_bytes,
+                     adapter_fraction_of_base=round(acfg["bytes"] / base_bytes, 4))
+        print(f"[train] adapter: {acfg['bytes'] / 2**20:.1f} MiB ({acfg['params']['total']:,} params: "
+              f"{acfg['params']['lora']:,} LoRA + {acfg['params']['head']:,} head) vs base "
+              f"{base_bytes / 2**20:.0f} MiB = {100 * acfg['bytes'] / base_bytes:.1f}%", flush=True)
+        stats["parity"] = _parity(model, out_dir, cal_items, val_rows, tok.pad_token_id, device, temps)
+    else:
+        export(model, base_dir, cfg, out_dir, temps, recipe["name"], strategy,
+               copy_weights_from_base=(strategy == "calibrate"))
     stats["checkpoint"] = os.path.abspath(out_dir)
     stats["hyperparams"] = hp
     del model

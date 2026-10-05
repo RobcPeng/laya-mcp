@@ -1,0 +1,208 @@
+{
+  "split": "test",
+  "sets": {
+    "tool-gate": {
+      "n": 1061,
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "n": 1061,
+          "accuracy": 0.9905749293119699,
+          "brier": null
+        },
+        "permitted": {
+          "type": "noul",
+          "n": 1061,
+          "auc": 0.9831651545420999,
+          "fn_at_05": 0,
+          "fp_at_05": 6,
+          "fn_at_serving": 0,
+          "fp_at_serving": 6,
+          "n_pos": 883,
+          "n_neg": 178,
+          "threshold": 0.5,
+          "accuracy": 0.9943449575871819,
+          "brier": 0.005748327926484448
+        },
+        "irreversible": {
+          "type": "noul",
+          "n": 1061,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 38,
+          "n_neg": 1023,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 4.876154571159301e-07
+        },
+        "identity_arg": {
+          "type": "noul",
+          "n": 1061,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 82,
+          "n_neg": 979,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 4.844863336475061e-07
+        },
+        "other_household": {
+          "type": "noul",
+          "n": 1061,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 82,
+          "n_neg": 979,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 4.692931196984014e-07
+        },
+        "child_limit": {
+          "type": "noul",
+          "n": 1061,
+          "auc": null,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 0,
+          "n_neg": 1061,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 4.886522148916118e-07
+        },
+        "risk": {
+          "type": "score",
+          "n": 1061,
+          "accuracy": 0.9896324222431668,
+          "brier": null
+        }
+      },
+      "thresholds": {
+        "irreversible": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        },
+        "other_household": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        },
+        "child_limit": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        },
+        "permitted": {
+          "threshold": 0.5
+        },
+        "identity_arg": {
+          "threshold": 0.5
+        }
+      },
+      "latency_p50_ms": 40.93875997932628,
+      "latency_p95_ms": 48.10976001317613,
+      "ece": 0.0012079035949912535,
+      "macro_accuracy": 0.9963646155917598
+    },
+    "tool-result": {
+      "n": 246,
+      "questions": {
+        "injected": {
+          "type": "noul",
+          "n": 246,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 2,
+          "fn_at_serving": 0,
+          "fp_at_serving": 2,
+          "n_pos": 74,
+          "n_neg": 172,
+          "threshold": 0.5,
+          "accuracy": 0.991869918699187,
+          "brier": 0.00808428731707317
+        },
+        "quarantine": {
+          "type": "noul",
+          "n": 246,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 74,
+          "n_neg": 172,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 4.693902439024539e-07
+        },
+        "wants_action": {
+          "type": "noul",
+          "n": 246,
+          "auc": 1.0,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 74,
+          "n_neg": 172,
+          "threshold": 0.5,
+          "accuracy": 1.0,
+          "brier": 0.00021701398373983737
+        }
+      },
+      "thresholds": {
+        "injected": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        },
+        "quarantine": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        },
+        "wants_action": {
+          "threshold": 0.5,
+          "low": 0.5,
+          "high": 0.5
+        }
+      },
+      "latency_p50_ms": 22.366767007042654,
+      "latency_p95_ms": 26.673117754398845,
+      "ece": 0.0023310298102980653,
+      "macro_accuracy": 0.997289972899729,
+      "clean": {
+        "n": 172,
+        "false_block_rate_at_05": 0.011627906976744186,
+        "false_block_rate_at_serving": 0.011627906976744186
+      }
+    }
+  },
+  "thresholds_source": "fixed file",
+  "overall": {
+    "macro_accuracy": 0.9968272942457443,
+    "latency_p50_ms": 31.652763493184466,
+    "latency_p95_ms": 48.10976001317613
+  },
+  "by_adapter": {
+    "cyber": {
+      "sets": [
+        "tool-gate",
+        "tool-result"
+      ],
+      "macro_accuracy": 0.9968272942457443,
+      "latency_p95_ms": 48.10976001317613
+    }
+  }
+}

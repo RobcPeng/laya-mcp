@@ -1,0 +1,176 @@
+{
+  "split": "test",
+  "sets": {
+    "route": {
+      "n": 850,
+      "questions": {
+        "group": {
+          "type": "choice",
+          "n": 850,
+          "accuracy": 0.7917647058823529,
+          "brier": null
+        },
+        "tool_grocery": {
+          "type": "choice",
+          "n": 78,
+          "accuracy": 0.8974358974358975,
+          "brier": null
+        },
+        "tool_lists": {
+          "type": "choice",
+          "n": 76,
+          "accuracy": 0.8947368421052632,
+          "brier": null
+        },
+        "tool_rem": {
+          "type": "choice",
+          "n": 44,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_cal": {
+          "type": "choice",
+          "n": 72,
+          "accuracy": 0.9444444444444444,
+          "brier": null
+        },
+        "tool_comms": {
+          "type": "choice",
+          "n": 68,
+          "accuracy": 0.9411764705882353,
+          "brier": null
+        },
+        "tool_rec": {
+          "type": "choice",
+          "n": 30,
+          "accuracy": 0.8666666666666667,
+          "brier": null
+        },
+        "tool_food": {
+          "type": "choice",
+          "n": 42,
+          "accuracy": 0.9523809523809523,
+          "brier": null
+        },
+        "tool_out": {
+          "type": "choice",
+          "n": 16,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_trip": {
+          "type": "choice",
+          "n": 88,
+          "accuracy": 0.8295454545454546,
+          "brier": null
+        },
+        "tool_ppl": {
+          "type": "choice",
+          "n": 116,
+          "accuracy": 0.6982758620689655,
+          "brier": null
+        },
+        "tool_plc": {
+          "type": "choice",
+          "n": 111,
+          "accuracy": 0.8738738738738738,
+          "brier": null
+        },
+        "tool_files": {
+          "type": "choice",
+          "n": 14,
+          "accuracy": 0.9285714285714286,
+          "brier": null
+        },
+        "tool_media": {
+          "type": "choice",
+          "n": 26,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "needs_tool": {
+          "type": "noul",
+          "n": 850,
+          "auc": 0.9182269343559666,
+          "fn_at_05": 12,
+          "fp_at_05": 28,
+          "fn_at_serving": 1,
+          "fp_at_serving": 32,
+          "n_pos": 806,
+          "n_neg": 44,
+          "threshold": 0.01,
+          "accuracy": 0.9529411764705882,
+          "brier": 0.04237973610588236
+        },
+        "changes": {
+          "type": "noul",
+          "n": 850,
+          "auc": 0.9573871189294576,
+          "fn_at_05": 45,
+          "fp_at_05": 5,
+          "fn_at_serving": 40,
+          "fp_at_serving": 10,
+          "n_pos": 434,
+          "n_neg": 416,
+          "threshold": 0.02,
+          "accuracy": 0.9411764705882353,
+          "brier": 0.057734880305882356
+        }
+      },
+      "thresholds": {
+        "needs_tool": {
+          "low": 0.01,
+          "high": 0.99,
+          "threshold": 0.01
+        },
+        "changes": {
+          "low": 0.01,
+          "high": 0.99,
+          "threshold": 0.02
+        }
+      },
+      "latency_p50_ms": 96.6186080040643,
+      "latency_p95_ms": 166.33742731501107,
+      "ece": 0.06058234764335041,
+      "macro_accuracy": 0.9070618903513974,
+      "latency_note": "route latency is the two-call serving path (group, then that group's tool)",
+      "routing": {
+        "group_top1": 0.7917647058823529,
+        "end_to_end_single_turn": 0.6459,
+        "end_to_end_context_dependent": 0.9263,
+        "end_to_end_context_hard_negatives": 0.72,
+        "tool_top1": 0.7259923175416133,
+        "per_group_tool_acc": {
+          "cal": 0.889,
+          "comms": 0.912,
+          "files": 0.357,
+          "food": 0.762,
+          "grocery": 0.718,
+          "lists": 0.803,
+          "media": 0.923,
+          "out": 1.0,
+          "plc": 0.829,
+          "ppl": 0.448,
+          "rec": 0.4,
+          "rem": 0.909,
+          "trip": 0.58
+        }
+      }
+    }
+  },
+  "thresholds_source": "fit on val",
+  "overall": {
+    "macro_accuracy": 0.9070618903513974,
+    "latency_p50_ms": 96.6186080040643,
+    "latency_p95_ms": 166.33742731501107
+  },
+  "by_adapter": {
+    "routing": {
+      "sets": [
+        "route"
+      ],
+      "macro_accuracy": 0.9070618903513974,
+      "latency_p95_ms": 166.33742731501107
+    }
+  }
+}

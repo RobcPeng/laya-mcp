@@ -1,0 +1,4247 @@
+{
+ "fingerprint": "94fcf9b1f74cc778",
+ "home_prefix": "home_",
+ "identity_keys": [
+  "account",
+  "account_id",
+  "actor",
+  "actor_id",
+  "as_person",
+  "discord_id",
+  "household",
+  "household_id",
+  "on_behalf_of",
+  "person",
+  "person_id",
+  "user",
+  "user_id"
+ ],
+ "roles": {
+  "creator": [
+   "calendar.manage",
+   "calendar.read",
+   "calendar.share",
+   "comms.send",
+   "devices.control",
+   "files.read",
+   "food.manage",
+   "groups.manage",
+   "integrations.connect",
+   "journal.manage",
+   "journal.read",
+   "lists.read",
+   "lists.share",
+   "lists.write",
+   "model.manage",
+   "money.spend",
+   "outings.manage",
+   "people.invite",
+   "people.read",
+   "people.remember",
+   "photos.delete",
+   "photos.read",
+   "photos.write",
+   "places.manage",
+   "places.read",
+   "receipts.read",
+   "receipts.write",
+   "skills.author",
+   "storage.manage"
+  ],
+  "guest": [
+   "calendar.read",
+   "lists.read",
+   "people.read",
+   "photos.read",
+   "places.read"
+  ],
+  "manager": [
+   "calendar.manage",
+   "calendar.read",
+   "calendar.share",
+   "comms.send",
+   "devices.control",
+   "files.read",
+   "food.manage",
+   "groups.manage",
+   "integrations.connect",
+   "journal.manage",
+   "journal.read",
+   "lists.read",
+   "lists.share",
+   "lists.write",
+   "model.manage",
+   "money.spend",
+   "outings.manage",
+   "people.invite",
+   "people.read",
+   "people.remember",
+   "photos.delete",
+   "photos.read",
+   "photos.write",
+   "places.manage",
+   "places.read",
+   "receipts.read",
+   "receipts.write",
+   "skills.author",
+   "storage.manage"
+  ],
+  "member": [
+   "calendar.manage",
+   "calendar.read",
+   "comms.send",
+   "devices.control",
+   "food.manage",
+   "lists.read",
+   "lists.write",
+   "outings.manage",
+   "people.read",
+   "people.remember",
+   "photos.read",
+   "photos.write",
+   "places.manage",
+   "places.read",
+   "receipts.read",
+   "receipts.write"
+  ],
+  "viewer": [
+   "calendar.read",
+   "lists.read",
+   "people.read",
+   "places.read"
+  ]
+ },
+ "tools": {
+  "add_itinerary_item": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "day": "string",
+    "ends_at": "string",
+    "kind": "string",
+    "notes": "string",
+    "place": "string",
+    "starts_at": "string",
+    "title": "string",
+    "trip": "string"
+   }
+  },
+  "add_person": {
+   "across_homes": false,
+   "capability": "people.invite",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "name": "string",
+    "relationship": "string"
+   }
+  },
+  "add_pet": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "name": "string",
+    "species": "string"
+   }
+  },
+  "add_relationship": {
+   "across_homes": false,
+   "capability": "people.invite",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "of": "string",
+    "relation": "string",
+    "who": "string"
+   }
+  },
+  "add_stay": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "booking_ref": "string",
+    "check_in": "string",
+    "check_out": "string",
+    "notes": "string",
+    "place": "string",
+    "trip": "string"
+   }
+  },
+  "add_trip_participant": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "trip": "string",
+    "who": "string"
+   }
+  },
+  "add_trip_stop": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "detour_minutes": "integer",
+    "notes": "string",
+    "on_date": "string",
+    "optional": "boolean",
+    "place": "string",
+    "trip": "string"
+   }
+  },
+  "attach_trip_list": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "list": "string",
+    "trip": "string"
+   }
+  },
+  "calendar_add": {
+   "across_homes": true,
+   "capability": "calendar.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "all_day": "boolean",
+    "calendar": "string",
+    "ends": "string",
+    "location": "string",
+    "notes": "string",
+    "starts": "string",
+    "title": "string"
+   }
+  },
+  "calendar_delete_event": {
+   "across_homes": true,
+   "capability": "calendar.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "event": "string"
+   }
+  },
+  "calendar_upcoming": {
+   "across_homes": true,
+   "capability": "calendar.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "days": "integer"
+   }
+  },
+  "calendar_update_event": {
+   "across_homes": true,
+   "capability": "calendar.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "ends": "string",
+    "event": "string",
+    "location": "string",
+    "notes": "string",
+    "starts": "string",
+    "title": "string"
+   }
+  },
+  "describe_image_local": {
+   "across_homes": false,
+   "capability": "receipts.read",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "distance": {
+   "across_homes": false,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "destination": "string",
+    "origin": "string"
+   }
+  },
+  "distance_from_home": {
+   "across_homes": false,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "place": "string"
+   }
+  },
+  "email_event": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": true,
+   "native": false,
+   "params": {}
+  },
+  "email_read": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "email_search": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "email_send": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": true,
+   "native": false,
+   "params": {}
+  },
+  "gdrive_read": {
+   "across_homes": false,
+   "capability": "files.read",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "gdrive_search": {
+   "across_homes": false,
+   "capability": "files.read",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "geocode": {
+   "across_homes": false,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "address": "string"
+   }
+  },
+  "get_address": {
+   "across_homes": true,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "whose": "string"
+   }
+  },
+  "get_location": {
+   "across_homes": true,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "get_relationships": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "who": "string"
+   }
+  },
+  "get_weather": {
+   "across_homes": true,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "graph_neighbors": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "hops": "integer",
+    "who": "string"
+   }
+  },
+  "grocery_add": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "item": "string",
+    "quantity": "string"
+   }
+  },
+  "grocery_clear": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "only_bought": "boolean"
+   }
+  },
+  "grocery_list": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "grocery_mark_bought": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "item": "string"
+   }
+  },
+  "grocery_remove": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "item": "string"
+   }
+  },
+  "inventory_list": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "list_add": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "due": "string",
+    "item": "string",
+    "list": "string",
+    "note": "string",
+    "quantity": "string"
+   }
+  },
+  "list_check": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "item": "string",
+    "list": "string"
+   }
+  },
+  "list_create": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "title": "string"
+   }
+  },
+  "list_household": {
+   "across_homes": true,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "list_remove": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "item": "string",
+    "list": "string"
+   }
+  },
+  "list_show": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "include_done": "boolean",
+    "list": "string"
+   }
+  },
+  "lists_overview": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "log_outing": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "kind": "string",
+    "notes": "string",
+    "place": "string",
+    "rating": "integer",
+    "went_on": "string"
+   }
+  },
+  "member_distance": {
+   "across_homes": false,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "from": "string",
+    "member": "string"
+   }
+  },
+  "note_about_person": {
+   "across_homes": false,
+   "capability": "people.remember",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "ocr_image": {
+   "across_homes": false,
+   "capability": "receipts.write",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "people_roster": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "plan_grocery_run": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "list": "string",
+    "radius_m": "integer"
+   }
+  },
+  "plan_trip": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "ends_on": "string",
+    "starts_on": "string",
+    "time_zone": "string",
+    "title": "string"
+   }
+  },
+  "read_file": {
+   "across_homes": false,
+   "capability": "files.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "filename": "string"
+   }
+  },
+  "recall_facts": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "about": "string"
+   }
+  },
+  "recall_outings": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "about": "string"
+   }
+  },
+  "recall_person": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "who": "string"
+   }
+  },
+  "recall_pets": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "recall_trip": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "trip": "string"
+   }
+  },
+  "receipt_add": {
+   "across_homes": false,
+   "capability": "receipts.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "currency": "string",
+    "items": "array",
+    "merchant": "string",
+    "note": "string",
+    "purchased_at": "string",
+    "total_cents": "integer"
+   }
+  },
+  "receipt_get": {
+   "across_homes": false,
+   "capability": "receipts.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "merchant": "string",
+    "on": "string"
+   }
+  },
+  "receipt_scan": {
+   "across_homes": false,
+   "capability": "receipts.write",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "receipt_totals": {
+   "across_homes": false,
+   "capability": "receipts.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "merchant": "string",
+    "since": "string",
+    "until": "string"
+   }
+  },
+  "receipts_list": {
+   "across_homes": false,
+   "capability": "receipts.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "merchant": "string",
+    "since": "string",
+    "until": "string"
+   }
+  },
+  "recipe_add": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "ingredients": "array",
+    "serves": "string",
+    "source": "string",
+    "steps": "string",
+    "title": "string"
+   }
+  },
+  "recipe_get": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "recipe": "string"
+   }
+  },
+  "recipe_import_url": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "recipe_search": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "words": "string"
+   }
+  },
+  "record_fact": {
+   "across_homes": false,
+   "capability": "people.remember",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "about": "string",
+    "fact": "string"
+   }
+  },
+  "register_person": {
+   "across_homes": false,
+   "capability": "people.invite",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "remember_person": {
+   "across_homes": false,
+   "capability": "people.remember",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "what": "string",
+    "who": "string"
+   }
+  },
+  "reminder_add": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "audience": "object",
+    "recurrence": "object",
+    "what": "string",
+    "when": "string"
+   }
+  },
+  "reminder_cancel": {
+   "across_homes": true,
+   "capability": "lists.write",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "what": "string"
+   }
+  },
+  "reminders_list": {
+   "across_homes": true,
+   "capability": "lists.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "days": "integer"
+   }
+  },
+  "reorder_trip_stops": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "stops": "array",
+    "trip": "string"
+   }
+  },
+  "request_current_location": {
+   "across_homes": false,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "purpose": "string"
+   }
+  },
+  "search_nearby": {
+   "across_homes": true,
+   "capability": "places.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "query": "string",
+    "radius_m": "integer"
+   }
+  },
+  "send_sms": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": true,
+   "native": false,
+   "params": {}
+  },
+  "set_address": {
+   "across_homes": false,
+   "capability": "places.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "address_line1": "string",
+    "address_line2": "string",
+    "country": "string",
+    "locality": "string",
+    "postal_code": "string",
+    "region": "string",
+    "target": "string"
+   }
+  },
+  "set_phone": {
+   "across_homes": false,
+   "capability": "comms.send",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "set_trip_notes": {
+   "across_homes": false,
+   "capability": "outings.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "notes": "string",
+    "trip": "string"
+   }
+  },
+  "suggest_meals": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "undo": {
+   "across_homes": false,
+   "capability": null,
+   "connected": true,
+   "irreversible": false,
+   "native": true,
+   "params": {
+    "what": "string"
+   }
+  },
+  "web_fetch": {
+   "across_homes": false,
+   "capability": "files.read",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "web_search": {
+   "across_homes": false,
+   "capability": "files.read",
+   "connected": false,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  },
+  "what_can_i_make": {
+   "across_homes": false,
+   "capability": "food.manage",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "missing_at_most": "integer"
+   }
+  },
+  "where_is": {
+   "across_homes": false,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {
+    "who": "string"
+   }
+  },
+  "whoami": {
+   "across_homes": true,
+   "capability": "people.read",
+   "connected": true,
+   "irreversible": false,
+   "native": false,
+   "params": {}
+  }
+ },
+ "verdicts": {
+  "add_itinerary_item|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_itinerary_item|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_itinerary_item|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_itinerary_item|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_itinerary_item|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_person|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_person|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_person|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_person|member|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|member|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_person|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_pet|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_pet|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_pet|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_pet|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_pet|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_relationship|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_relationship|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_relationship|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_relationship|member|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|member|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_relationship|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_stay|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_stay|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_stay|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_stay|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_stay|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_participant|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_participant|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_participant|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_participant|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_participant|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_stop|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_stop|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_stop|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "add_trip_stop|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "add_trip_stop|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "attach_trip_list|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "attach_trip_list|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "attach_trip_list|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "attach_trip_list|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "attach_trip_list|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_delete_event|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_delete_event|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_delete_event|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_delete_event|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_delete_event|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_upcoming|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_upcoming|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_update_event|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_update_event|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "calendar_update_event|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "calendar_update_event|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "describe_image_local|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "describe_image_local|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "distance_from_home|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance_from_home|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "distance|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "distance|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "email_event|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_event|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_read|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_search|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "email_send|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_read|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "gdrive_search|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "geocode|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "geocode|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_address|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_location|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_relationships|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "get_weather|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "graph_neighbors|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_clear|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_clear|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_clear|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_clear|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_clear|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_list|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_list|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_mark_bought|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_mark_bought|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_mark_bought|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_mark_bought|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_remove|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_remove|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_remove|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "grocery_remove|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "grocery_remove|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "inventory_list|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "inventory_list|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_check|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_check|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_check|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_check|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_check|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_create|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_create|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_create|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_create|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_create|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_household|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_household|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_remove|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_remove|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_remove|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "list_remove|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "list_show|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "list_show|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "lists_overview|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "log_outing|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "log_outing|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "log_outing|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "log_outing|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "member_distance|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "member_distance|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "note_about_person|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "note_about_person|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "ocr_image|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "people_roster|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "people_roster|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_grocery_run|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "plan_trip|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "plan_trip|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "plan_trip|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "plan_trip|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "read_file|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "read_file|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "read_file|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "read_file|member|0": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|member|1": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "read_file|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_facts|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_facts|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_outings|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_outings|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_outings|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_outings|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_person|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_person|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_pets|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_pets|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_pets|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_pets|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_trip|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_trip|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recall_trip|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recall_trip|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recall_trip|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_get|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_get|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_get|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_get|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_get|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_scan|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_scan|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "receipt_totals|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_totals|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_totals|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipt_totals|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipt_totals|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipts_list|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipts_list|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "receipts_list|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "receipts_list|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "receipts_list|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_get|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_get|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_get|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_get|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_get|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_import_url|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_import_url|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "recipe_search|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_search|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_search|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "recipe_search|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "recipe_search|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "record_fact|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "record_fact|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "record_fact|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "record_fact|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "record_fact|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "register_person|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "register_person|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "remember_person|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "remember_person|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "remember_person|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "remember_person|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "remember_person|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_add|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_add|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_add|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_add|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_add|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_cancel|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_cancel|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_cancel|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminder_cancel|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "reminder_cancel|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "reminders_list|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "reminders_list|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "reorder_trip_stops|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "reorder_trip_stops|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "reorder_trip_stops|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "reorder_trip_stops|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "request_current_location|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "request_current_location|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "search_nearby|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "send_sms|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "send_sms|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_address|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "set_address|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "set_address|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_address|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "set_address|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "set_phone|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "set_phone|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "set_trip_notes|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "set_trip_notes|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "set_trip_notes|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "set_trip_notes|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "set_trip_notes|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "suggest_meals|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "suggest_meals|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "undo|creator|0": [
+   "allow",
+   "native"
+  ],
+  "undo|creator|1": [
+   "allow",
+   "native"
+  ],
+  "undo|guest|0": [
+   "allow",
+   "native"
+  ],
+  "undo|guest|1": [
+   "allow",
+   "native"
+  ],
+  "undo|manager|0": [
+   "allow",
+   "native"
+  ],
+  "undo|manager|1": [
+   "allow",
+   "native"
+  ],
+  "undo|member|0": [
+   "allow",
+   "native"
+  ],
+  "undo|member|1": [
+   "allow",
+   "native"
+  ],
+  "undo|viewer|0": [
+   "allow",
+   "native"
+  ],
+  "undo|viewer|1": [
+   "allow",
+   "native"
+  ],
+  "web_fetch|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_fetch|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|creator|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|creator|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|guest|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|guest|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|manager|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|manager|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|member|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|member|1": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|viewer|0": [
+   "block",
+   "not_connected"
+  ],
+  "web_search|viewer|1": [
+   "block",
+   "not_connected"
+  ],
+  "what_can_i_make|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|guest|0": [
+   "block",
+   "role_limit"
+  ],
+  "what_can_i_make|guest|1": [
+   "block",
+   "role_limit"
+  ],
+  "what_can_i_make|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "what_can_i_make|viewer|0": [
+   "block",
+   "role_limit"
+  ],
+  "what_can_i_make|viewer|1": [
+   "block",
+   "role_limit"
+  ],
+  "where_is|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "where_is|viewer|1": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|creator|0": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|creator|1": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|guest|0": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|guest|1": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|manager|0": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|manager|1": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|member|0": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|member|1": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|viewer|0": [
+   "allow",
+   "allowed"
+  ],
+  "whoami|viewer|1": [
+   "allow",
+   "allowed"
+  ]
+ }
+}

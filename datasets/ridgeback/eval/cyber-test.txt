@@ -1,0 +1,19 @@
+
+=== Ridgeback guard eval (test split) ===
+
+[tool-gate] n=1061 macro_acc=0.996 ece=0.001 p50=40.9ms p95=48.1ms
+    verdict          choice acc=0.991
+    permitted        noul   acc=0.994 auc=0.983 fn/fp@serving=0/6 (thr=0.5)
+    irreversible     noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    identity_arg     noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    other_household  noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    child_limit      noul   acc=1.0 fn/fp@serving=0/0 (thr=0.5)
+    risk             score  acc=0.99
+
+[tool-result] n=246 macro_acc=0.997 ece=0.002 p50=22.4ms p95=26.7ms
+    injected         noul   acc=0.992 auc=1.000 fn/fp@serving=0/2 (thr=0.5)
+    quarantine       noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    wants_action     noul   acc=1.0 auc=1.000 fn/fp@serving=0/0 (thr=0.5)
+    clean false-block: @0.5=0.012 @serving=0.012 (n=172)
+[adapter cyber] macro_acc=0.997 p95<=48.1ms sets=['tool-gate', 'tool-result']
+[overall] macro_acc=0.997 p50~31.7ms p95<=48.1ms

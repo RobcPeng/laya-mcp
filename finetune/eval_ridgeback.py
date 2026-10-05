@@ -36,15 +36,23 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 from laya_mcp import ridgeback_packs as R          # noqa: E402
 
-SETS = ["input-safety", "route", "tool-gate", "tool-result", "output"]
+from laya_mcp.ridgeback_packs import ADAPTERS, PACK_ADAPTER  # noqa: E402
+
+SETS = ["input-safety", "route", "tool-gate", "tool-result", "result-safety", "output"]
 PACK = {"input-safety": "ridgeback-input-safety", "route": "ridgeback-route",
         "tool-gate": "ridgeback-tool-gate", "tool-result": "ridgeback-tool-result",
-        "output": "ridgeback-output"}
+        "result-safety": "ridgeback-result-safety", "output": "ridgeback-output"}
+ADAPTER_OF = {name: PACK_ADAPTER[pack] for name, pack in PACK.items()}
 # noul questions that mean "flag it" per set, for the row-level clean/false-block rate.
-FLAGS = {"input-safety": ["decline"], "tool-result": ["injected", "quarantine", "wants_action"],
-         "output": ["leaks_prompt", "member_private", "safe_records", "coordinates", "other_home_data"]}
+FLAGS = {"input-safety": ["decline"],
+         "tool-result": ["injected", "quarantine", "wants_action"],
+         "result-safety": ["result_unsuitable"],
+         "output": ["leaks_prompt", "member_private", "safe_records", "coordinates", "other_home_data",
+                    "reply_unsuitable"]}
 CLEAN_FAMILY = {"input-safety": lambda f: f.split("/")[1] == "none",
-                "tool-result": lambda f: "clean" in f, "output": lambda f: "clean" in f}
+                "tool-result": lambda f: "clean" in f,
+                "result-safety": lambda f: "/ok/" in f or "kidclean" in f,
+                "output": lambda f: "clean" in f}
 
 DATA = os.path.join(os.path.dirname(HERE), "datasets", "ridgeback")
 
@@ -64,21 +72,25 @@ def _auc(pos, neg):
 class _LocalAgent:
     def __init__(self, checkpoint, device):
         from laya.agent import Agent
+        from . import lora
         from .common import resolve_base
-        d, _ = resolve_base(checkpoint)
-        self.agent = Agent(d, device=device)
+        if lora.is_adapter(checkpoint):
+            self.agent = lora.load_agent(checkpoint, device=device)
+        else:
+            d, _ = resolve_base(checkpoint)
+            self.agent = Agent(d, device=device)
 
     def predict(self, state, questions):
         return self.agent.predict(state, questions)
 
 
 class _ServerAgent:
-    def __init__(self, url):
+    def __init__(self, url, model="auto"):
         from laya_mcp import client
-        self.client, self.url = client, url
+        self.client, self.url, self.model = client, url, model or "auto"
 
     def predict(self, state, questions):
-        return self.client.predict(state, questions, url=self.url)
+        return self.client.predict(state, questions, url=self.url, model=self.model)
 
 
 def _simplify(res):
@@ -111,12 +123,20 @@ def _fit_noul_thresholds(agent, rows, qids, fp_budget=0.05):
     return out
 
 
-def eval_set(agent, name, split, fit_split="val"):
+def eval_set(agent, name, split, fit_split="val", fixed=None):
     rows = _rows(name, split)
     pack = R.get(PACK[name])
     questions = pack["questions"]
     noul = [q for q, qq in questions.items() if qq["type"] == "noul"]
-    thr = _fit_noul_thresholds(agent, _rows(name, fit_split), noul) if noul else {}
+    if fixed is not None:
+        # serving thresholds fitted elsewhere on val: `low` is the cut, because escalating is intervening
+        thr = {q: {"threshold": fixed[q]["low"], "low": fixed[q]["low"], "high": fixed[q]["high"]}
+               for q in noul if q in fixed and q not in R.POSITIVE}   # positive qids: cut is on 1-p
+        if fixed:
+            for q in noul:
+                thr.setdefault(q, {"threshold": 0.5})
+    else:
+        thr = _fit_noul_thresholds(agent, _rows(name, fit_split), noul) if noul else {}
 
     per_q, confs, corrects, lat = {}, [], [], []
     preds = []
@@ -187,6 +207,23 @@ def eval_set(agent, name, split, fit_split="val"):
             out["clean"] = {"n": len(clean), "false_block_rate_at_05": blocked05 / len(clean),
                             "false_block_rate_at_serving": blockedS / len(clean)}
 
+    # web search kid safety: block/escalate rate per slice and asker, at the serving cuts
+    if name in ("result-safety", "output"):
+        q = "result_unsuitable" if name == "result-safety" else "reply_unsuitable"
+        cut = thr.get(q, {}).get("threshold", 0.5)
+        web = {}
+        for r, a in zip(rows, preds):
+            fam = r["family"].split("/")[1]
+            if not fam.startswith("web_"):
+                continue
+            who = "kid" if "ON (a child)" in r["state"]["asker"] else "adult"
+            d = web.setdefault(f"{fam[4:]}/{who}", [0, 0])
+            d[0] += int(a[q]["p_true"] >= cut)
+            d[1] += 1
+        if web:
+            out["web_kid_safety"] = {k: {"flagged": f, "n": n, "rate": round(f / n, 3)}
+                                     for k, (f, n) in sorted(web.items())}
+
     # routing accuracy
     if name == "route":
         top1_group = top1_tool = n_tool = 0
@@ -201,7 +238,36 @@ def eval_set(agent, name, split, fit_split="val"):
                 correct = int(a[tq]["answer"] == r["gold"][tq] and pg == gg)
                 top1_tool += correct
                 d = per_group.setdefault(gg, [0, 0]); d[0] += correct; d[1] += 1
+        def _acc(sub):
+            if not sub:
+                return None
+            ok = 0
+            for r, a in sub:
+                gg = r["gold"].get("group")
+                tq = f"tool_{gg}"
+                good = a["group"]["answer"] == gg and (tq not in r["gold"] or a.get(tq, {}).get("answer") == r["gold"][tq])
+                ok += int(good)
+            return round(ok / len(sub), 4)
+        pairs = list(zip(rows, preds))
+        multi = [(r, a) for r, a in pairs if "/ctx/" in r["family"]]
+        multi_neg = [(r, a) for r, a in pairs if "/ctxneg/" in r["family"]]
+        single = [(r, a) for r, a in pairs if "/ctx" not in r["family"]]
+        # Latency the way the wrapper serves routing: the group call, then the winning group's tool call.
+        serve_lat = []
+        for r in rows[:200]:
+            qs = r["questions"]
+            t0 = time.perf_counter()
+            first = _simplify(agent.predict(r["state"], {q: qs[q] for q in ("group", "needs_tool", "changes")}))
+            g = first["group"]["answer"]
+            if f"tool_{g}" in qs:
+                agent.predict(r["state"], {f"tool_{g}": qs[f"tool_{g}"]})
+            serve_lat.append((time.perf_counter() - t0) * 1000)
+        out["latency_p50_ms"] = float(np.percentile(serve_lat, 50))
+        out["latency_p95_ms"] = float(np.percentile(serve_lat, 95))
+        out["latency_note"] = "route latency is the two-call serving path (group, then that group's tool)"
         out["routing"] = {"group_top1": top1_group / len(rows),
+                          "end_to_end_single_turn": _acc(single), "end_to_end_context_dependent": _acc(multi),
+                          "end_to_end_context_hard_negatives": _acc(multi_neg),
                           "tool_top1": (top1_tool / n_tool) if n_tool else None,
                           "per_group_tool_acc": {g: round(c / n, 3) for g, (c, n) in sorted(per_group.items())}}
     return out
@@ -220,17 +286,24 @@ def _ece(conf, correct, bins=10):
     return float(e)
 
 
-def evaluate(agent, split="test"):
-    report = {"split": split, "sets": {}}
-    allc, alllat = [], []
-    for name in SETS:
-        r = eval_set(agent, name, split)
+def evaluate(agent, split="test", fixed=None, only_sets=None):
+    report = {"split": split, "sets": {}, "thresholds_source": "fixed file" if fixed else "fit on val"}
+    for name in (only_sets or SETS):
+        r = eval_set(agent, name, split, fixed=fixed)
         report["sets"][name] = r
     report["overall"] = {
-        "macro_accuracy": float(np.mean([report["sets"][s]["macro_accuracy"] for s in SETS])),
-        "latency_p50_ms": float(np.mean([report["sets"][s]["latency_p50_ms"] for s in SETS])),
-        "latency_p95_ms": float(np.max([report["sets"][s]["latency_p95_ms"] for s in SETS])),
+        "macro_accuracy": float(np.mean([report["sets"][s]["macro_accuracy"] for s in report["sets"]])),
+        "latency_p50_ms": float(np.mean([report["sets"][s]["latency_p50_ms"] for s in report["sets"]])),
+        "latency_p95_ms": float(np.max([report["sets"][s]["latency_p95_ms"] for s in report["sets"]])),
     }
+    report["by_adapter"] = {}
+    for adapter, packs_ in ADAPTERS.items():
+        ss = [s for s in report["sets"] if ADAPTER_OF.get(s) == adapter]
+        if ss:
+            report["by_adapter"][adapter] = {
+                "sets": ss,
+                "macro_accuracy": float(np.mean([report["sets"][s]["macro_accuracy"] for s in ss])),
+                "latency_p95_ms": float(np.max([report["sets"][s]["latency_p95_ms"] for s in ss]))}
     return report
 
 
@@ -239,12 +312,17 @@ def main():
     ap.add_argument("--checkpoint", default="english", help="checkpoint dir or english|multilingual|typed-decisions")
     ap.add_argument("--split", default="test", choices=["train", "val", "test"])
     ap.add_argument("--url", help="score through a running laya.serve at this URL instead of loading weights")
+    ap.add_argument("--model", default="auto", help="server slot to ask, e.g. typed-decisions (with --url)")
+    ap.add_argument("--adapter", choices=list(ADAPTERS), help="evaluate only this adapter's sets")
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--device")
     ap.add_argument("--out", help="write the full report JSON here")
+    ap.add_argument("--thresholds", help="serving thresholds JSON (from fit_ridgeback_thresholds) to score at")
     a = ap.parse_args()
-    agent = _ServerAgent(a.url) if a.url else _LocalAgent(a.checkpoint, a.device or f"cuda:{a.gpu}")
-    rep = evaluate(agent, a.split)
+    agent = _ServerAgent(a.url, a.model) if a.url else _LocalAgent(a.checkpoint, a.device or f"cuda:{a.gpu}")
+    fixed = json.load(open(a.thresholds)) if a.thresholds else None
+    only = [s for s in SETS if ADAPTER_OF.get(s) == a.adapter] if a.adapter else None
+    rep = evaluate(agent, a.split, fixed, only_sets=only)
     if a.out:
         with open(a.out, "w") as f:
             json.dump(rep, f, indent=2, default=str)
@@ -265,13 +343,21 @@ def _print(rep):
         if "clean" in r:
             print(f"    clean false-block: @0.5={r['clean']['false_block_rate_at_05']:.3f} "
                   f"@serving={r['clean']['false_block_rate_at_serving']:.3f} (n={r['clean']['n']})")
+        if "web_kid_safety" in r:
+            print("    web search kid safety (flag rate): " + ", ".join(
+                f"{k}={v['rate']}" for k, v in r["web_kid_safety"].items()))
         if "routing" in r:
             rt = r["routing"]
             print(f"    routing: group_top1={rt['group_top1']:.3f} tool_top1="
                   f"{rt['tool_top1'] and round(rt['tool_top1'],3)}")
             print(f"    per-group tool acc: {rt['per_group_tool_acc']}")
+            print(f"    end-to-end: single-turn={rt['end_to_end_single_turn']} "
+                  f"context-dependent={rt['end_to_end_context_dependent']} "
+                  f"context hard-negatives={rt['end_to_end_context_hard_negatives']}")
+    for adapter, m in rep.get("by_adapter", {}).items():
+        print(f"[adapter {adapter}] macro_acc={m['macro_accuracy']:.3f} p95<={m['latency_p95_ms']:.1f}ms sets={m['sets']}")
     o = rep["overall"]
-    print(f"\n[overall] macro_acc={o['macro_accuracy']:.3f} p50~{o['latency_p50_ms']:.1f}ms p95<={o['latency_p95_ms']:.1f}ms")
+    print(f"[overall] macro_acc={o['macro_accuracy']:.3f} p50~{o['latency_p50_ms']:.1f}ms p95<={o['latency_p95_ms']:.1f}ms")
 
 
 if __name__ == "__main__":
