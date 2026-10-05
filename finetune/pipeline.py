@@ -222,7 +222,7 @@ def main():
     g.add_argument("--recipe", help="recipe name (see --list) or path to a recipe JSON")
     g.add_argument("--all", action="store_true", help="run every recipe")
     g.add_argument("--list", action="store_true")
-    ap.add_argument("--strategy", choices=["full", "head", "calibrate"], help="override the recipe's strategy")
+    ap.add_argument("--strategy", choices=["full", "head", "lora", "calibrate"], help="override the recipe's strategy")
     ap.add_argument("--base", help="english | multilingual | typed-decisions | checkpoint dir")
     ap.add_argument("--epochs", type=int)
     ap.add_argument("--micro-batch", type=int)

@@ -210,3 +210,39 @@ beat with `full`.
 - **bf16 vs fp16 moves probabilities** by a few hundredths (upstream measurement). Fit and serve
   thresholds under the same dtype and device.
 - Choice questions stay at 20 options or fewer. Avoid true/false/yes/no as choice labels.
+
+## Ridgeback: the household guard (branch `ridgeback-guard`)
+
+A five-stage Laya guard in front of Ridgeback's household assistant (Bobby): input access checks, tool
+routing, tool-call gating, tool-result injection screening, and output leak screening. Sets and packs
+are in `datasets/ridgeback/` and `laya_mcp/ridgeback_packs.py`; build with
+`python datasets/ridgeback/build.py`.
+
+**LoRA.** These recipes use `strategy: "lora"` (added here, dependency-free — plain torch, no peft). The
+adapter wraps ModernBERT's four projections per layer (`attn.Wqkv`, `attn.Wo`, `mlp.Wi`, `mlp.Wo`),
+trains with the full decision head, and is MERGED into the base weights at export, so the checkpoint is an
+ordinary Laya checkpoint that `laya.serve` / `finetune.serve` / `laya.Agent` load with no LoRA code. The
+adapter is also saved on its own as `adapter.safetensors`. Hyperparameters live in each recipe's `lora`
+block (`rank` 16, `alpha` 32, `dropout` 0.05, the four target modules); the adapter LR is the recipe's
+`hyperparams.lr_encoder`.
+
+```bash
+# One adapter per stage (runs through the normal pipeline, per-pack evaluate):
+python -m finetune.pipeline --recipe ridgeback-tool-result --strategy lora --gpu 0
+
+# One multi-task adapter over all five sets (question ids are unique, so one adapter serves every stage).
+# Train directly, then evaluate with the cross-set script (the pipeline's evaluate is per-pack):
+python -m finetune.train --recipe ridgeback-guard --out runs/ridgeback-guard --gpu 0
+python -m finetune.eval_ridgeback --checkpoint runs/ridgeback-guard/<stamp>-lora/checkpoint --split test
+
+# Baseline for comparison, through a running laya.serve (no GPU allocation of your own):
+python -m finetune.eval_ridgeback --url http://127.0.0.1:7491 --split test
+```
+
+Serve the merged checkpoint in a `typed-decisions` slot beside the base model and point the Ridgeback
+wrapper's `BOBBY_LAYA_URL` / `BOBBY_LAYA_MODEL` at it:
+
+```bash
+LAYA_CUSTOM_CHECKPOINT=runs/ridgeback-guard/<stamp>-lora/checkpoint \
+LAYA_PORT=7492 LAYA_MODELS=typed-decisions python -m finetune.serve
+```

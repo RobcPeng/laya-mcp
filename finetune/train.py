@@ -115,6 +115,9 @@ def train_loop(model, items, pad_id, device, hp, strategy, log_metric=None):
     rng = random.Random(hp["seed"])
     torch.manual_seed(hp["seed"])
     head_only = strategy == "head"
+    # "lora" freezes the base encoder and trains only the injected adapters (already set up by run());
+    # like "head" the base weights do not move, but unlike "head" the encoder still needs its backward
+    # pass and checkpointing because the adapters live inside it.
     if head_only:
         for p in model.encoder.parameters():
             p.requires_grad_(False)
@@ -249,6 +252,17 @@ def run(recipe, out_dir, strategy=None, base=None, device="cuda:0", overrides=No
     model = load_model(base_dir, cfg, device)
     stats = {"base": base, "base_dir": base_dir, "base_revision": revision, "strategy": strategy,
              "val_items": len(cal_items), "val_dropped": cal_drop}
+    lora_cfg = None
+    if strategy == "lora":
+        from . import lora
+        lora_cfg = {"rank": 16, "alpha": 32, "dropout": 0.05, "target_modules": list(lora.DEFAULT_TARGETS),
+                    **recipe.get("lora", {})}
+        model, n_adapters, n_params = lora.inject(
+            model, rank=lora_cfg["rank"], alpha=lora_cfg["alpha"], dropout=lora_cfg["dropout"],
+            targets=tuple(lora_cfg["target_modules"]))
+        stats.update(lora_adapters=n_adapters, lora_trainable_params=n_params, lora=lora_cfg)
+        print(f"[train] LoRA: {n_adapters} adapters, {n_params:,} trainable adapter params "
+              f"(rank={lora_cfg['rank']}, alpha={lora_cfg['alpha']})", flush=True)
     if strategy != "calibrate":
         items, dropped = encode_rows(train_rows, tok, cfg, smoothing=hp["smoothing"], **enc_kw)
         stats.update(train_items=len(items), train_dropped=dropped)
@@ -262,6 +276,12 @@ def run(recipe, out_dir, strategy=None, base=None, device="cuda:0", overrides=No
     temps = fit_temperatures(model, cal_items, tok.pad_token_id, device, cfg.get("temperature", [1.0, 1.0, 1.0]))
     stats["temperatures"] = temps
     print(f"[train] fitted temperatures (choice, score, noul): {[round(t, 3) for t in temps]}", flush=True)
+    if strategy == "lora":
+        # Save the adapter on its own, then fold it into the base weights so the exported checkpoint is
+        # a plain Laya checkpoint that laya.Agent / laya.serve load with no LoRA code.
+        from . import lora
+        lora.save_adapter(model, out_dir, meta={**(lora_cfg or {}), "base": base, "recipe": recipe["name"]})
+        lora.merge(model)
     export(model, base_dir, cfg, out_dir, temps, recipe["name"], strategy,
            copy_weights_from_base=(strategy == "calibrate"))
     stats["checkpoint"] = os.path.abspath(out_dir)
@@ -276,7 +296,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--recipe", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--strategy", choices=["full", "head", "calibrate"])
+    ap.add_argument("--strategy", choices=["full", "head", "lora", "calibrate"])
     ap.add_argument("--base", help="english | multilingual | typed-decisions | checkpoint dir")
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--device", help="explicit torch device (overrides --gpu)")

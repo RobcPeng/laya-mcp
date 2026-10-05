@@ -1,0 +1,38 @@
+{
+  "name": "ridgeback-tool-gate",
+  "pack": "ridgeback-tool-gate",
+  "dataset": "ridgeback/tool-gate",
+  "description": "Gate a proposed tool call by request, role and safe mode: run/confirm/refuse plus matches_request, permitted, irreversible, identity_arg, other_household, child_limit, risk.",
+  "eval": {
+    "aggregate": [
+      "other_household",
+      "child_limit"
+    ],
+    "fp_budget": 0.05,
+    "recall_target": 0.98
+  },
+  "gates": {
+    "verdict.accuracy": {
+      "min": 0.8
+    }
+  },
+  "serving": "verdict refuse or other_household/child_limit high -> block the call; irreversible or verdict confirm -> ask the person first. The dispatcher's gates are still the enforcement point; this is triage in front of them.",
+  "base": "english",
+  "strategy": "lora",
+  "hyperparams": {
+    "epochs": 4,
+    "lr_encoder": 0.0002,
+    "lr_head": 0.0005
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "attn.Wqkv",
+      "attn.Wo",
+      "mlp.Wi",
+      "mlp.Wo"
+    ]
+  }
+}

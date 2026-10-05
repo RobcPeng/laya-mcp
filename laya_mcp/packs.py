@@ -214,7 +214,12 @@ def load_accelerators():
     try:
         from .accelerator_packs import PACKS as accel
     except ImportError:
-        return []
+        accel = {}
+    try:
+        from .ridgeback_packs import PACKS as ridgeback      # Ridgeback's household guard (5 packs)
+        accel = {**accel, **ridgeback}
+    except ImportError:
+        pass
     added = [n for n in accel if n not in PACKS and n not in _BUILDERS]
     for n in added:
         PACKS[n] = accel[n]
