@@ -1,0 +1,3910 @@
+[
+ {
+  "id": "rt-gen-add_itinerary_item-0",
+  "request": "Add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_itinerary_item-1",
+  "request": "Bobby, add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_itinerary_item-2",
+  "request": "Can you help with this? Add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_itinerary_item-3",
+  "request": "Add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-0",
+  "request": "Record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-1",
+  "request": "Bobby, record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-2",
+  "request": "Can you help with this? Record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-3",
+  "request": "Record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child -- name: Harbor.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-0",
+  "request": "Record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_pet",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-1",
+  "request": "Bobby, record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_pet",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-2",
+  "request": "Can you help with this? Record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_pet",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-3",
+  "request": "Record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming -- name: Harbor.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_pet",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-0",
+  "request": "Record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-1",
+  "request": "Bobby, record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-2",
+  "request": "Can you help with this? Record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-3",
+  "request": "Record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam' -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-0",
+  "request": "Record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-1",
+  "request": "Bobby, record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-2",
+  "request": "Can you help with this? Record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-3",
+  "request": "Record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-0",
+  "request": "Put somebody on a trip by name.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-1",
+  "request": "Bobby, put somebody on a trip by name.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-2",
+  "request": "Can you help with this? Put somebody on a trip by name.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-3",
+  "request": "Put somebody on a trip by name -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-0",
+  "request": "Put a place on a trip's route, after the stops already on it.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-1",
+  "request": "Bobby, put a place on a trip's route, after the stops already on it.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-2",
+  "request": "Can you help with this? Put a place on a trip's route, after the stops already on it.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-3",
+  "request": "Put a place on a trip's route, after the stops already on it -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-0",
+  "request": "Put one of the household's own lists on a trip, by the list's name -- the packing list.",
+  "history": [],
+  "group": "trip",
+  "tool": "attach_trip_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-1",
+  "request": "Bobby, put one of the household's own lists on a trip, by the list's name -- the packing list.",
+  "history": [],
+  "group": "trip",
+  "tool": "attach_trip_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-2",
+  "request": "Can you help with this? Put one of the household's own lists on a trip, by the list's name -- the packing list.",
+  "history": [],
+  "group": "trip",
+  "tool": "attach_trip_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-3",
+  "request": "Put one of the household's own lists on a trip, by the list's name -- the packing list -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "attach_trip_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-0",
+  "request": "Put an event on the household calendar.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-1",
+  "request": "Bobby, put an event on the household calendar.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-2",
+  "request": "Can you help with this? Put an event on the household calendar.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-3",
+  "request": "Put an event on the household calendar -- title: Dentist.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-0",
+  "request": "Take an upcoming event off the calendar, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-1",
+  "request": "Bobby, take an upcoming event off the calendar, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-2",
+  "request": "Can you help with this? Take an upcoming event off the calendar, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-3",
+  "request": "Take an upcoming event off the calendar, named by its title -- event: Dentist.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-0",
+  "request": "What is coming up on the household's calendars, including any calendar another household has shared with it.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-1",
+  "request": "Bobby, what is coming up on the household's calendars, including any calendar another household has shared with it.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-2",
+  "request": "Can you help with this? What is coming up on the household's calendars, including any calendar another household has shared with it.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-3",
+  "request": "What is coming up on the household's calendars, including any calendar another household has shared with it -- days: 1.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-0",
+  "request": "Change an upcoming event, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-1",
+  "request": "Bobby, change an upcoming event, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-2",
+  "request": "Can you help with this? Change an upcoming event, named by its title.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-3",
+  "request": "Change an upcoming event, named by its title -- event: Dentist.",
+  "history": [],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-0",
+  "request": "How far apart two places are in a straight line, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-1",
+  "request": "Bobby, how far apart two places are in a straight line, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-2",
+  "request": "Can you help with this? How far apart two places are in a straight line, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-3",
+  "request": "How far apart two places are in a straight line, in miles and kilometres -- origin: something.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-0",
+  "request": "How far a place is from the household's address, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-1",
+  "request": "Bobby, how far a place is from the household's address, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-2",
+  "request": "Can you help with this? How far a place is from the household's address, in miles and kilometres.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-3",
+  "request": "How far a place is from the household's address, in miles and kilometres -- place: the library.",
+  "history": [],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-0",
+  "request": "Look up where a place is: its latitude, longitude and full name.",
+  "history": [],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-1",
+  "request": "Bobby, look up where a place is: its latitude, longitude and full name.",
+  "history": [],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-2",
+  "request": "Can you help with this? Look up where a place is: its latitude, longitude and full name.",
+  "history": [],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-3",
+  "request": "Look up where a place is: its latitude, longitude and full name -- address: something.",
+  "history": [],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-0",
+  "request": "The address on file: your own, or the household's.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-1",
+  "request": "Bobby, the address on file: your own, or the household's.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-2",
+  "request": "Can you help with this? The address on file: your own, or the household's.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-3",
+  "request": "The address on file: your own, or the household's -- whose: something.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_location-0",
+  "request": "Determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_location-1",
+  "request": "Bobby, determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_location-2",
+  "request": "Can you help with this? Determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-0",
+  "request": "How one person is connected to the others here, as the household recorded it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-1",
+  "request": "Bobby, how one person is connected to the others here, as the household recorded it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-2",
+  "request": "Can you help with this? How one person is connected to the others here, as the household recorded it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-3",
+  "request": "How one person is connected to the others here, as the household recorded it -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_weather-0",
+  "request": "Current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_weather",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_weather-1",
+  "request": "Bobby, current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_weather",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_weather-2",
+  "request": "Can you help with this? Current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+  "history": [],
+  "group": "plc",
+  "tool": "get_weather",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-0",
+  "request": "Everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+  "history": [],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-1",
+  "request": "Bobby, everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+  "history": [],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-2",
+  "request": "Can you help with this? Everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+  "history": [],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-3",
+  "request": "Everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-0",
+  "request": "Put something on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-1",
+  "request": "Bobby, put something on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-2",
+  "request": "Can you help with this? Put something on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-3",
+  "request": "Put something on the household shopping list -- item: oat milk.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-0",
+  "request": "Clear the shopping list after a shop.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-1",
+  "request": "Bobby, clear the shopping list after a shop.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-2",
+  "request": "Can you help with this? Clear the shopping list after a shop.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-3",
+  "request": "Clear the shopping list after a shop -- only bought: False.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_list-0",
+  "request": "What is still on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_list-1",
+  "request": "Bobby, what is still on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_list-2",
+  "request": "Can you help with this? What is still on the household shopping list.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-0",
+  "request": "Tick something off the shopping list as bought.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-1",
+  "request": "Bobby, tick something off the shopping list as bought.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-2",
+  "request": "Can you help with this? Tick something off the shopping list as bought.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-3",
+  "request": "Tick something off the shopping list as bought -- item: oat milk.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-0",
+  "request": "Take something off the shopping list without buying it.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-1",
+  "request": "Bobby, take something off the shopping list without buying it.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-2",
+  "request": "Can you help with this? Take something off the shopping list without buying it.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-3",
+  "request": "Take something off the shopping list without buying it -- item: oat milk.",
+  "history": [],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-inventory_list-0",
+  "request": "What the household has in stock.",
+  "history": [],
+  "group": "lists",
+  "tool": "inventory_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-inventory_list-1",
+  "request": "Bobby, what the household has in stock.",
+  "history": [],
+  "group": "lists",
+  "tool": "inventory_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-inventory_list-2",
+  "request": "Can you help with this? What the household has in stock.",
+  "history": [],
+  "group": "lists",
+  "tool": "inventory_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-0",
+  "request": "Put something on one of the household's lists, named by its title.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-1",
+  "request": "Bobby, put something on one of the household's lists, named by its title.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-2",
+  "request": "Can you help with this? Put something on one of the household's lists, named by its title.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-3",
+  "request": "Put something on one of the household's lists, named by its title -- list: Groceries.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-0",
+  "request": "Tick an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-1",
+  "request": "Bobby, tick an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-2",
+  "request": "Can you help with this? Tick an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-3",
+  "request": "Tick an item off one of the household's lists -- list: Groceries.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-0",
+  "request": "Start a new list for the household, named however they want (a trip, a project, a wishlist).",
+  "history": [],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-1",
+  "request": "Bobby, start a new list for the household, named however they want (a trip, a project, a wishlist).",
+  "history": [],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-2",
+  "request": "Can you help with this? Start a new list for the household, named however they want (a trip, a project, a wishlist).",
+  "history": [],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-3",
+  "request": "Start a new list for the household, named however they want (a trip, a project, a wishlist) -- title: Dentist.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_household-0",
+  "request": "Everyone who lives in this household, with how each is related.",
+  "history": [],
+  "group": "ppl",
+  "tool": "list_household",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_household-1",
+  "request": "Bobby, everyone who lives in this household, with how each is related.",
+  "history": [],
+  "group": "ppl",
+  "tool": "list_household",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_household-2",
+  "request": "Can you help with this? Everyone who lives in this household, with how each is related.",
+  "history": [],
+  "group": "ppl",
+  "tool": "list_household",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-0",
+  "request": "Take an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-1",
+  "request": "Bobby, take an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-2",
+  "request": "Can you help with this? Take an item off one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-3",
+  "request": "Take an item off one of the household's lists -- list: Groceries.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-0",
+  "request": "What is on one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-1",
+  "request": "Bobby, what is on one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-2",
+  "request": "Can you help with this? What is on one of the household's lists.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-3",
+  "request": "What is on one of the household's lists -- list: Groceries.",
+  "history": [],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-lists_overview-0",
+  "request": "Every list this household can see and how many open items each has, including lists another household has shared with it.",
+  "history": [],
+  "group": "lists",
+  "tool": "lists_overview",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-lists_overview-1",
+  "request": "Bobby, every list this household can see and how many open items each has, including lists another household has shared with it.",
+  "history": [],
+  "group": "lists",
+  "tool": "lists_overview",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-lists_overview-2",
+  "request": "Can you help with this? Every list this household can see and how many open items each has, including lists another household has shared with it.",
+  "history": [],
+  "group": "lists",
+  "tool": "lists_overview",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-log_outing-0",
+  "request": "Record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note.",
+  "history": [],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-log_outing-1",
+  "request": "Bobby, record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note.",
+  "history": [],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-log_outing-2",
+  "request": "Can you help with this? Record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note.",
+  "history": [],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-log_outing-3",
+  "request": "Record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note -- place: the library.",
+  "history": [],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-0",
+  "request": "How far a household member is, by the address they've shared, from home or from you.",
+  "history": [],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-1",
+  "request": "Bobby, how far a household member is, by the address they've shared, from home or from you.",
+  "history": [],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-2",
+  "request": "Can you help with this? How far a household member is, by the address they've shared, from home or from you.",
+  "history": [],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-3",
+  "request": "How far a household member is, by the address they've shared, from home or from you -- member: something.",
+  "history": [],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-people_roster-0",
+  "request": "Everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "people_roster",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-people_roster-1",
+  "request": "Bobby, everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "people_roster",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-people_roster-2",
+  "request": "Can you help with this? Everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "people_roster",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-0",
+  "request": "Plan a shopping trip.",
+  "history": [],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-1",
+  "request": "Bobby, plan a shopping trip.",
+  "history": [],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-2",
+  "request": "Can you help with this? Plan a shopping trip.",
+  "history": [],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-3",
+  "request": "Plan a shopping trip -- list: Groceries.",
+  "history": [],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-0",
+  "request": "Start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+  "history": [],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-1",
+  "request": "Bobby, start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+  "history": [],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-2",
+  "request": "Can you help with this? Start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+  "history": [],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-3",
+  "request": "Start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives -- title: Dentist.",
+  "history": [],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-0",
+  "request": "Read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+  "history": [],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-1",
+  "request": "Bobby, read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+  "history": [],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-2",
+  "request": "Can you help with this? Read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+  "history": [],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-3",
+  "request": "Read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it -- filename: notes.txt.",
+  "history": [],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-0",
+  "request": "Search what the household has told Bobby to remember.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-1",
+  "request": "Bobby, search what the household has told Bobby to remember.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-2",
+  "request": "Can you help with this? Search what the household has told Bobby to remember.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-3",
+  "request": "Search what the household has told Bobby to remember -- about: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-0",
+  "request": "Where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes.",
+  "history": [],
+  "group": "out",
+  "tool": "recall_outings",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-1",
+  "request": "Bobby, where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes.",
+  "history": [],
+  "group": "out",
+  "tool": "recall_outings",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-2",
+  "request": "Can you help with this? Where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes.",
+  "history": [],
+  "group": "out",
+  "tool": "recall_outings",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-3",
+  "request": "Where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes -- about: Theo.",
+  "history": [],
+  "group": "out",
+  "tool": "recall_outings",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-0",
+  "request": "Everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-1",
+  "request": "Bobby, everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-2",
+  "request": "Can you help with this? Everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-3",
+  "request": "Everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_pets-0",
+  "request": "The household's pets, by name, with what kind of animal each is.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_pets",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_pets-1",
+  "request": "Bobby, the household's pets, by name, with what kind of animal each is.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_pets",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_pets-2",
+  "request": "Can you help with this? The household's pets, by name, with what kind of animal each is.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_pets",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-0",
+  "request": "What this household has planned.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-1",
+  "request": "Bobby, what this household has planned.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-2",
+  "request": "Can you help with this? What this household has planned.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-3",
+  "request": "What this household has planned -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-0",
+  "request": "Record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-1",
+  "request": "Bobby, record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-2",
+  "request": "Can you help with this? Record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-3",
+  "request": "Record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known -- merchant: Corner Shop.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-0",
+  "request": "One receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-1",
+  "request": "Bobby, one receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-2",
+  "request": "Can you help with this? One receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-3",
+  "request": "One receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day -- merchant: Corner Shop.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-0",
+  "request": "What this household spent, summed per currency and broken down by shop, between two days.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-1",
+  "request": "Bobby, what this household spent, summed per currency and broken down by shop, between two days.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-2",
+  "request": "Can you help with this? What this household spent, summed per currency and broken down by shop, between two days.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-3",
+  "request": "What this household spent, summed per currency and broken down by shop, between two days -- merchant: Corner Shop.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-0",
+  "request": "Receipts this household has recorded, newest first.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-1",
+  "request": "Bobby, receipts this household has recorded, newest first.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-2",
+  "request": "Can you help with this? Receipts this household has recorded, newest first.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-3",
+  "request": "Receipts this household has recorded, newest first -- merchant: Corner Shop.",
+  "history": [],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-0",
+  "request": "Keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-1",
+  "request": "Bobby, keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-2",
+  "request": "Can you help with this? Keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-3",
+  "request": "Keep a recipe this household cooks: what it is called, what goes in it, and how it is made -- title: Dentist.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-0",
+  "request": "One of the household's recipes in full, named the way the household names it.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-1",
+  "request": "Bobby, one of the household's recipes in full, named the way the household names it.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-2",
+  "request": "Can you help with this? One of the household's recipes in full, named the way the household names it.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-3",
+  "request": "One of the household's recipes in full, named the way the household names it -- recipe: lasagna.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-0",
+  "request": "The household's recipes holding a word, in the title or in the ingredients.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-1",
+  "request": "Bobby, the household's recipes holding a word, in the title or in the ingredients.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-2",
+  "request": "Can you help with this? The household's recipes holding a word, in the title or in the ingredients.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-3",
+  "request": "The household's recipes holding a word, in the title or in the ingredients -- words: lasagna.",
+  "history": [],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-0",
+  "request": "Remember something about anything at all: a person, the boiler, where the spare key lives.",
+  "history": [],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-1",
+  "request": "Bobby, remember something about anything at all: a person, the boiler, where the spare key lives.",
+  "history": [],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-2",
+  "request": "Can you help with this? Remember something about anything at all: a person, the boiler, where the spare key lives.",
+  "history": [],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-3",
+  "request": "Remember something about anything at all: a person, the boiler, where the spare key lives -- about: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-0",
+  "request": "Remember something about one of the people this household has a record of, named the way the household says it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-1",
+  "request": "Bobby, remember something about one of the people this household has a record of, named the way the household says it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-2",
+  "request": "Can you help with this? Remember something about one of the people this household has a record of, named the way the household says it.",
+  "history": [],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-3",
+  "request": "Remember something about one of the people this household has a record of, named the way the household says it -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-0",
+  "request": "Remind the household of something at a time.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-1",
+  "request": "Bobby, remind the household of something at a time.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-2",
+  "request": "Can you help with this? Remind the household of something at a time.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-3",
+  "request": "Remind the household of something at a time -- what: the last thing.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-0",
+  "request": "Cancel a reminder, named by what it is about.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-1",
+  "request": "Bobby, cancel a reminder, named by what it is about.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-2",
+  "request": "Can you help with this? Cancel a reminder, named by what it is about.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-3",
+  "request": "Cancel a reminder, named by what it is about -- what: the last thing.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-0",
+  "request": "What the household is due to be reminded of, within the next few days.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-1",
+  "request": "Bobby, what the household is due to be reminded of, within the next few days.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-2",
+  "request": "Can you help with this? What the household is due to be reminded of, within the next few days.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-3",
+  "request": "What the household is due to be reminded of, within the next few days -- days: 1.",
+  "history": [],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-0",
+  "request": "Set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+  "history": [],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-1",
+  "request": "Bobby, set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+  "history": [],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-2",
+  "request": "Can you help with this? Set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+  "history": [],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-3",
+  "request": "Set the whole order of a trip's route in one go, naming every stop by its place, first to last -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-0",
+  "request": "Ask the person to share where they are right now.",
+  "history": [],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-1",
+  "request": "Bobby, ask the person to share where they are right now.",
+  "history": [],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-2",
+  "request": "Can you help with this? Ask the person to share where they are right now.",
+  "history": [],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-3",
+  "request": "Ask the person to share where they are right now -- purpose: weather.",
+  "history": [],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-0",
+  "request": "Search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+  "history": [],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-1",
+  "request": "Bobby, search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+  "history": [],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-2",
+  "request": "Can you help with this? Search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+  "history": [],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-3",
+  "request": "Search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home -- query: banana bread.",
+  "history": [],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-0",
+  "request": "Set an address on file, replacing what was there.",
+  "history": [],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-1",
+  "request": "Bobby, set an address on file, replacing what was there.",
+  "history": [],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-2",
+  "request": "Can you help with this? Set an address on file, replacing what was there.",
+  "history": [],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-3",
+  "request": "Set an address on file, replacing what was there -- target: something.",
+  "history": [],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_trip_notes-0",
+  "request": "Write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early.",
+  "history": [],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_trip_notes-1",
+  "request": "Bobby, write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early.",
+  "history": [],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_trip_notes-2",
+  "request": "Can you help with this? Write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early.",
+  "history": [],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_trip_notes-3",
+  "request": "Write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early -- trip: Moab.",
+  "history": [],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-0",
+  "request": "Take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+  "history": [],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-1",
+  "request": "Bobby, take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+  "history": [],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-2",
+  "request": "Can you help with this? Take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+  "history": [],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-3",
+  "request": "Take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved -- what: the last thing.",
+  "history": [],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-0",
+  "request": "Recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+  "history": [],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-1",
+  "request": "Bobby, recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+  "history": [],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-2",
+  "request": "Can you help with this? Recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+  "history": [],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-3",
+  "request": "Recipes the house has the ingredients for, or nearly, read against the household's inventory list -- missing at most: 1.",
+  "history": [],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-0",
+  "request": "Where a person in this household is, if they share their location with this home.",
+  "history": [],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-1",
+  "request": "Bobby, where a person in this household is, if they share their location with this home.",
+  "history": [],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-2",
+  "request": "Can you help with this? Where a person in this household is, if they share their location with this home.",
+  "history": [],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-3",
+  "request": "Where a person in this household is, if they share their location with this home -- who: Theo.",
+  "history": [],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-whoami-0",
+  "request": "Who the person asking is: their name, how they are related to the household, and their role.",
+  "history": [],
+  "group": "ppl",
+  "tool": "whoami",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-whoami-1",
+  "request": "Bobby, who the person asking is: their name, how they are related to the household, and their role.",
+  "history": [],
+  "group": "ppl",
+  "tool": "whoami",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-whoami-2",
+  "request": "Can you help with this? Who the person asking is: their name, how they are related to the household, and their role.",
+  "history": [],
+  "group": "ppl",
+  "tool": "whoami",
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-0",
+  "request": "Tell me a joke",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-1",
+  "request": "Why is the sky blue?",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-2",
+  "request": "Thanks Bobby!",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-3",
+  "request": "What's the capital of Peru?",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-4",
+  "request": "Good morning!",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-5",
+  "request": "How do you spell necessary?",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-6",
+  "request": "What rhymes with orange?",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-chat-7",
+  "request": "Explain fractions like I'm nine",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-ambiguous-0",
+  "request": "milk",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing_ambiguous",
+  "accepts": [
+   "grocery_add",
+   "grocery_list",
+   "list_add"
+  ]
+ },
+ {
+  "id": "rt-gen-ambiguous-1",
+  "request": "the dentist on Tuesday",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing_ambiguous",
+  "accepts": [
+   "calendar_add",
+   "calendar_upcoming",
+   "reminder_add"
+  ]
+ },
+ {
+  "id": "rt-gen-ambiguous-2",
+  "request": "Theo's allergies",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing_ambiguous",
+  "accepts": [
+   "recall_facts",
+   "recall_person",
+   "record_fact"
+  ]
+ },
+ {
+  "id": "rt-gen-ambiguous-3",
+  "request": "lasagna",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing_ambiguous",
+  "accepts": [
+   "recipe_get",
+   "recipe_search",
+   "what_can_i_make"
+  ]
+ },
+ {
+  "id": "rt-gen-ambiguous-4",
+  "request": "how far",
+  "history": [],
+  "group": "chat",
+  "tool": null,
+  "category": "routing_ambiguous",
+  "accepts": [
+   "distance_from_home",
+   "distance",
+   "member_distance"
+  ]
+ },
+ {
+  "id": "rt-gen-add_itinerary_item-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_person-switch-calendar_add",
+  "request": "Bobby, put an event on the household calendar.",
+  "history": [
+   "Sam: Record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_pet",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_pet-switch-calendar_delete_event",
+  "request": "Bobby, take an upcoming event off the calendar, named by its title.",
+  "history": [
+   "Sam: Record a pet the household has -- its name and what kind of animal -- so a trip can say whether it is coming.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_relationship-switch-calendar_upcoming",
+  "request": "Bobby, what is coming up on the household's calendars, including any calendar another household has shared with it.",
+  "history": [
+   "Sam: Record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_stay-switch-calendar_update_event",
+  "request": "Bobby, change an upcoming event, named by its title.",
+  "history": [
+   "Sam: Record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Put somebody on a trip by name.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_participant-switch-distance",
+  "request": "Bobby, how far apart two places are in a straight line, in miles and kilometres.",
+  "history": [
+   "Sam: Put somebody on a trip by name.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Put a place on a trip's route, after the stops already on it.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-add_trip_stop-switch-distance_from_home",
+  "request": "Bobby, how far a place is from the household's address, in miles and kilometres.",
+  "history": [
+   "Sam: Put a place on a trip's route, after the stops already on it.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Put one of the household's own lists on a trip, by the list's name -- the packing list.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "attach_trip_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-attach_trip_list-switch-geocode",
+  "request": "Bobby, look up where a place is: its latitude, longitude and full name.",
+  "history": [
+   "Sam: Put one of the household's own lists on a trip, by the list's name -- the packing list.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Put an event on the household calendar.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_add-switch-get_address",
+  "request": "Bobby, the address on file: your own, or the household's.",
+  "history": [
+   "Sam: Put an event on the household calendar.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Take an upcoming event off the calendar, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_delete_event",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_delete_event-switch-get_location",
+  "request": "Bobby, determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+  "history": [
+   "Sam: Take an upcoming event off the calendar, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_location",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What is coming up on the household's calendars, including any calendar another household has shared with it.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_upcoming",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_upcoming-switch-get_relationships",
+  "request": "Bobby, how one person is connected to the others here, as the household recorded it.",
+  "history": [
+   "Sam: What is coming up on the household's calendars, including any calendar another household has shared with it.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Change an upcoming event, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "cal",
+  "tool": "calendar_update_event",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-calendar_update_event-switch-get_weather",
+  "request": "Bobby, current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+  "history": [
+   "Sam: Change an upcoming event, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_weather",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: How far apart two places are in a straight line, in miles and kilometres.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "distance",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance-switch-graph_neighbors",
+  "request": "Bobby, everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+  "history": [
+   "Sam: How far apart two places are in a straight line, in miles and kilometres.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: How far a place is from the household's address, in miles and kilometres.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "distance_from_home",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-distance_from_home-switch-grocery_add",
+  "request": "Bobby, put something on the household shopping list.",
+  "history": [
+   "Sam: How far a place is from the household's address, in miles and kilometres.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Look up where a place is: its latitude, longitude and full name.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "geocode",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-geocode-switch-grocery_clear",
+  "request": "Bobby, clear the shopping list after a shop.",
+  "history": [
+   "Sam: Look up where a place is: its latitude, longitude and full name.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: The address on file: your own, or the household's.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_address",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_address-switch-grocery_list",
+  "request": "Bobby, what is still on the household shopping list.",
+  "history": [
+   "Sam: The address on file: your own, or the household's.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_location-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_location",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_location-switch-grocery_mark_bought",
+  "request": "Bobby, tick something off the shopping list as bought.",
+  "history": [
+   "Sam: Determine whether this request uses the person's explicitly shared current location or the household's saved home location.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: How one person is connected to the others here, as the household recorded it.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "get_relationships",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_relationships-switch-grocery_remove",
+  "request": "Bobby, take something off the shopping list without buying it.",
+  "history": [
+   "Sam: How one person is connected to the others here, as the household recorded it.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_weather-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "get_weather",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-get_weather-switch-inventory_list",
+  "request": "Bobby, what the household has in stock.",
+  "history": [
+   "Sam: Current Apple Weather at the explicitly shared current location for this request, otherwise this household's saved address.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "inventory_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "graph_neighbors",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-graph_neighbors-switch-list_add",
+  "request": "Bobby, put something on one of the household's lists, named by its title.",
+  "history": [
+   "Sam: Everybody within a hop or two of one person, nearest first -- who is around them, rather than who lives here.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Put something on the household shopping list.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_add-switch-list_check",
+  "request": "Bobby, tick an item off one of the household's lists.",
+  "history": [
+   "Sam: Put something on the household shopping list.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Clear the shopping list after a shop.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_clear",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_clear-switch-list_create",
+  "request": "Bobby, start a new list for the household, named however they want (a trip, a project, a wishlist).",
+  "history": [
+   "Sam: Clear the shopping list after a shop.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_list-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What is still on the household shopping list.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_list-switch-list_household",
+  "request": "Bobby, everyone who lives in this household, with how each is related.",
+  "history": [
+   "Sam: What is still on the household shopping list.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "list_household",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Tick something off the shopping list as bought.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_mark_bought",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_mark_bought-switch-list_remove",
+  "request": "Bobby, take an item off one of the household's lists.",
+  "history": [
+   "Sam: Tick something off the shopping list as bought.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Take something off the shopping list without buying it.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "grocery_remove",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-grocery_remove-switch-list_show",
+  "request": "Bobby, what is on one of the household's lists.",
+  "history": [
+   "Sam: Take something off the shopping list without buying it.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-inventory_list-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What the household has in stock.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "inventory_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Put something on one of the household's lists, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_add-switch-log_outing",
+  "request": "Bobby, record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note.",
+  "history": [
+   "Sam: Put something on one of the household's lists, named by its title.",
+   "Bobby: Done."
+  ],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Tick an item off one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_check",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_check-switch-member_distance",
+  "request": "Bobby, how far a household member is, by the address they've shared, from home or from you.",
+  "history": [
+   "Sam: Tick an item off one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Start a new list for the household, named however they want (a trip, a project, a wishlist).",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_create",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_create-switch-people_roster",
+  "request": "Bobby, everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+  "history": [
+   "Sam: Start a new list for the household, named however they want (a trip, a project, a wishlist).",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "people_roster",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_household-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Everyone who lives in this household, with how each is related.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "list_household",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_household-switch-plan_grocery_run",
+  "request": "Bobby, plan a shopping trip.",
+  "history": [
+   "Sam: Everyone who lives in this household, with how each is related.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Take an item off one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_remove",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_remove-switch-plan_trip",
+  "request": "Bobby, start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+  "history": [
+   "Sam: Take an item off one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What is on one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "list_show",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-list_show-switch-read_file",
+  "request": "Bobby, read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+  "history": [
+   "Sam: What is on one of the household's lists.",
+   "Bobby: Done."
+  ],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-lists_overview-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Every list this household can see and how many open items each has, including lists another household has shared with it.",
+   "Bobby: Done."
+  ],
+  "group": "lists",
+  "tool": "lists_overview",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-lists_overview-switch-recall_facts",
+  "request": "Bobby, search what the household has told Bobby to remember.",
+  "history": [
+   "Sam: Every list this household can see and how many open items each has, including lists another household has shared with it.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-log_outing-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Record somewhere this household went and what it thought of it: the place, the day, what kind of outing it was, a rating out of five, and any note.",
+   "Bobby: Done."
+  ],
+  "group": "out",
+  "tool": "log_outing",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: How far a household member is, by the address they've shared, from home or from you.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "member_distance",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-member_distance-switch-recall_person",
+  "request": "Bobby, everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+  "history": [
+   "Sam: How far a household member is, by the address they've shared, from home or from you.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-people_roster-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "people_roster",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-people_roster-switch-recall_pets",
+  "request": "Bobby, the household's pets, by name, with what kind of animal each is.",
+  "history": [
+   "Sam: Everyone this household has a record of, with how each one got here: whether they have a login, whether they have signed in, and how many things Bobby remembers about them.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "recall_pets",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Plan a shopping trip.",
+   "Bobby: Done."
+  ],
+  "group": "grocery",
+  "tool": "plan_grocery_run",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_grocery_run-switch-recall_trip",
+  "request": "Bobby, what this household has planned.",
+  "history": [
+   "Sam: Plan a shopping trip.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "plan_trip",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-plan_trip-switch-receipt_add",
+  "request": "Bobby, record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+  "history": [
+   "Sam: Start a holiday or trip for this household: a name, the first and last day, and the IANA time zone of WHERE THE TRIP IS -- not where the household lives.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+   "Bobby: Done."
+  ],
+  "group": "files",
+  "tool": "read_file",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-read_file-switch-receipt_get",
+  "request": "Bobby, one receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+  "history": [
+   "Sam: Read the text of a document someone uploaded to this conversation -- a CSV, a PDF, or a text file -- so you can answer questions about it.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Search what the household has told Bobby to remember.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "recall_facts",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_facts-switch-receipt_totals",
+  "request": "Bobby, what this household spent, summed per currency and broken down by shop, between two days.",
+  "history": [
+   "Sam: Search what the household has told Bobby to remember.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes.",
+   "Bobby: Done."
+  ],
+  "group": "out",
+  "tool": "recall_outings",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_outings-switch-receipts_list",
+  "request": "Bobby, receipts this household has recorded, newest first.",
+  "history": [
+   "Sam: Where this household has been lately, newest first, or the outings a word reaches -- matched against the place, the kind and the notes.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "recall_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_person-switch-recipe_add",
+  "request": "Bobby, keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+  "history": [
+   "Sam: Everything Bobby knows about one person: how they are related, whether they have a login, and everything the household has told him about them.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_pets-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: The household's pets, by name, with what kind of animal each is.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "recall_pets",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_pets-switch-recipe_get",
+  "request": "Bobby, one of the household's recipes in full, named the way the household names it.",
+  "history": [
+   "Sam: The household's pets, by name, with what kind of animal each is.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What this household has planned.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "recall_trip",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recall_trip-switch-recipe_search",
+  "request": "Bobby, the household's recipes holding a word, in the title or in the ingredients.",
+  "history": [
+   "Sam: What this household has planned.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_add-switch-record_fact",
+  "request": "Bobby, remember something about anything at all: a person, the boiler, where the spare key lives.",
+  "history": [
+   "Sam: Record a purchase this household made: the shop, the total in whole minor units, the day, and the lines on it if they are known.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: One receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_get",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_get-switch-remember_person",
+  "request": "Bobby, remember something about one of the people this household has a record of, named the way the household says it.",
+  "history": [
+   "Sam: One receipt in full, with the lines on it, found by the shop and -- when more than one matches -- the day.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What this household spent, summed per currency and broken down by shop, between two days.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipt_totals",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipt_totals-switch-reminder_add",
+  "request": "Bobby, remind the household of something at a time.",
+  "history": [
+   "Sam: What this household spent, summed per currency and broken down by shop, between two days.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Receipts this household has recorded, newest first.",
+   "Bobby: Done."
+  ],
+  "group": "rec",
+  "tool": "receipts_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-receipts_list-switch-reminder_cancel",
+  "request": "Bobby, cancel a reminder, named by what it is about.",
+  "history": [
+   "Sam: Receipts this household has recorded, newest first.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_add-switch-reminders_list",
+  "request": "Bobby, what the household is due to be reminded of, within the next few days.",
+  "history": [
+   "Sam: Keep a recipe this household cooks: what it is called, what goes in it, and how it is made.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: One of the household's recipes in full, named the way the household names it.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_get",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_get-switch-reorder_trip_stops",
+  "request": "Bobby, set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+  "history": [
+   "Sam: One of the household's recipes in full, named the way the household names it.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: The household's recipes holding a word, in the title or in the ingredients.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "recipe_search",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-recipe_search-switch-request_current_location",
+  "request": "Bobby, ask the person to share where they are right now.",
+  "history": [
+   "Sam: The household's recipes holding a word, in the title or in the ingredients.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Remember something about anything at all: a person, the boiler, where the spare key lives.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "record_fact",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-record_fact-switch-search_nearby",
+  "request": "Bobby, search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+  "history": [
+   "Sam: Remember something about anything at all: a person, the boiler, where the spare key lives.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Remember something about one of the people this household has a record of, named the way the household says it.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "remember_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-remember_person-switch-set_address",
+  "request": "Bobby, set an address on file, replacing what was there.",
+  "history": [
+   "Sam: Remember something about one of the people this household has a record of, named the way the household says it.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Remind the household of something at a time.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminder_add",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_add-switch-set_trip_notes",
+  "request": "Bobby, write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early.",
+  "history": [
+   "Sam: Remind the household of something at a time.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Cancel a reminder, named by what it is about.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminder_cancel",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminder_cancel-switch-undo",
+  "request": "Bobby, take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+  "history": [
+   "Sam: Cancel a reminder, named by what it is about.",
+   "Bobby: Done."
+  ],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: What the household is due to be reminded of, within the next few days.",
+   "Bobby: Done."
+  ],
+  "group": "rem",
+  "tool": "reminders_list",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reminders_list-switch-what_can_i_make",
+  "request": "Bobby, recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+  "history": [
+   "Sam: What the household is due to be reminded of, within the next few days.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "reorder_trip_stops",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-reorder_trip_stops-switch-where_is",
+  "request": "Bobby, where a person in this household is, if they share their location with this home.",
+  "history": [
+   "Sam: Set the whole order of a trip's route in one go, naming every stop by its place, first to last.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Ask the person to share where they are right now.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "request_current_location",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-request_current_location-switch-whoami",
+  "request": "Bobby, who the person asking is: their name, how they are related to the household, and their role.",
+  "history": [
+   "Sam: Ask the person to share where they are right now.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "whoami",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "search_nearby",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-search_nearby-switch-add_itinerary_item",
+  "request": "Bobby, add something happening on a trip: what it is, which day of the trip, when it starts, optionally where, and a note.",
+  "history": [
+   "Sam: Search Apple Maps for up to five nearby public places matching query, using the explicitly shared current location for this request or the household's saved home.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_itinerary_item",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Set an address on file, replacing what was there.",
+   "Bobby: Done."
+  ],
+  "group": "plc",
+  "tool": "set_address",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_address-switch-add_person",
+  "request": "Bobby, record somebody the household wants Bobby to know about -- a grandmother, a neighbour, a child.",
+  "history": [
+   "Sam: Set an address on file, replacing what was there.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "add_person",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-set_trip_notes-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Write a trip's heads-up notes, whole: the things that apply to the whole trip rather than to one day -- clocks changing, a road down to one lane, a park that bans dogs, what to book early.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "set_trip_notes",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+   "Bobby: Done."
+  ],
+  "group": "undo",
+  "tool": "undo",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-undo-switch-add_relationship",
+  "request": "Bobby, record that one person is the mother, partner, cousin or anything else OF another: 'Mia is the daughter of Sam'.",
+  "history": [
+   "Sam: Take back the last thing you did in this thread: an item put on a list, one ticked off, an event added or moved.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "add_relationship",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-followup",
+  "request": "yes, do that",
+  "history": [
+   "Sam: Recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+   "Bobby: Done."
+  ],
+  "group": "food",
+  "tool": "what_can_i_make",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-what_can_i_make-switch-add_stay",
+  "request": "Bobby, record where the household is sleeping on a trip and which nights: the place, the check-in day and the check-out day, and a booking reference if they have one.",
+  "history": [
+   "Sam: Recipes the house has the ingredients for, or nearly, read against the household's inventory list.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_stay",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-followup",
+  "request": "and another one, please",
+  "history": [
+   "Sam: Where a person in this household is, if they share their location with this home.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "where_is",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-where_is-switch-add_trip_participant",
+  "request": "Bobby, put somebody on a trip by name.",
+  "history": [
+   "Sam: Where a person in this household is, if they share their location with this home.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_trip_participant",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-whoami-followup",
+  "request": "same again for next week",
+  "history": [
+   "Sam: Who the person asking is: their name, how they are related to the household, and their role.",
+   "Bobby: Done."
+  ],
+  "group": "ppl",
+  "tool": "whoami",
+  "category": "routing_context",
+  "accepts": []
+ },
+ {
+  "id": "rt-gen-whoami-switch-add_trip_stop",
+  "request": "Bobby, put a place on a trip's route, after the stops already on it.",
+  "history": [
+   "Sam: Who the person asking is: their name, how they are related to the household, and their role.",
+   "Bobby: Done."
+  ],
+  "group": "trip",
+  "tool": "add_trip_stop",
+  "category": "routing_context",
+  "accepts": []
+ }
+]

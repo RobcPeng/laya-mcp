@@ -144,8 +144,8 @@ TOOLS = {
 }
 
 # chat (no tool) and undo (one verb) rows
-CHAT = ["tell me a joke", "how are you", "what's a good board game for 4 people", "explain how a rainbow forms",
-        "what's the capital of Peru", "give me a pep talk", "what rhymes with orange", "thanks bobby",
+CHAT = ["tell me something silly", "how are you", "what's a good board game for 4 people", "explain how a rainbow forms",
+        "what's the tallest mountain in Africa", "give me a pep talk", "what rhymes with purple", "thanks bobby",
         "what should I name the new goldfish", "how many cups in a quart", "what's 15% of 80",
         "who won the world cup in 1998", "say something nice about mondays"]
 UNDO = ["undo that", "take that back", "oops undo", "never mind, undo the last thing", "revert that please",
@@ -204,7 +204,7 @@ CTX_NEG = [
     ("chat", [("P", "add {item} to the list"), ("B", "Added {item} to the shopping list.")],
      ["thanks!", "perfect, thank you", "you're the best", "cool"]),
     ("chat", [("P", "what's on the calendar {day}?"), ("B", "Just the {event}.")],
-     ["tell me a joke", "how are you today", "what rhymes with orange"]),
+     ["tell me something silly", "how are you today", "what rhymes with orange"]),
     ("grocery_add", [("P", "what's on the calendar {day}?"), ("B", "Just the {event}.")],
      ["add {item} to the shopping list", "we need {item}"]),
     ("calendar_add", [("P", "we're out of {item}"), ("B", "Added {item} to the shopping list.")],
@@ -268,6 +268,146 @@ def rows(rng, reps=8):
                     req = vary(rng, fill(rng, f, SLOTS), openers=(rng.random() < 0.3))
                     out.append((f"rt/{kind}/{tool}/{pi}/{fi}", f"rt:{kind}:{tool}",
                                 {"context": ctx, "request": req}, _gold(tool)))
+    out += desc_rows(rng)
+    out += pair_rows(rng)
+    out += chat_rows(rng)
+    return out
+
+
+# --- Bobby's own descriptions, as requests (from bobby_truth.json "routing") ---------------------------
+#
+# The export carries every offered tool's DESCRIPTIONS text and PARAMETERS. These rows put that text in
+# a household's mouth with this generator's own wrappers and values (never the cutover's four), so the
+# routing data and the eval share one source without sharing inputs.
+import json as _json
+import os as _os
+import re as _re
+
+_TRUTH = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "bobby_truth.json")))
+ROUTING_SRC = _TRUTH.get("routing", {})
+_WRAP = ["{lower}, please", "quick one: {lower}", "hey, {lower}?", "I need this: {lower}", "{bare} -- thanks",
+         "for the house: {lower}", "ok so {lower}"]
+_FILL = ["{bare} ({key}: {val})", "{lower}, {key} {val}", "{val} -- {lower}"]
+
+
+def _first(text):
+    cut = text.split(". ")[0].strip().rstrip(".?!")
+    return cut
+
+
+def _quotes(text):
+    out = []
+    for q in _re.findall(r"'([^']{8,70})'", text):
+        q = q.strip()
+        if " " in q and q[0].isalpha() and not q.startswith(("s ", "t ")) and q == q.strip():
+            out.append(q)
+    return out
+
+
+def desc_rows(rng, reps=4):
+    from .tool_gate import VALUES, GENERIC
+    out = []
+    for tool, v in sorted(ROUTING_SRC.items()):
+        g = v["group"]
+        bare = _first(v["description"])
+        lower = bare[:1].lower() + bare[1:]
+        texts = [w.format(lower=lower, bare=bare) for w in _WRAP]
+        params = list(v["params"].items())
+        if params:
+            key, spec = params[0]
+            for f in _FILL:
+                val = pick(rng, VALUES.get(key, GENERIC))
+                texts.append(f.format(lower=lower, bare=bare, key=key.replace("_", " "), val=val))
+        texts += _quotes(v["description"])
+        for ti, t in enumerate(texts):
+            gold = {"group": g, "needs_tool": True, "changes": tool in WRITES_TOOL}
+            if g not in ("undo", "chat"):
+                gold[f"tool_{g}"] = tool
+            for _ in range(reps):
+                out.append((f"rt/desc/{tool}/{ti}", f"rt:desc:{tool}",
+                            {"context": _bg_ctx(rng), "request": vary(rng, t, openers=False)}, gold))
+    return out
+
+
+# --- minimal pairs between neighbours (from the per-group confusion) ----------------------------------
+PAIRS = {
+    "member_distance": ["how far is {adult} from home right now", "how far away is {kid} from the house",
+                        "is {adult} far from home", "how far is {kin} from me"],
+    "distance_from_home": ["how far is {place} from home", "is {place} far from our house",
+                           "how far is {town} from home"],
+    "where_is": ["where is {adult} right now", "is {kid} at school or home", "where's {kin} at the moment"],
+    "geocode": ["where exactly is {place}", "find {town} on the map"],
+    "recall_facts": ["what did I tell you to remember about the car", "what do you remember about the wifi",
+                     "remind me what I told you about the spare key", "what's saved about {kin}'s allergies"],
+    "record_fact": ["remember that the spare key is in the blue pot", "note that the wifi code is on the fridge",
+                    "remember the boiler was serviced in May"],
+    "remember_person": ["remember that {kin} is allergic to peanuts", "note that {adult} likes oat milk",
+                        "remember {kid}'s shoe size is 2"],
+    "recall_person": ["what do you know about {kin}", "tell me about {adult}", "what have I told you about {kid}"],
+    "graph_neighbors": ["who is close to {adult} in the family", "who's around {kid}"],
+    "get_relationships": ["how is {adult} related to me", "what is {kin} to {adult}"],
+    "add_relationship": ["{adult} is {kid}'s aunt", "record that {kin} is my stepfather"],
+    "add_person": ["add our neighbour {adult} to the people you know", "remember a new person: {adult}, my coworker"],
+    "people_roster": ["who in the family has an account", "who has logged in to the app"],
+    "receipt_add": ["log a receipt from {store} for 34 dollars", "I spent 18 dollars at {store}, record it"],
+    "receipts_list": ["show me our recent receipts", "list the receipts we've logged"],
+    "receipt_get": ["show the receipt from {store} last week", "pull up that {store} receipt"],
+    "recall_pets": ["which pets do we have", "list our animals"],
+    "add_pet": ["we got a new kitten called {pet}", "add our dog {pet}"],
+    "add_stay": ["we're staying at a cabin two nights on {trip}", "record the hotel for {trip}"],
+    "add_trip_participant": ["{adult} is coming on {trip}", "add {kid} to {trip}"],
+    "add_trip_stop": ["add a stop at {town} on {trip}", "stop at {place} on the way, for {trip}"],
+    "add_itinerary_item": ["add a museum visit to day 2 of {trip}", "put dinner on the {trip} plan for Saturday"],
+    "plan_trip": ["start a new trip to {town} next month", "plan a weekend trip to {town}"],
+    "inventory_list": ["what's in the pantry", "do we have any {item} in stock"],
+    "grocery_add": ["add {item} to the shopping list", "we need {item} from the store"],
+    "list_add": ["add {item} to the {list}", "put {item} on the {list}"],
+    "list_check": ["tick off {item} on the {list}", "mark {item} done on the {list}"],
+    "grocery_remove": ["take {item} off the shopping list", "remove {item} from groceries"],
+    "list_remove": ["take {item} off the {list}", "remove {item} from the {list}"],
+    "what_can_i_make": ["what can I cook with what we have", "dinner ideas from the pantry"],
+    "read_file": ["what does the file I uploaded say", "summarize the attachment I just sent"],
+}
+
+
+def pair_rows(rng, reps=4):
+    out = []
+    for tool, templates in PAIRS.items():
+        g = TOOL_GROUP[tool]
+        for ti, t in enumerate(templates):
+            gold = {"group": g, f"tool_{g}": tool, "needs_tool": True, "changes": tool in WRITES_TOOL}
+            for _ in range(reps):
+                out.append((f"rt/pair/{tool}/{ti}", f"rt:pair:{tool}",
+                            {"context": _bg_ctx(rng), "request": vary(rng, fill(rng, t, SLOTS))}, gold))
+    return out
+
+
+# --- "just chat", including chat that mentions tool topics -----------------------------------------------
+CHAT_MORE = [
+    ["what's a good grocery budget for a family of four", "how do I make a shopping list I'll actually use",
+     "is it cheaper to shop weekly or daily"],
+    ["how do I remember birthdays better", "what's the best way to plan a busy week",
+     "any tips for keeping a family calendar"],
+    ["why do people get sick in winter", "how do vaccines work", "what's the difference between a cold and the flu"],
+    ["tell me something interesting about octopuses", "how far away is the moon", "why do cats purr"],
+    ["what should we name the new puppy", "give me a fun fact for the kids", "what's a good bedtime story idea"],
+    ["help me write a thank-you note to my teacher", "how do I say thank you in Japanese",
+     "what's a polite way to decline an invitation"],
+    ["what does 'itinerary' mean", "how do I spell 'restaurant'", "what's the plural of moose"],
+    ["is it better to rent or buy a house", "how do I start saving for college", "what's a 401k"],
+    ["hi bobby", "good night!", "you're the best", "how was your day", "ok cool"],
+    ["what's 12 times 13", "convert 5 miles to kilometers", "how many ounces in a pound"],
+]
+
+
+def chat_rows(rng, reps=6):
+    out = []
+    for fi, fam in enumerate(CHAT_MORE):
+        for ti, t in enumerate(fam):
+            for _ in range(reps):
+                out.append((f"rt/chat2/{fi}/{ti}", "rt:chat2",
+                            {"context": _bg_ctx(rng), "request": vary(rng, t)},
+                            {"group": "chat", "needs_tool": False, "changes": False}))
     return out
 
 

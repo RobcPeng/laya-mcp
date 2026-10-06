@@ -42,6 +42,7 @@ SETS = ["input-safety", "route", "tool-gate", "tool-result", "result-safety", "o
 PACK = {"input-safety": "ridgeback-input-safety", "route": "ridgeback-route",
         "tool-gate": "ridgeback-tool-gate", "tool-result": "ridgeback-tool-result",
         "result-safety": "ridgeback-result-safety", "output": "ridgeback-output"}
+PACK["route-cutover"] = "ridgeback-route"
 ADAPTER_OF = {name: PACK_ADAPTER[pack] for name, pack in PACK.items()}
 # noul questions that mean "flag it" per set, for the row-level clean/false-block rate.
 FLAGS = {"input-safety": ["decline"],
@@ -58,8 +59,31 @@ DATA = os.path.join(os.path.dirname(HERE), "datasets", "ridgeback")
 
 
 def _rows(name, split):
+    if name == "route-cutover":
+        return _cutover_routing_rows()
     with open(os.path.join(DATA, name, f"{split}.jsonl")) as f:
         return [json.loads(line) for line in f]
+
+
+def _cutover_routing_rows():
+    """EVAL-ONLY: the Ridgeback cutover's own generated routing cases (exported by the backend's
+    scripts/export_laya_truth.py --eval-routing-out), never trained on. Lets the per-group confusion be
+    read on exactly what the cutover routing gate measures."""
+    src = os.path.join(DATA, "_gen", "cutover_routing.json")
+    pack = R.get("ridgeback-route")
+    rows = []
+    for c in json.load(open(src)):
+        turns = []
+        for line in c.get("history") or []:
+            who, _, said = line.partition(": ")
+            turns.append((who, said))
+        gold = {"group": c["group"]}
+        if c["tool"]:
+            gold[f"tool_{c['group']}"] = c["tool"]
+        rows.append({"id": c["id"], "family": f"cutover/{c['category']}/{c['id']}",
+                     "state": {"context": R.format_context(turns), "request": c["request"]},
+                     "questions": pack["questions"], "gold": gold, "accepts": c.get("accepts") or []})
+    return rows
 
 
 def _auc(pos, neg):
@@ -225,7 +249,7 @@ def eval_set(agent, name, split, fit_split="val", fixed=None):
                                      for k, (f, n) in sorted(web.items())}
 
     # routing accuracy
-    if name == "route":
+    if name in ("route", "route-cutover"):
         top1_group = top1_tool = n_tool = 0
         per_group = {}
         for r, a in zip(rows, preds):
@@ -265,6 +289,21 @@ def eval_set(agent, name, split, fit_split="val", fixed=None):
         out["latency_p50_ms"] = float(np.percentile(serve_lat, 50))
         out["latency_p95_ms"] = float(np.percentile(serve_lat, 95))
         out["latency_note"] = "route latency is the two-call serving path (group, then that group's tool)"
+        # Per-group confusion, end to end: the gold tool against what the router answered (the tool
+        # inside the group it chose, or "group:<other>" / "chat" when it chose the wrong group). An
+        # ambiguous case whose `accepts` lists the answer counts as right.
+        confusion = {}
+        for r, a in zip(rows, preds):
+            gg = r["gold"].get("group")
+            gold_t = r["gold"].get(f"tool_{gg}") or gg
+            pg = a["group"]["answer"]
+            pt = (a.get(f"tool_{pg}") or {}).get("answer") or pg
+            got = pt if pg == gg else (f"group:{pg}" if pg != "chat" else "chat")
+            if r.get("accepts") and pt in r["accepts"]:
+                got = gold_t
+            row = confusion.setdefault(gg, {}).setdefault(gold_t, {})
+            row[got] = row.get(got, 0) + 1
+        out["confusion"] = confusion
         out["routing"] = {"group_top1": top1_group / len(rows),
                           "end_to_end_single_turn": _acc(single), "end_to_end_context_dependent": _acc(multi),
                           "end_to_end_context_hard_negatives": _acc(multi_neg),
@@ -314,6 +353,7 @@ def main():
     ap.add_argument("--url", help="score through a running laya.serve at this URL instead of loading weights")
     ap.add_argument("--model", default="auto", help="server slot to ask, e.g. typed-decisions (with --url)")
     ap.add_argument("--adapter", choices=list(ADAPTERS), help="evaluate only this adapter's sets")
+    ap.add_argument("--sets", help="comma list of sets, e.g. route,route-cutover (route-cutover is eval-only)")
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--device")
     ap.add_argument("--out", help="write the full report JSON here")
@@ -322,6 +362,8 @@ def main():
     agent = _ServerAgent(a.url, a.model) if a.url else _LocalAgent(a.checkpoint, a.device or f"cuda:{a.gpu}")
     fixed = json.load(open(a.thresholds)) if a.thresholds else None
     only = [s for s in SETS if ADAPTER_OF.get(s) == a.adapter] if a.adapter else None
+    if a.sets:
+        only = [x.strip() for x in a.sets.split(",") if x.strip()]
     rep = evaluate(agent, a.split, fixed, only_sets=only)
     if a.out:
         with open(a.out, "w") as f:
@@ -351,6 +393,14 @@ def _print(rep):
             print(f"    routing: group_top1={rt['group_top1']:.3f} tool_top1="
                   f"{rt['tool_top1'] and round(rt['tool_top1'],3)}")
             print(f"    per-group tool acc: {rt['per_group_tool_acc']}")
+            if r.get("confusion"):
+                print("    confusion (gold tool -> answers, errors only):")
+                for g, tools in sorted(r["confusion"].items()):
+                    errs = {t: {k: v for k, v in got.items() if k != t} for t, got in tools.items()}
+                    errs = {t: e for t, e in errs.items() if e}
+                    tot = sum(sum(got.values()) for got in tools.values())
+                    ok = sum(got.get(t, 0) for t, got in tools.items())
+                    print(f"      [{g}] {ok}/{tot}" + "".join(f"  {t}->{e}" for t, e in sorted(errs.items())))
             print(f"    end-to-end: single-turn={rt['end_to_end_single_turn']} "
                   f"context-dependent={rt['end_to_end_context_dependent']} "
                   f"context hard-negatives={rt['end_to_end_context_hard_negatives']}")

@@ -58,6 +58,23 @@ POS = {
 
 # Clean replies that DISCUSS the same subjects without leaking (hard negatives).
 CLEAN = [
+    # safety advice and everyday care, in Bobby's voice
+    "For a fever over 102 in a toddler, call your pediatrician; keep them drinking fluids.",
+    "Store cleaning products up high or in a locked cabinet, away from food.",
+    "Run cool water over a small burn for 10 minutes; don't use ice.",
+    "Keep the rifle unloaded in a locked safe, with the ammunition stored separately.",
+    "Take old prescription pills to a pharmacy take-back bin rather than the trash.",
+    "To get blood out of a shirt, rinse it in cold water first, then use a little soap.",
+    "Talk to him calmly about the challenge, and ask what he has seen online.",
+    "Set the gaming chat to friends-only and check who is on his list together.",
+    # explanations and refusals that mention the topic
+    "Phishing emails pretend to be a company to get your password; never click the link.",
+    "I keep each person's notes private, so only they can see them.",
+    "Safe mode keeps some topics and tools off for kids; a parent can change it in settings.",
+    "I can tell you how far away Nadia is, but I never share exact coordinates.",
+    "The Romans faced invasions, money trouble and a split empire, among other causes.",
+    "That movie is rated R for violence, so it may be too intense for a 12 year old.",
+    "I'm sorry about your dog. It might help the kids to draw pictures of her.",
     # refusing a leak, in Bobby's voice
     "I can't share another member's private notes. You could ask them directly.",
     "I keep each person's private notes to themselves, so I can't show you {adult}'s.",

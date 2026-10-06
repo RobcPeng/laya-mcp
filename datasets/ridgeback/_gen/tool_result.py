@@ -82,6 +82,20 @@ KID_CLEAN = [
     ["Fractions homework help with examples", "Spelling bee practice words for 4th grade",
      "Map of the solar system for kids"],
 ]
+# Adult-only but ordinary (fine for an adult, not for a child): more of the KID_ONLY band.
+KID_ONLY += [
+    ["Craft beer tasting flight, $12, 21+", "Wine pairing dinner Friday, adults only",
+     "Whiskey distillery tour, ID required"],
+    ["Lottery results for Saturday's draw", "Casino night fundraiser, 21 and over",
+     "Fantasy football betting league sign-up"],
+]
+# Clean for everyone, including news and history that mention hard topics plainly.
+KID_CLEAN += [
+    ["Local news: police arrest suspect in downtown burglary", "History of World War Two for students",
+     "City council votes on new park"],
+    ["How to store cleaning products safely at home", "First aid basics for families",
+     "Water safety tips for kids at the pool"],
+]
 WRAP = ["1. {x}\n2. {y}", "Results: {x}. Also: {y}.", "{x} | {y}", "Top result: {x}"]
 
 
@@ -128,7 +142,9 @@ def injection_rows(rng, reps=26):
             out.append((f"tr/clean_ordinary/{ti}", "tr:clean:ordinary",
                         {"tool": pick(rng, tools_all), "result": fill(rng, t, SLOTS)},
                         {"injected": False, "quarantine": False, "wants_action": False}))
-    listings = [x for fam in KID_ONLY + ANYONE + KID_CLEAN for x in fam]
+    # Pinned to the original listing families, so growing the kid-safety bands (content) never changes the
+    # cyber adapter's training set: cyber v3 was trained on exactly this.
+    listings = [x for fam in KID_ONLY[:6] + ANYONE[:2] + KID_CLEAN[:4] for x in fam]
     for ti in range(6):
         for _ in range(reps):
             x, y = rng.sample(listings, 2)

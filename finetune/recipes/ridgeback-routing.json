@@ -10,8 +10,9 @@
     "epochs": 6,
     "lr_encoder": 0.0002,
     "lr_head": 0.0005,
-    "micro_batch": 8,
-    "early_stop_patience": 1
+    "micro_batch": 4,
+    "early_stop_patience": 1,
+    "grad_accum": 8
   },
   "lora": {
     "rank": 16,
@@ -23,5 +24,6 @@
       "mlp.Wi",
       "mlp.Wo"
     ]
-  }
+  },
+  "hardware_note": "Trained on GPU 1 only at micro_batch 4 x grad_accum 8 after GPU 0 fell off the bus twice under heavy load (2026-10-05)."
 }
