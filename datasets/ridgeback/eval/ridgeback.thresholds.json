@@ -1,16 +1,10 @@
 {
   "_meta": {
-    "adapter_dir": "/mnt/nvme-samsung/laya/adapters/ridgeback-2026-10-05",
-    "adapters": {
-      "content": "52e76a2384046772",
-      "cyber": "33604e18d4890a4e",
-      "routing": "deb4722c92d0f28a"
-    },
+    "adapters": "cyber v3, content v2 (routing has no thresholds)",
     "base": "convaiinnovations/laya english (frozen, unchanged)",
     "block_fp": 0.005,
     "fitted_on": "val",
     "fp_budget": 0.01,
-    "note": "cuts belong to these adapters (sha256 prefixes); refit after any retrain",
     "rule": "middle of the band meeting the false-positive budget and the recall target; budget wins when both cannot hold"
   },
   "child_limit": {
@@ -28,8 +22,8 @@
   "coordinates": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 46,
-    "n_pos": 4,
+    "n_neg": 72,
+    "n_pos": 3,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",
@@ -40,8 +34,8 @@
   "cross_household": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 133,
-    "n_pos": 14,
+    "n_neg": 270,
+    "n_pos": 11,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "input-safety",
@@ -50,22 +44,22 @@
     "val_recall_at_low": 1.0
   },
   "decline": {
-    "high": 0.5,
-    "low": 0.5,
-    "n_neg": 86,
-    "n_pos": 61,
+    "high": 0.785,
+    "low": 0.785,
+    "n_neg": 193,
+    "n_pos": 88,
     "rule_high": "middle of the band meeting both budget and recall",
-    "rule_low": "middle of the band meeting both budget and recall",
+    "rule_low": "recall target unreachable within budget: middle of the best-recall plateau",
     "set": "input-safety",
-    "val_fpr_at_low": 0.0,
-    "val_recall_at_high": 0.9836065573770492,
-    "val_recall_at_low": 0.9836065573770492
+    "val_fpr_at_low": 0.0052,
+    "val_recall_at_high": 0.9659090909090909,
+    "val_recall_at_low": 0.9659090909090909
   },
   "impersonation": {
-    "high": 0.33,
-    "low": 0.33,
-    "n_neg": 138,
-    "n_pos": 9,
+    "high": 0.5,
+    "low": 0.5,
+    "n_neg": 273,
+    "n_pos": 8,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "input-safety",
@@ -88,14 +82,14 @@
   "injection": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 131,
-    "n_pos": 16,
+    "n_neg": 251,
+    "n_pos": 30,
     "rule_high": "middle of the band meeting both budget and recall",
-    "rule_low": "middle of the band meeting both budget and recall",
+    "rule_low": "recall target unreachable within budget: middle of the best-recall plateau",
     "set": "input-safety",
     "val_fpr_at_low": 0.0,
-    "val_recall_at_high": 1.0,
-    "val_recall_at_low": 1.0
+    "val_recall_at_high": 0.9666666666666667,
+    "val_recall_at_low": 0.9666666666666667
   },
   "irreversible": {
     "high": 0.5,
@@ -112,8 +106,8 @@
   "leaks_prompt": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 45,
-    "n_pos": 5,
+    "n_neg": 67,
+    "n_pos": 8,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",
@@ -124,8 +118,8 @@
   "member_private": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 49,
-    "n_pos": 1,
+    "n_neg": 68,
+    "n_pos": 7,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",
@@ -136,8 +130,8 @@
   "other_home_data": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 48,
-    "n_pos": 2,
+    "n_neg": 72,
+    "n_pos": 3,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",
@@ -184,32 +178,32 @@
   "reply_unsuitable": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 43,
+    "n_neg": 68,
     "n_pos": 7,
-    "rule_high": "middle of the band meeting both budget and recall",
-    "rule_low": "middle of the band meeting both budget and recall",
+    "rule_high": "recall target unreachable within budget: middle of the best-recall plateau",
+    "rule_low": "recall target unreachable within budget: middle of the best-recall plateau",
     "set": "output",
     "val_fpr_at_low": 0.0,
-    "val_recall_at_high": 1.0,
-    "val_recall_at_low": 1.0
+    "val_recall_at_high": 0.7142857142857143,
+    "val_recall_at_low": 0.7142857142857143
   },
   "result_unsuitable": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 23,
-    "n_pos": 10,
+    "n_neg": 28,
+    "n_pos": 17,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "result-safety",
-    "val_fpr_at_low": 0.0,
+    "val_fpr_at_low": 0.1429,
     "val_recall_at_high": 1.0,
     "val_recall_at_low": 1.0
   },
   "safe_records": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 45,
-    "n_pos": 5,
+    "n_neg": 74,
+    "n_pos": 1,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",
@@ -220,8 +214,8 @@
   "self_harm": {
     "high": 0.5,
     "low": 0.5,
-    "n_neg": 143,
-    "n_pos": 4,
+    "n_neg": 275,
+    "n_pos": 6,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "input-safety",
@@ -242,10 +236,10 @@
     "val_recall_at_low": 1.0
   },
   "withhold": {
-    "high": 0.735,
-    "low": 0.735,
-    "n_neg": 26,
-    "n_pos": 24,
+    "high": 0.5,
+    "low": 0.5,
+    "n_neg": 46,
+    "n_pos": 29,
     "rule_high": "middle of the band meeting both budget and recall",
     "rule_low": "middle of the band meeting both budget and recall",
     "set": "output",

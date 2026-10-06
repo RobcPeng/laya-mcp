@@ -1,25 +1,76 @@
 
 === Ridgeback guard eval (test split) ===
 
-[route] n=850 macro_acc=0.907 ece=0.061 p50=96.6ms p95=166.3ms
-    group            choice acc=0.792
-    tool_grocery     choice acc=0.897
-    tool_lists       choice acc=0.895
+[route] n=1453 macro_acc=0.937 ece=0.030 p50=47.7ms p95=55.0ms
+    group            choice acc=0.93
+    tool_grocery     choice acc=0.866
+    tool_lists       choice acc=1.0
     tool_rem         choice acc=1.0
-    tool_cal         choice acc=0.944
-    tool_comms       choice acc=0.941
-    tool_rec         choice acc=0.867
-    tool_food        choice acc=0.952
-    tool_out         choice acc=1.0
-    tool_trip        choice acc=0.83
-    tool_ppl         choice acc=0.698
-    tool_plc         choice acc=0.874
-    tool_files       choice acc=0.929
+    tool_cal         choice acc=0.978
+    tool_comms       choice acc=0.985
+    tool_rec         choice acc=1.0
+    tool_food        choice acc=0.676
+    tool_out         choice acc=0.84
+    tool_trip        choice acc=0.979
+    tool_ppl         choice acc=0.944
+    tool_plc         choice acc=0.925
+    tool_files       choice acc=0.909
     tool_media       choice acc=1.0
-    needs_tool       noul   acc=0.953 auc=0.918 fn/fp@serving=1/32 (thr=0.01)
-    changes          noul   acc=0.941 auc=0.957 fn/fp@serving=40/10 (thr=0.02)
-    routing: group_top1=0.792 tool_top1=0.726
-    per-group tool acc: {'cal': 0.889, 'comms': 0.912, 'files': 0.357, 'food': 0.762, 'grocery': 0.718, 'lists': 0.803, 'media': 0.923, 'out': 1.0, 'plc': 0.829, 'ppl': 0.448, 'rec': 0.4, 'rem': 0.909, 'trip': 0.58}
-    end-to-end: single-turn=0.6459 context-dependent=0.9263 context hard-negatives=0.72
-[adapter routing] macro_acc=0.907 p95<=166.3ms sets=['route']
-[overall] macro_acc=0.907 p50~96.6ms p95<=166.3ms
+    needs_tool       noul   acc=0.978 auc=0.957 fn/fp@serving=12/19 (thr=0.01)
+    changes          noul   acc=0.977 auc=0.988 fn/fp@serving=10/21 (thr=0.01)
+    routing: group_top1=0.930 tool_top1=0.885
+    per-group tool acc: {'cal': 0.957, 'comms': 0.809, 'files': 0.636, 'food': 0.635, 'grocery': 0.824, 'lists': 1.0, 'media': 1.0, 'out': 0.56, 'plc': 0.844, 'ppl': 0.931, 'rec': 0.957, 'rem': 0.968, 'trip': 0.923}
+    confusion (gold tool -> answers, errors only):
+      [cal] 88/92  calendar_add->{'calendar_update_event': 1}  calendar_delete_event->{'group:rem': 1}  calendar_upcoming->{'calendar_add': 1, 'group:trip': 1}
+      [chat] 77/92  chat->{'group:trip': 6, 'group:grocery': 6, 'group:cal': 3}
+      [comms] 55/68  email_event->{'group:trip': 1}  email_search->{'group:rec': 4}  email_send->{'email_read': 1}  set_phone->{'group:ppl': 7}
+      [files] 14/22  web_search->{'chat': 6, 'gdrive_search': 1, 'group:food': 1}
+      [food] 47/74  recipe_add->{'group:rec': 1}  recipe_get->{'what_can_i_make': 5, 'chat': 3}  recipe_search->{'group:rec': 1, 'what_can_i_make': 4, 'chat': 1}  what_can_i_make->{'group:lists': 8, 'group:trip': 1, 'suggest_meals': 3}
+      [grocery] 98/119  grocery_add->{'group:cal': 6, 'plan_grocery_run': 1, 'grocery_mark_bought': 4, 'grocery_clear': 2, 'grocery_list': 1}  grocery_mark_bought->{'group:ppl': 1}  grocery_remove->{'grocery_clear': 2}  plan_grocery_run->{'grocery_list': 4}
+      [lists] 133/133
+      [media] 26/26
+      [out] 14/25  log_outing->{'group:trip': 7}  recall_outings->{'log_outing': 4}
+      [plc] 179/212  distance->{'group:ppl': 1}  distance_from_home->{'distance': 8, 'member_distance': 3}  geocode->{'group:ppl': 7, 'chat': 1, 'group:trip': 1}  get_address->{'geocode': 3}  member_distance->{'distance_from_home': 2, 'group:ppl': 5}  request_current_location->{'group:ppl': 1}  search_nearby->{'group:grocery': 1}
+      [ppl] 216/232  add_person->{'add_relationship': 2, 'record_fact': 3, 'graph_neighbors': 3}  add_relationship->{'register_person': 1}  recall_facts->{'add_relationship': 1, 'graph_neighbors': 1}  recall_person->{'whoami': 1}  remember_person->{'add_relationship': 1}  where_is->{'group:plc': 3}
+      [rec] 67/70  receipt_add->{'group:grocery': 1}  receipt_get->{'group:grocery': 1}  receipt_totals->{'group:grocery': 1}
+      [rem] 60/62  reminder_add->{'group:cal': 2}
+      [trip] 180/195  add_pet->{'group:ppl': 6, 'group:media': 1}  add_trip_participant->{'add_pet': 3, 'add_itinerary_item': 1}  recall_pets->{'group:ppl': 3}  recall_trip->{'group:lists': 1}
+      [undo] 31/31
+    end-to-end: single-turn=0.8772 context-dependent=0.9579 context hard-negatives=0.78
+
+[route-cutover] n=390 macro_acc=0.990 ece=0.004 p50=62.2ms p95=75.3ms
+    group            choice acc=0.969
+    tool_grocery     choice acc=1.0
+    tool_lists       choice acc=1.0
+    tool_rem         choice acc=1.0
+    tool_cal         choice acc=1.0
+    tool_comms       choice acc=None
+    tool_rec         choice acc=1.0
+    tool_food        choice acc=0.958
+    tool_out         choice acc=1.0
+    tool_trip        choice acc=1.0
+    tool_ppl         choice acc=0.957
+    tool_plc         choice acc=1.0
+    tool_files       choice acc=1.0
+    tool_media       choice acc=None
+    needs_tool       noul   acc=None fn/fp@serving=0/0 (thr=0.5)
+    changes          noul   acc=None fn/fp@serving=0/0 (thr=0.5)
+    routing: group_top1=0.969 tool_top1=0.97
+    per-group tool acc: {'cal': 1.0, 'files': 1.0, 'food': 0.958, 'grocery': 1.0, 'lists': 0.974, 'out': 0.909, 'plc': 0.948, 'ppl': 0.957, 'rec': 1.0, 'rem': 1.0, 'trip': 0.968}
+    confusion (gold tool -> answers, errors only):
+      [cal] 24/24
+      [chat] 11/13  chat->{'group:grocery': 1, 'group:food': 1}
+      [files] 6/6
+      [food] 23/24  recipe_search->{'recipe_get': 1}
+      [grocery] 35/35
+      [lists] 38/39  inventory_list->{'group:trip': 1}
+      [out] 10/11  recall_outings->{'group:cal': 1}
+      [plc] 55/58  distance->{'group:trip': 1}  get_location->{'group:cal': 2}
+      [ppl] 66/69  people_roster->{'whoami': 1}  whoami->{'where_is': 1, 'recall_person': 1}
+      [rec] 24/24
+      [rem] 18/18
+      [trip] 61/63  plan_trip->{'group:cal': 1}  recall_pets->{'group:ppl': 1}
+      [undo] 6/6
+    end-to-end: single-turn=0.9436 context-dependent=None context hard-negatives=None
+[adapter routing] macro_acc=0.964 p95<=75.3ms sets=['route', 'route-cutover']
+[overall] macro_acc=0.964 p50~55.0ms p95<=75.3ms

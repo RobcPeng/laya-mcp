@@ -38,6 +38,12 @@ RISK = {
 }
 GRID = [x / 1000 for x in range(5, 1000, 5)]
 
+# Per-signal false-positive budgets where the default is the wrong trade. result_unsuitable is the kid-safety
+# screen on web results: a miss shows adult-only content to a child, a false positive hides an adult-only
+# result from an adult (who can ask again). Its val set is small (about 30 negatives), so four adult rows (14%)
+# scoring high on content v2 already exceed any small budget, and "budget wins" would then turn the screen off entirely.
+FP_BUDGET_FOR = {"result_unsuitable": 0.15}
+
 
 def _signal(qid, p):
     return 1.0 - p if qid in R.POSITIVE else p
@@ -48,26 +54,34 @@ def _bad(qid, gold):
     return (not g) if qid in R.POSITIVE else g
 
 
-def _cut(fpr, rec, fp_budget, recall_target):
+def _cut(fpr, rec, fp_budget, recall_target, n_neg=None):
     """Where to cut one signal, from its val distribution.
 
     Val shares phrasing families with train, so a fine-tuned model usually separates it cleanly, and the
     lowest cut that meets the false-positive budget then sits at the very bottom of the scale (0.005):
-    any non-zero signal would trip it on new phrasings. So the cut goes in the MIDDLE of the band of cuts
-    that keep false positives within budget AND recall at or above target -- the widest margin either
-    side. When no cut does both, the false-positive budget wins (the clean false-block rate is the
-    priority) and recall is reported for what it is.
+    any non-zero signal would trip it on new phrasings. So the cut goes in the MIDDLE of a band:
+
+      - the band of cuts that keep false positives within budget AND recall at or above target; or, when
+        no cut does both,
+      - the band of cuts within budget that reach the best recall available (its plateau), so a weak
+        signal is not pushed to the edge of the scale either way.
+
+    On a small val set a rate budget can mean "zero false positives", which forces the cut to the top of
+    the scale and recall to nothing; the budget is floored at one negative row (1 / n_neg) for that.
     """
+    if n_neg:
+        fp_budget = max(fp_budget, 1.0 / n_neg)
     ok_fp = [t for t in GRID if fpr(t) <= fp_budget]
     if not ok_fp:
         return GRID[-1], "no cut meets the false-positive budget"
-    lo_fp = ok_fp[0]
-    if rec(lo_fp) is None:
-        return max(lo_fp, 0.5), "no positives on val: budget cut, floored at 0.5"
+    if rec(ok_fp[0]) is None:
+        return max(ok_fp[0], 0.5), "no positives on val: budget cut, floored at 0.5"
     ok_both = [t for t in ok_fp if rec(t) >= recall_target]
     if ok_both:
         return round(ok_both[len(ok_both) // 2], 3), "middle of the band meeting both budget and recall"
-    return lo_fp, "recall target unreachable within budget: lowest budget cut"
+    best = max(rec(t) for t in ok_fp)
+    plateau = [t for t in ok_fp if rec(t) >= best - 1e-9]
+    return round(plateau[len(plateau) // 2], 3), "recall target unreachable within budget: middle of the best-recall plateau"
 
 
 def fit(agent, fp_budget=0.01, block_fp=0.005, sets=None, recall_target=0.98, block_recall=0.9):
@@ -93,8 +107,8 @@ def fit(agent, fp_budget=0.01, block_fp=0.005, sets=None, recall_target=0.98, bl
             def rec(t):
                 return (sum(s >= t for s in pos) / len(pos)) if pos else None
 
-            low, how_low = _cut(fpr, rec, fp_budget, recall_target)
-            high, how_high = _cut(fpr, rec, block_fp, block_recall)
+            low, how_low = _cut(fpr, rec, FP_BUDGET_FOR.get(qid, fp_budget), recall_target, len(neg))
+            high, how_high = _cut(fpr, rec, max(block_fp, FP_BUDGET_FOR.get(qid, 0)), block_recall, len(neg))
             high = max(high, low)
             out[qid] = {"low": low, "high": high, "set": name, "n_pos": len(pos), "n_neg": len(neg),
                         "rule_low": how_low, "rule_high": how_high,

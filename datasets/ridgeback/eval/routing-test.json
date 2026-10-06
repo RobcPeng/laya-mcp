@@ -2,84 +2,84 @@
   "split": "test",
   "sets": {
     "route": {
-      "n": 850,
+      "n": 1453,
       "questions": {
         "group": {
           "type": "choice",
-          "n": 850,
-          "accuracy": 0.7917647058823529,
+          "n": 1453,
+          "accuracy": 0.930488644184446,
           "brier": null
         },
         "tool_grocery": {
           "type": "choice",
-          "n": 78,
-          "accuracy": 0.8974358974358975,
+          "n": 119,
+          "accuracy": 0.865546218487395,
           "brier": null
         },
         "tool_lists": {
           "type": "choice",
-          "n": 76,
-          "accuracy": 0.8947368421052632,
+          "n": 133,
+          "accuracy": 1.0,
           "brier": null
         },
         "tool_rem": {
           "type": "choice",
-          "n": 44,
+          "n": 62,
           "accuracy": 1.0,
           "brier": null
         },
         "tool_cal": {
           "type": "choice",
-          "n": 72,
-          "accuracy": 0.9444444444444444,
+          "n": 92,
+          "accuracy": 0.9782608695652174,
           "brier": null
         },
         "tool_comms": {
           "type": "choice",
           "n": 68,
-          "accuracy": 0.9411764705882353,
+          "accuracy": 0.9852941176470589,
           "brier": null
         },
         "tool_rec": {
           "type": "choice",
-          "n": 30,
-          "accuracy": 0.8666666666666667,
+          "n": 70,
+          "accuracy": 1.0,
           "brier": null
         },
         "tool_food": {
           "type": "choice",
-          "n": 42,
-          "accuracy": 0.9523809523809523,
+          "n": 74,
+          "accuracy": 0.6756756756756757,
           "brier": null
         },
         "tool_out": {
           "type": "choice",
-          "n": 16,
-          "accuracy": 1.0,
+          "n": 25,
+          "accuracy": 0.84,
           "brier": null
         },
         "tool_trip": {
           "type": "choice",
-          "n": 88,
-          "accuracy": 0.8295454545454546,
+          "n": 195,
+          "accuracy": 0.9794871794871794,
           "brier": null
         },
         "tool_ppl": {
           "type": "choice",
-          "n": 116,
-          "accuracy": 0.6982758620689655,
+          "n": 232,
+          "accuracy": 0.9439655172413793,
           "brier": null
         },
         "tool_plc": {
           "type": "choice",
-          "n": 111,
-          "accuracy": 0.8738738738738738,
+          "n": 212,
+          "accuracy": 0.9245283018867925,
           "brier": null
         },
         "tool_files": {
           "type": "choice",
-          "n": 14,
-          "accuracy": 0.9285714285714286,
+          "n": 22,
+          "accuracy": 0.9090909090909091,
           "brier": null
         },
         "tool_media": {
@@ -90,31 +90,31 @@
         },
         "needs_tool": {
           "type": "noul",
-          "n": 850,
-          "auc": 0.9182269343559666,
-          "fn_at_05": 12,
-          "fp_at_05": 28,
-          "fn_at_serving": 1,
-          "fp_at_serving": 32,
-          "n_pos": 806,
-          "n_neg": 44,
+          "n": 1453,
+          "auc": 0.9573403507651024,
+          "fn_at_05": 14,
+          "fp_at_05": 18,
+          "fn_at_serving": 12,
+          "fp_at_serving": 19,
+          "n_pos": 1361,
+          "n_neg": 92,
           "threshold": 0.01,
-          "accuracy": 0.9529411764705882,
-          "brier": 0.04237973610588236
+          "accuracy": 0.9779766001376462,
+          "brier": 0.021779259318651073
         },
         "changes": {
           "type": "noul",
-          "n": 850,
-          "auc": 0.9573871189294576,
-          "fn_at_05": 45,
-          "fp_at_05": 5,
-          "fn_at_serving": 40,
-          "fp_at_serving": 10,
-          "n_pos": 434,
-          "n_neg": 416,
-          "threshold": 0.02,
-          "accuracy": 0.9411764705882353,
-          "brier": 0.057734880305882356
+          "n": 1453,
+          "auc": 0.9882100536691641,
+          "fn_at_05": 14,
+          "fp_at_05": 20,
+          "fn_at_serving": 10,
+          "fp_at_serving": 21,
+          "n_pos": 697,
+          "n_neg": 756,
+          "threshold": 0.01,
+          "accuracy": 0.9766001376462491,
+          "brier": 0.021975428637302136
         }
       },
       "thresholds": {
@@ -126,51 +126,763 @@
         "changes": {
           "low": 0.01,
           "high": 0.99,
-          "threshold": 0.02
+          "threshold": 0.01
         }
       },
-      "latency_p50_ms": 96.6186080040643,
-      "latency_p95_ms": 166.33742731501107,
-      "ece": 0.06058234764335041,
-      "macro_accuracy": 0.9070618903513974,
+      "latency_p50_ms": 47.702426499995454,
+      "latency_p95_ms": 55.008652099985504,
+      "ece": 0.030297539110564167,
+      "macro_accuracy": 0.9366821356906218,
       "latency_note": "route latency is the two-call serving path (group, then that group's tool)",
+      "confusion": {
+        "plc": {
+          "get_address": {
+            "get_address": 14,
+            "geocode": 3
+          },
+          "geocode": {
+            "group:ppl": 7,
+            "chat": 1,
+            "geocode": 13,
+            "group:trip": 1
+          },
+          "distance": {
+            "distance": 18,
+            "group:ppl": 1
+          },
+          "get_weather": {
+            "get_weather": 35
+          },
+          "get_location": {
+            "get_location": 6
+          },
+          "request_current_location": {
+            "request_current_location": 13,
+            "group:ppl": 1
+          },
+          "distance_from_home": {
+            "distance_from_home": 21,
+            "distance": 8,
+            "member_distance": 3
+          },
+          "member_distance": {
+            "member_distance": 24,
+            "distance_from_home": 2,
+            "group:ppl": 5
+          },
+          "search_nearby": {
+            "group:grocery": 1,
+            "search_nearby": 15
+          },
+          "set_address": {
+            "set_address": 20
+          }
+        },
+        "chat": {
+          "chat": {
+            "chat": 77,
+            "group:trip": 6,
+            "group:grocery": 6,
+            "group:cal": 3
+          }
+        },
+        "files": {
+          "web_search": {
+            "chat": 6,
+            "gdrive_search": 1,
+            "group:food": 1
+          },
+          "read_file": {
+            "read_file": 14
+          }
+        },
+        "trip": {
+          "set_trip_notes": {
+            "set_trip_notes": 16
+          },
+          "plan_trip": {
+            "plan_trip": 17
+          },
+          "add_trip_participant": {
+            "add_trip_participant": 15,
+            "add_pet": 3,
+            "add_itinerary_item": 1
+          },
+          "add_stay": {
+            "add_stay": 19
+          },
+          "recall_pets": {
+            "recall_pets": 15,
+            "group:ppl": 3
+          },
+          "recall_trip": {
+            "recall_trip": 14,
+            "group:lists": 1
+          },
+          "add_pet": {
+            "add_pet": 11,
+            "group:ppl": 6,
+            "group:media": 1
+          },
+          "add_trip_stop": {
+            "add_trip_stop": 20
+          },
+          "attach_trip_list": {
+            "attach_trip_list": 18
+          },
+          "add_itinerary_item": {
+            "add_itinerary_item": 20
+          },
+          "reorder_trip_stops": {
+            "reorder_trip_stops": 15
+          }
+        },
+        "cal": {
+          "calendar_delete_event": {
+            "calendar_delete_event": 20,
+            "group:rem": 1
+          },
+          "calendar_add": {
+            "calendar_add": 23,
+            "calendar_update_event": 1
+          },
+          "calendar_update_event": {
+            "calendar_update_event": 23
+          },
+          "calendar_upcoming": {
+            "calendar_add": 1,
+            "calendar_upcoming": 22,
+            "group:trip": 1
+          }
+        },
+        "ppl": {
+          "recall_facts": {
+            "recall_facts": 14,
+            "add_relationship": 1,
+            "graph_neighbors": 1
+          },
+          "record_fact": {
+            "record_fact": 17
+          },
+          "graph_neighbors": {
+            "graph_neighbors": 20
+          },
+          "people_roster": {
+            "people_roster": 17
+          },
+          "where_is": {
+            "where_is": 25,
+            "group:plc": 3
+          },
+          "recall_person": {
+            "recall_person": 28,
+            "whoami": 1
+          },
+          "add_person": {
+            "add_person": 8,
+            "add_relationship": 2,
+            "record_fact": 3,
+            "graph_neighbors": 3
+          },
+          "get_relationships": {
+            "get_relationships": 18
+          },
+          "whoami": {
+            "whoami": 16
+          },
+          "list_household": {
+            "list_household": 15
+          },
+          "add_relationship": {
+            "add_relationship": 21,
+            "register_person": 1
+          },
+          "remember_person": {
+            "remember_person": 17,
+            "add_relationship": 1
+          }
+        },
+        "lists": {
+          "list_remove": {
+            "list_remove": 16
+          },
+          "list_show": {
+            "list_show": 12
+          },
+          "inventory_list": {
+            "inventory_list": 19
+          },
+          "list_add": {
+            "list_add": 37
+          },
+          "lists_overview": {
+            "lists_overview": 14
+          },
+          "list_create": {
+            "list_create": 16
+          },
+          "list_check": {
+            "list_check": 19
+          }
+        },
+        "rem": {
+          "reminders_list": {
+            "reminders_list": 25
+          },
+          "reminder_cancel": {
+            "reminder_cancel": 22
+          },
+          "reminder_add": {
+            "reminder_add": 13,
+            "group:cal": 2
+          }
+        },
+        "food": {
+          "recipe_add": {
+            "recipe_add": 25,
+            "group:rec": 1
+          },
+          "recipe_search": {
+            "group:rec": 1,
+            "what_can_i_make": 4,
+            "recipe_search": 9,
+            "chat": 1
+          },
+          "what_can_i_make": {
+            "what_can_i_make": 8,
+            "group:lists": 8,
+            "group:trip": 1,
+            "suggest_meals": 3
+          },
+          "recipe_get": {
+            "recipe_get": 5,
+            "what_can_i_make": 5,
+            "chat": 3
+          }
+        },
+        "grocery": {
+          "grocery_add": {
+            "grocery_add": 35,
+            "group:cal": 6,
+            "plan_grocery_run": 1,
+            "grocery_mark_bought": 4,
+            "grocery_clear": 2,
+            "grocery_list": 1
+          },
+          "grocery_mark_bought": {
+            "grocery_mark_bought": 11,
+            "group:ppl": 1
+          },
+          "grocery_clear": {
+            "grocery_clear": 12
+          },
+          "grocery_remove": {
+            "grocery_remove": 15,
+            "grocery_clear": 2
+          },
+          "plan_grocery_run": {
+            "plan_grocery_run": 12,
+            "grocery_list": 4
+          },
+          "grocery_list": {
+            "grocery_list": 13
+          }
+        },
+        "comms": {
+          "email_read": {
+            "email_read": 8
+          },
+          "email_send": {
+            "email_send": 17,
+            "email_read": 1
+          },
+          "email_event": {
+            "email_event": 7,
+            "group:trip": 1
+          },
+          "set_phone": {
+            "set_phone": 1,
+            "group:ppl": 7
+          },
+          "send_sms": {
+            "send_sms": 18
+          },
+          "email_search": {
+            "group:rec": 4,
+            "email_search": 4
+          }
+        },
+        "undo": {
+          "undo": {
+            "undo": 31
+          }
+        },
+        "rec": {
+          "receipt_add": {
+            "receipt_add": 17,
+            "group:grocery": 1
+          },
+          "receipt_totals": {
+            "receipt_totals": 14,
+            "group:grocery": 1
+          },
+          "receipts_list": {
+            "receipts_list": 18
+          },
+          "receipt_get": {
+            "receipt_get": 18,
+            "group:grocery": 1
+          }
+        },
+        "media": {
+          "media_add": {
+            "media_add": 18
+          },
+          "media_check": {
+            "media_check": 8
+          }
+        },
+        "out": {
+          "recall_outings": {
+            "log_outing": 4,
+            "recall_outings": 7
+          },
+          "log_outing": {
+            "log_outing": 7,
+            "group:trip": 7
+          }
+        }
+      },
       "routing": {
-        "group_top1": 0.7917647058823529,
-        "end_to_end_single_turn": 0.6459,
-        "end_to_end_context_dependent": 0.9263,
-        "end_to_end_context_hard_negatives": 0.72,
-        "tool_top1": 0.7259923175416133,
+        "group_top1": 0.930488644184446,
+        "end_to_end_single_turn": 0.8772,
+        "end_to_end_context_dependent": 0.9579,
+        "end_to_end_context_hard_negatives": 0.78,
+        "tool_top1": 0.8849624060150376,
         "per_group_tool_acc": {
-          "cal": 0.889,
-          "comms": 0.912,
-          "files": 0.357,
-          "food": 0.762,
-          "grocery": 0.718,
-          "lists": 0.803,
-          "media": 0.923,
-          "out": 1.0,
-          "plc": 0.829,
-          "ppl": 0.448,
-          "rec": 0.4,
-          "rem": 0.909,
-          "trip": 0.58
+          "cal": 0.957,
+          "comms": 0.809,
+          "files": 0.636,
+          "food": 0.635,
+          "grocery": 0.824,
+          "lists": 1.0,
+          "media": 1.0,
+          "out": 0.56,
+          "plc": 0.844,
+          "ppl": 0.931,
+          "rec": 0.957,
+          "rem": 0.968,
+          "trip": 0.923
+        }
+      }
+    },
+    "route-cutover": {
+      "n": 390,
+      "questions": {
+        "group": {
+          "type": "choice",
+          "n": 390,
+          "accuracy": 0.9692307692307692,
+          "brier": null
+        },
+        "tool_grocery": {
+          "type": "choice",
+          "n": 35,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_lists": {
+          "type": "choice",
+          "n": 39,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_rem": {
+          "type": "choice",
+          "n": 18,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_cal": {
+          "type": "choice",
+          "n": 24,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_comms": {
+          "type": "choice",
+          "n": 0,
+          "accuracy": null,
+          "brier": null
+        },
+        "tool_rec": {
+          "type": "choice",
+          "n": 24,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_food": {
+          "type": "choice",
+          "n": 24,
+          "accuracy": 0.9583333333333334,
+          "brier": null
+        },
+        "tool_out": {
+          "type": "choice",
+          "n": 11,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_trip": {
+          "type": "choice",
+          "n": 63,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_ppl": {
+          "type": "choice",
+          "n": 69,
+          "accuracy": 0.9565217391304348,
+          "brier": null
+        },
+        "tool_plc": {
+          "type": "choice",
+          "n": 58,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_files": {
+          "type": "choice",
+          "n": 6,
+          "accuracy": 1.0,
+          "brier": null
+        },
+        "tool_media": {
+          "type": "choice",
+          "n": 0,
+          "accuracy": null,
+          "brier": null
+        },
+        "needs_tool": {
+          "type": "noul",
+          "n": 0,
+          "auc": null,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 0,
+          "n_neg": 0,
+          "threshold": 0.5,
+          "accuracy": null,
+          "brier": null
+        },
+        "changes": {
+          "type": "noul",
+          "n": 0,
+          "auc": null,
+          "fn_at_05": 0,
+          "fp_at_05": 0,
+          "fn_at_serving": 0,
+          "fp_at_serving": 0,
+          "n_pos": 0,
+          "n_neg": 0,
+          "threshold": 0.5,
+          "accuracy": null,
+          "brier": null
+        }
+      },
+      "thresholds": {
+        "needs_tool": {
+          "low": 0.25,
+          "high": 0.85,
+          "threshold": 0.5
+        },
+        "changes": {
+          "low": 0.25,
+          "high": 0.85,
+          "threshold": 0.5
+        }
+      },
+      "latency_p50_ms": 62.22710899999129,
+      "latency_p95_ms": 75.277385999982,
+      "ece": 0.0038038107752956974,
+      "macro_accuracy": 0.9903404868078782,
+      "latency_note": "route latency is the two-call serving path (group, then that group's tool)",
+      "confusion": {
+        "trip": {
+          "add_itinerary_item": {
+            "add_itinerary_item": 6
+          },
+          "add_pet": {
+            "add_pet": 5
+          },
+          "add_stay": {
+            "add_stay": 6
+          },
+          "add_trip_participant": {
+            "add_trip_participant": 6
+          },
+          "add_trip_stop": {
+            "add_trip_stop": 6
+          },
+          "attach_trip_list": {
+            "attach_trip_list": 5
+          },
+          "plan_trip": {
+            "plan_trip": 5,
+            "group:cal": 1
+          },
+          "recall_pets": {
+            "recall_pets": 4,
+            "group:ppl": 1
+          },
+          "recall_trip": {
+            "recall_trip": 6
+          },
+          "reorder_trip_stops": {
+            "reorder_trip_stops": 6
+          },
+          "set_trip_notes": {
+            "set_trip_notes": 6
+          }
+        },
+        "ppl": {
+          "add_person": {
+            "add_person": 6
+          },
+          "add_relationship": {
+            "add_relationship": 6
+          },
+          "get_relationships": {
+            "get_relationships": 6
+          },
+          "graph_neighbors": {
+            "graph_neighbors": 6
+          },
+          "list_household": {
+            "list_household": 5
+          },
+          "people_roster": {
+            "people_roster": 4,
+            "whoami": 1
+          },
+          "recall_facts": {
+            "recall_facts": 6
+          },
+          "recall_person": {
+            "recall_person": 6
+          },
+          "record_fact": {
+            "record_fact": 6
+          },
+          "remember_person": {
+            "remember_person": 6
+          },
+          "where_is": {
+            "where_is": 6
+          },
+          "whoami": {
+            "whoami": 3,
+            "where_is": 1,
+            "recall_person": 1
+          }
+        },
+        "cal": {
+          "calendar_add": {
+            "calendar_add": 6
+          },
+          "calendar_delete_event": {
+            "calendar_delete_event": 6
+          },
+          "calendar_upcoming": {
+            "calendar_upcoming": 6
+          },
+          "calendar_update_event": {
+            "calendar_update_event": 6
+          }
+        },
+        "plc": {
+          "distance": {
+            "distance": 5,
+            "group:trip": 1
+          },
+          "distance_from_home": {
+            "distance_from_home": 6
+          },
+          "geocode": {
+            "geocode": 6
+          },
+          "get_address": {
+            "get_address": 6
+          },
+          "get_location": {
+            "get_location": 3,
+            "group:cal": 2
+          },
+          "get_weather": {
+            "get_weather": 5
+          },
+          "member_distance": {
+            "member_distance": 6
+          },
+          "request_current_location": {
+            "request_current_location": 6
+          },
+          "search_nearby": {
+            "search_nearby": 6
+          },
+          "set_address": {
+            "set_address": 6
+          }
+        },
+        "grocery": {
+          "grocery_add": {
+            "grocery_add": 6
+          },
+          "grocery_clear": {
+            "grocery_clear": 6
+          },
+          "grocery_list": {
+            "grocery_list": 5
+          },
+          "grocery_mark_bought": {
+            "grocery_mark_bought": 6
+          },
+          "grocery_remove": {
+            "grocery_remove": 6
+          },
+          "plan_grocery_run": {
+            "plan_grocery_run": 6
+          }
+        },
+        "lists": {
+          "inventory_list": {
+            "inventory_list": 4,
+            "group:trip": 1
+          },
+          "list_add": {
+            "list_add": 6
+          },
+          "list_check": {
+            "list_check": 6
+          },
+          "list_create": {
+            "list_create": 6
+          },
+          "list_remove": {
+            "list_remove": 6
+          },
+          "list_show": {
+            "list_show": 6
+          },
+          "lists_overview": {
+            "lists_overview": 4
+          }
+        },
+        "out": {
+          "log_outing": {
+            "log_outing": 6
+          },
+          "recall_outings": {
+            "recall_outings": 4,
+            "group:cal": 1
+          }
+        },
+        "files": {
+          "read_file": {
+            "read_file": 6
+          }
+        },
+        "rec": {
+          "receipt_add": {
+            "receipt_add": 6
+          },
+          "receipt_get": {
+            "receipt_get": 6
+          },
+          "receipt_totals": {
+            "receipt_totals": 6
+          },
+          "receipts_list": {
+            "receipts_list": 6
+          }
+        },
+        "food": {
+          "recipe_add": {
+            "recipe_add": 6
+          },
+          "recipe_get": {
+            "recipe_get": 6
+          },
+          "recipe_search": {
+            "recipe_search": 5,
+            "recipe_get": 1
+          },
+          "what_can_i_make": {
+            "what_can_i_make": 6
+          }
+        },
+        "rem": {
+          "reminder_add": {
+            "reminder_add": 6
+          },
+          "reminder_cancel": {
+            "reminder_cancel": 6
+          },
+          "reminders_list": {
+            "reminders_list": 6
+          }
+        },
+        "undo": {
+          "undo": {
+            "undo": 6
+          }
+        },
+        "chat": {
+          "chat": {
+            "chat": 11,
+            "group:grocery": 1,
+            "group:food": 1
+          }
+        }
+      },
+      "routing": {
+        "group_top1": 0.9692307692307692,
+        "end_to_end_single_turn": 0.9436,
+        "end_to_end_context_dependent": null,
+        "end_to_end_context_hard_negatives": null,
+        "tool_top1": 0.9703504043126685,
+        "per_group_tool_acc": {
+          "cal": 1.0,
+          "files": 1.0,
+          "food": 0.958,
+          "grocery": 1.0,
+          "lists": 0.974,
+          "out": 0.909,
+          "plc": 0.948,
+          "ppl": 0.957,
+          "rec": 1.0,
+          "rem": 1.0,
+          "trip": 0.968
         }
       }
     }
   },
   "thresholds_source": "fit on val",
   "overall": {
-    "macro_accuracy": 0.9070618903513974,
-    "latency_p50_ms": 96.6186080040643,
-    "latency_p95_ms": 166.33742731501107
+    "macro_accuracy": 0.9635113112492499,
+    "latency_p50_ms": 54.96476774999337,
+    "latency_p95_ms": 75.277385999982
   },
   "by_adapter": {
     "routing": {
       "sets": [
-        "route"
+        "route",
+        "route-cutover"
       ],
-      "macro_accuracy": 0.9070618903513974,
-      "latency_p95_ms": 166.33742731501107
+      "macro_accuracy": 0.9635113112492499,
+      "latency_p95_ms": 75.277385999982
     }
   }
 }

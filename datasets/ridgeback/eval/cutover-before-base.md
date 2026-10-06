@@ -1,6 +1,6 @@
 # Guard evaluation
 
-**NOT SAFE TO SWAP** · judge: `fixture` · 5295 cases from golden, guard_tests, rule_probes, laya:/private/tmp/claude-501/-Users-peng-Documents-Sandbox-bobby-app-hearth/c1fda105-fdff-4d57-ab30-5f2b33ed1034/scratchpad/laya-mcp/datasets/ridgeback, cyber, content, routing
+**NOT SAFE TO SWAP** · judge: `fixture` · 5295 cases from golden, guard_tests, rule_probes, laya:<scratch>/laya-mcp/datasets/ridgeback, cyber, content, routing
 
 > Fixture mode: the current guard's judge answered with each case's label, so its numbers measure its decisions, not the model. Compare against a Laya guard with `--judge live` on the host.
 
